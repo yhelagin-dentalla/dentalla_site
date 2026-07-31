@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Услуги и цены стоматологической клиники ДЕНТАЛЛА. Лечение, имплантация, протезирование, ортодонтия, детская стоматология. Прозрачные цены, никаких скрытых доплат.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Услуги и цены — ДЕНТАЛЛА</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap"></noscript>
+<style>
+:root{
+  --ink:#2B2418;--muted:#756B5D;--gold:#B09B3A;--gold-dark:#92811E;
+  --cream:#F7F3EA;--cream-2:#FCFBF7;--line:#EAE2D5;--white:#FFFFFF;
+  --shadow:0 18px 50px rgba(64,49,25,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:136px}
+/* Кнопка "В начало" */
+.back-to-top{position:fixed;bottom:36px;right:36px;z-index:200;
+  background:var(--gold);color:#fff;border:none;border-radius:999px;
+  padding:12px 20px;font-size:13px;font-weight:600;font-family:'Manrope',sans-serif;
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(176,155,58,0.35);
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease,background .2s;}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.back-to-top:hover{background:var(--gold-dark);transform:translateY(-2px);}
+.back-to-top svg{flex-shrink:0;}
+body{font-family:'Manrope',sans-serif;color:var(--ink);background:var(--cream-2);line-height:1.65;font-size:15px}
+a{text-decoration:none;color:inherit}button{cursor:pointer;font-family:inherit}
+header{height:72px;padding:0 clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,226,213,.9);position:sticky;top:0;z-index:100}
+nav{display:flex;gap:clamp(18px,2.4vw,34px)}
+nav a{font-size:13px;color:#5A5248;font-weight:500;position:relative;padding:26px 0 24px}
+nav a:after{content:"";position:absolute;left:0;right:0;bottom:17px;height:1px;background:var(--gold);transform:scaleX(0);transition:.25s}
+nav a:hover,nav a.active{color:var(--gold-dark)}nav a:hover:after,nav a.active:after{transform:scaleX(1)}
+.header-right{display:flex;align-items:center;gap:18px}.h-phone{font-size:14px;font-weight:600;display:flex;align-items:center;gap:7px}.h-phone-icon{color:var(--gold)}
+.btn-header,.btn-appt{background:var(--gold);color:#fff;border:none;border-radius:8px;font-weight:500;transition:background .2s}.btn-header{padding:12px 24px;font-size:13.5px}.btn-header:hover,.btn-appt:hover{background:var(--gold-dark)}
+.page-hero{position:relative;overflow:hidden;background:#F5EFE3;padding:62px clamp(20px,6vw,88px) 58px;border-bottom:1px solid var(--line)}
+.page-hero:before{display:none}
+.page-hero:after{content:"";display:none}
+.hero-inner{max-width:1180px;margin:auto;position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:80px;align-items:end}
+.breadcrumb{font-size:12px;color:#9B9080;margin-bottom:18px;letter-spacing:.02em}.breadcrumb a{color:var(--gold-dark)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,76px);line-height:.98;font-weight:500;letter-spacing:-.03em;margin-bottom:20px}
+.page-hero p{font-size:15px;color:var(--muted);max-width:600px}
+.hero-note{border-left:1px solid rgba(176,155,58,.5);padding-left:24px;color:var(--muted);font-size:13px}.hero-note strong{display:block;color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin-bottom:6px}
+.category-nav-wrap{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:72px;z-index:80}
+.category-nav{max-width:1180px;margin:auto;padding:14px 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.category-nav::-webkit-scrollbar{display:none}
+.category-nav a{flex:0 0 auto;padding:9px 14px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;color:#675D50;background:#fff;transition:.2s}.category-nav a:hover{border-color:var(--gold);color:var(--gold-dark);background:#FBF8EF}
+.price-wrap{max-width:1180px;margin:0 auto;padding:58px 24px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+.price-section{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 26px rgba(64,49,25,.035);opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease,box-shadow .25s}
+.price-section:hover{box-shadow:var(--shadow)}.price-section.in-view{opacity:1;transform:none}
+.price-section-title{font-family:'Cormorant Garamond',serif;font-size:31px;line-height:1.1;font-weight:500;padding:26px 28px 20px;border-bottom:1px solid var(--line);position:relative;background:linear-gradient(180deg,#fff 0%,#FDFBF7 100%)}
+.price-section-title:after{content:"";position:absolute;left:28px;bottom:-1px;width:48px;height:2px;background:var(--gold)}
+.price-table{width:100%;border-collapse:collapse}.price-table tr{border-bottom:1px solid #F2ECE3;transition:.2s}.price-table tr:last-child{border-bottom:0}.price-table tr:hover{background:#FBF9F4}
+.price-table td{padding:15px 28px}.price-name{font-size:13.5px;color:#40372C;width:66%;line-height:1.45}.price-val{font-size:14px;font-weight:600;color:var(--gold-dark);white-space:nowrap;text-align:right;width:34%;font-family:'Manrope',sans-serif}
+.guarantee{max-width:1180px;margin:34px auto 0;padding:0 24px;border:0}.guarantee-inner{background:var(--ink);border-radius:22px;padding:24px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}.g-item{font-size:13px;color:#EAE3D6;display:flex;align-items:center;justify-content:center;gap:10px;border-right:1px solid rgba(255,255,255,.12)}.g-item:last-child{border-right:0}.g-dot{width:7px;height:7px;border-radius:50%;background:#C8B85B;box-shadow:0 0 0 5px rgba(200,184,91,.1)}
+.cta-bottom{max-width:1180px;margin:64px auto 72px;border-radius:28px;background:linear-gradient(135deg,#A99634,#B8A54A);padding:58px 40px;text-align:center;position:relative;overflow:hidden}.cta-bottom:before{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.24);border-radius:20px;pointer-events:none}
+.cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4vw,52px);line-height:1.05;color:#fff;font-weight:500;margin-bottom:14px;position:relative}.cta-bottom p{font-size:14px;color:rgba(255,255,255,.86);margin-bottom:28px;position:relative}.btn-cta-white{position:relative;padding:14px 30px;background:#fff;border-radius:999px;font-size:14px;font-weight:600;color:var(--gold-dark);border:0;transition:.25s}.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(43,36,24,.14)}
+footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24px}.footer-inner{max-width:1280px;margin:0 auto 34px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}.f-logo{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;letter-spacing:.07em;color:#EFE8DA;margin-bottom:8px}.f-tagline{font-size:12px;color:#756A5C;line-height:1.6}.f-col h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#756A5C;margin-bottom:14px}.f-col p,.f-col a{font-size:13px;color:#A99B8C;line-height:1.9}.f-col a:hover{color:#D1C36A}.footer-bottom{border-top:1px solid #3A3025;padding-top:20px;font-size:11.5px;color:#64594A;text-align:center;max-width:1280px;margin:auto}
+@media(max-width:1050px){nav{display:none}.hero-inner{grid-template-columns:1fr;gap:28px}.hero-note{max-width:420px}.price-wrap{grid-template-columns:1fr}.header-right{margin-left:auto}}
+
+@media(max-width:640px){
+  .page-hero{padding:32px 16px 28px;}
+  .page-hero h1{font-size:36px;}
+  .category-nav-wrap{top:64px;}
+  .category-nav{gap:8px;padding:10px 14px;}
+  .category-nav a{font-size:11.5px;padding:6px 10px;}
+  .price-wrap{padding:20px 16px;}
+  .price-section{border-radius:14px;}
+  .price-section-title{font-size:24px;padding:18px 16px 14px;}
+  .price-table td{padding:12px 16px;}
+  .price-name{font-size:13px;}
+  .price-val{font-size:12.5px;}
+  footer{padding:28px 16px 16px;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:24px;}
+}
+@media(max-width:700px){header{height:64px;padding:0 16px}header img{height:32px!important}.h-phone{display:none}.btn-header{padding:10px 15px}.category-nav-wrap{top:64px}.page-hero{padding:38px 20px 36px}.page-hero:after{font-size:100px}.hero-note{display:none}.price-wrap{padding:34px 14px 12px;gap:16px}.price-section{border-radius:17px}.price-section-title{font-size:27px;padding:22px 20px 17px}.price-section-title:after{left:20px}.price-table td{padding:14px 20px}.price-name{width:62%;font-size:13px}.price-val{width:38%;font-size:12.5px}.guarantee{padding:0 14px;margin-top:22px}.guarantee-inner{grid-template-columns:1fr;padding:10px 20px}.g-item{justify-content:flex-start;border-right:0;border-bottom:1px solid rgba(255,255,255,.1);padding:13px 4px}.g-item:last-child{border-bottom:0}.cta-bottom{margin:38px 14px 48px;padding:46px 24px;border-radius:22px}.footer-inner{grid-template-columns:1fr 1fr;gap:30px}.footer-inner>div:first-child{grid-column:1/-1}}
+@media(max-width:420px){.footer-inner{grid-template-columns:1fr}.footer-inner>div:first-child{grid-column:auto}.price-table td{display:block;width:100%;text-align:left}.price-name{padding-bottom:2px}.price-val{padding-top:0;padding-bottom:14px}}
+
+/* ── МОБИЛЬНЫЙ HEADER ── */
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;z-index:200;}
+.burger span{display:block;width:22px;height:2px;background:#2B2418;border-radius:2px;transition:.3s;}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mobile-menu{display:none;position:fixed;inset:0;background:#fff;z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:40px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#2B2418;text-decoration:none;}
+.mobile-menu a:hover{color:#B09B3A;}
+.mobile-menu .mob-phone{font-size:18px;font-family:'Manrope',sans-serif;color:#5A5248;margin-top:16px;}
+.mobile-menu .mob-btn{background:#B09B3A;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
+@media(max-width:960px){
+  nav{display:none;}
+  .burger{display:flex;}
+  .h-phone{display:none;}
+  .btn-header{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html"><img src="logo_t.png" alt="Денталла" style="height:38px;width:auto;display:block;"></a>
+  <nav>
+    <a href="index.html">О клинике</a>
+    <a href="services.html" class="active">Услуги</a>
+    <a href="index.html#doctors">Врачи</a>
+    <a href="services.html" class="active">Цены</a>
+    <a href="index.html">Пациентам</a>
+    <a href="contacts.html">Контакты</a>
+  </nav>
+  <div class="header-right">
+    <div class="h-phone"><span class="h-phone-icon">☎</span>8 812 605 72 07</div>
+    <button class="btn-header" onclick="openApptModal()">Записаться на приём</button>
+    <button class="burger" id="burger" aria-label="Меню" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" onclick="closeMobileMenu()">О клинике</a>
+  <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
+  <a href="index.html#doctors" onclick="closeMobileMenu()">Наши врачи</a>
+  <a href="contacts.html" onclick="closeMobileMenu()">Контакты</a>
+  <span class="mob-phone">☎ 8 812 605 72 07</span>
+  <button class="mob-btn" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
+</div>
+
+<div class="page-hero">
+  <div class="hero-inner" style="display:block;">
+    <div class="breadcrumb"><a href="index.html">Главная</a> / Услуги и цены</div>
+    <h1>Услуги и цены</h1>
+    <p>Прозрачные цены, никаких скрытых доплат. До начала лечения вы знаете полный план и стоимость.</p>
+  </div>
+</div>
+
+<main>
+<div class="category-nav-wrap">
+  <div class="category-nav">
+    <a href="#konsultaciya">Консультация</a><a href="#lechenie">Лечение</a><a href="#profilaktika">Профилактика</a><a href="#protezirovanie">Протезирование</a><a href="#implantaciya">Имплантация</a><a href="#hirurgiya">Хирургия</a><a href="#parodontologiya">Пародонтология</a><a href="#ortodontiya">Прикус</a><a href="#detskaya">Детям</a><a href="#rentgen">Рентгенология</a>
+  </div>
+</div>
+
+<div class="price-wrap">
+
+<div class="price-section" id="konsultaciya">
+  <div class="price-section-title">Консультация</div>
+  <table class="price-table">
+    <tr><td class="price-name">Консультация стоматолога</td><td class="price-val">от 1 500 ₽</td></tr>
+    <tr><td class="price-name">Профилактический осмотр стоматолога</td><td class="price-val">от 1 500 ₽</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="lechenie">
+  <div class="price-section-title">Лечение зубов</div>
+  <table class="price-table">
+    <tr><td class="price-name">Лечение кариеса</td><td class="price-val">от 8 000 ₽</td></tr>
+    <tr><td class="price-name">Лечение пульпита</td><td class="price-val">от 15 000 ₽</td></tr>
+    <tr><td class="price-name">Лечение кариеса Icon</td><td class="price-val">от 13 600 ₽</td></tr>
+    <tr><td class="price-name">Прямые виниры зубов</td><td class="price-val">от 16 800 ₽</td></tr>
+    <tr><td class="price-name">Лечение кисты зуба</td><td class="price-val">по плану лечения</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="profilaktika">
+  <div class="price-section-title">Профилактика</div>
+  <table class="price-table">
+    <tr><td class="price-name">Профессиональная чистка зубов</td><td class="price-val">от 6 800 ₽</td></tr>
+    <tr><td class="price-name">Отбеливание Zoom</td><td class="price-val">от 21 900 ₽</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="protezirovanie">
+  <div class="price-section-title">Протезирование зубов</div>
+  <table class="price-table">
+    <tr><td class="price-name">Металлокерамическая коронка</td><td class="price-val">от 28 600 ₽</td></tr>
+    <tr><td class="price-name">Циркониевые коронки</td><td class="price-val">от 38 100 ₽</td></tr>
+    <tr><td class="price-name">Циркониевая коронка на имплант</td><td class="price-val">от 41 700 ₽</td></tr>
+    <tr><td class="price-name">Виниры E-max</td><td class="price-val">от 39 900 ₽</td></tr>
+    <tr><td class="price-name">Ультраниры</td><td class="price-val">от 58 800 ₽</td></tr>
+    <tr><td class="price-name">Частичный протез</td><td class="price-val">от 35 000 ₽</td></tr>
+    <tr><td class="price-name">Съёмные зубные протезы</td><td class="price-val">от 50 200 ₽</td></tr>
+    <tr><td class="price-name">All-on-4</td><td class="price-val">от 385 000 ₽</td></tr>
+    <tr><td class="price-name">Протез на 2 имплантах</td><td class="price-val">от 121 000 ₽</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="implantaciya">
+  <div class="price-section-title">Имплантация зубов</div>
+  <table class="price-table">
+    <tr><td class="price-name">Импланты Dentium</td><td class="price-val">от 36 000 ₽</td></tr>
+    <tr><td class="price-name">Импланты Ankylos</td><td class="price-val">от 42 400 ₽</td></tr>
+    <tr><td class="price-name">Импланты Straumann</td><td class="price-val">от 56 500 ₽</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="hirurgiya">
+  <div class="price-section-title">Хирургия</div>
+  <table class="price-table">
+    <tr><td class="price-name">Удаление зубов</td><td class="price-val">от 5 500 ₽</td></tr>
+    <tr><td class="price-name">Сложное удаление постоянного зуба</td><td class="price-val">от 8 900 ₽</td></tr>
+    <tr><td class="price-name">Резекция верхушки корня</td><td class="price-val">от 13 100 ₽</td></tr>
+    <tr><td class="price-name">Пластика уздечки губы</td><td class="price-val">от 4 200 ₽</td></tr>
+    <tr><td class="price-name">Пластика уздечки языка</td><td class="price-val">от 4 200 ₽</td></tr>
+    <tr><td class="price-name">Лечение рецессии десны</td><td class="price-val">по плану лечения</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="parodontologiya">
+  <div class="price-section-title">Пародонтология</div>
+  <table class="price-table">
+    <tr><td class="price-name">Лечение пародонтита</td><td class="price-val">по плану лечения</td></tr>
+    <tr><td class="price-name">Кюретаж закрытый</td><td class="price-val">от 1 900 ₽</td></tr>
+    <tr><td class="price-name">Лазерный кюретаж</td><td class="price-val">по плану лечения</td></tr>
+    <tr><td class="price-name">Лоскутная операция</td><td class="price-val">от 3 200 ₽</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="ortodontiya">
+  <div class="price-section-title">Исправление прикуса</div>
+  <table class="price-table">
+    <tr><td class="price-name">Элайнеры Invisalign</td><td class="price-val">от 160 000 ₽</td></tr>
+    <tr><td class="price-name">Элайнеры Spark</td><td class="price-val">по плану лечения</td></tr>
+    <tr><td class="price-name">Элайнеры 3Д Смайл</td><td class="price-val">по плану лечения</td></tr>
+    <tr><td class="price-name">Брекеты Damon</td><td class="price-val">от 78 000 ₽</td></tr>
+    <tr><td class="price-name">Съёмные ортодонтические аппараты</td><td class="price-val">от 14 500 ₽</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="detskaya">
+  <div class="price-section-title">Детская стоматология</div>
+  <table class="price-table">
+    <tr><td class="price-name">Консультация детского стоматолога</td><td class="price-val">от 900 ₽</td></tr>
+    <tr><td class="price-name">Лечение кариеса у детей</td><td class="price-val">от 6 500 ₽</td></tr>
+    <tr><td class="price-name">Герметизация фиссур у детей</td><td class="price-val">от 3 200 ₽</td></tr>
+    <tr><td class="price-name">Удаление молочного зуба</td><td class="price-val">от 5 000 ₽</td></tr>
+    <tr><td class="price-name">Детская чистка зубов</td><td class="price-val">по плану лечения</td></tr>
+    <tr><td class="price-name">Обучение ребёнка чистке зубов</td><td class="price-val">по плану лечения</td></tr>
+  </table>
+</div>
+
+<div class="price-section" id="rentgen">
+  <div class="price-section-title">Рентгенология</div>
+  <table class="price-table">
+    <tr><td class="price-name">Панорамный снимок зубов</td><td class="price-val">от 1 000 ₽</td></tr>
+    <tr><td class="price-name">3D снимок зубов (КЛКТ)</td><td class="price-val">от 3 000 ₽</td></tr>
+  </table>
+</div>
+
+</div>
+
+
+</main>
+<footer>
+  <div class="footer-inner">
+    <div>
+      
+      
+    </div>
+    <div class="f-col"><h4>Адрес</h4><p>Санкт-Петербург,<br>Проспект Энгельса, 126к1<br>Станция метро «Озерки»</p></div>
+    <div class="f-col"><h4>Режим работы</h4><p>Пн–пт: 09:00–21:00<br>Сб: 09:00–16:00<br>Вс: выходной</p></div>
+    <div class="f-col"><h4>Контакты</h4><p><a href="tel:88126057207">8 812 605 72 07</a></p><p style="margin-top:4px;"><a href="mailto:dentalla@inbox.ru">dentalla@inbox.ru</a></p></div>
+  </div>
+  <div class="footer-bottom">Лицензия № 78-01-004014 · © ООО «Дентал Груп», 2026 · Информация и цены на сайте не являются публичной офертой</div>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+    <path d="M7 12V2M2 7l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  В начало
+</button>
+
+<script>
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); }
+  });
+}, {threshold: 0.05});
+document.querySelectorAll('.price-section').forEach(function(s) { obs.observe(s); });
+
+// Кнопка "В начало"
+var btn = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 400) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+<!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
+<div id="appt-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;">
+      <button onclick="closeApptModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#2B2418;margin-bottom:4px;">Записаться на приём</h2>
+      <p style="font-size:13px;color:#7A7060;">Заполните хотя бы одно поле — мы перезвоним и подберём удобное время</p>
+    </div>
+    <div style="padding:24px 32px 28px;">
+      <form id="appt-form" action="https://formsubmit.co/dentalla@inbox.ru" method="POST">
+        <input type="hidden" name="_subject" value="Обращение с сайта">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Имя</label>
+            <input id="appt-name" name="Имя" type="text" placeholder="Как вас зовут?" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
+            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
+            <select name="Врач" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B09B3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+              <option value="">— Не важно, любой специалист —</option>
+              <option value="Елагина Нана Леонтиевна">Елагина Нана Леонтиевна — главный врач, ортопед</option>
+              <option value="Елагин Роман Владиславович">Елагин Роман Владиславович — хирург, имплантолог</option>
+              <option value="Марсавина Жанна Владимировна">Марсавина Жанна Владимировна — терапевт, микроскопист</option>
+              <option value="Гороховская Нинэль Юльевна">Гороховская Нинэль Юльевна — ортодонт</option>
+              <option value="Воронина Кристина Сергеевна">Воронина Кристина Сергеевна — детский стоматолог</option>
+              <option value="Фурса Анна Александровна">Фурса Анна Александровна — терапевт</option>
+              <option value="Разуваева Яна Евгеньевна">Разуваева Яна Евгеньевна — терапевт</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Комментарий</label>
+            <textarea id="appt-comment" name="Комментарий" placeholder="Какая услуга интересует? Удобное время?" rows="3" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;resize:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <p style="font-size:11px;color:#9B9080;line-height:1.5;max-width:240px;">Нажимая кнопку, вы соглашаетесь с <a href="https://dentalla.ru/wp-content/uploads/2025/06/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0-%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8-%D0%94%D0%93.pdf" target="_blank" style="color:#B09B3A;">политикой обработки данных</a></p>
+          <button type="submit" id="appt-submit" disabled style="background:#C8C0A8;color:#fff;border:none;border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:not-allowed;transition:all .2s;font-family:'Manrope',sans-serif;">Отправить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+function openApptModal(){var m=document.getElementById('appt-modal');m.style.display='flex';document.body.style.overflow='hidden';}
+function closeApptModal(){var m=document.getElementById('appt-modal');m.style.display='none';document.body.style.overflow='';}
+document.getElementById('appt-modal').addEventListener('click',function(e){if(e.target===this)closeApptModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeApptModal();});
+var apptFields=['appt-name','appt-phone','appt-comment'];
+var apptBtn=document.getElementById('appt-submit');
+function checkApptFields(){var filled=apptFields.some(function(id){return document.getElementById(id).value.trim().length>0;});apptBtn.disabled=!filled;apptBtn.style.background=filled?'#B09B3A':'#C8C0A8';apptBtn.style.cursor=filled?'pointer':'not-allowed';}
+apptFields.forEach(function(id){document.getElementById(id).addEventListener('input',checkApptFields);});
+document.querySelectorAll('.btn-header,.btn-primary,.btn-cta-white,.doc-modal-btn,.btn-submit').forEach(function(b){if(b.form)return;b.addEventListener('click',function(e){e.preventDefault();openApptModal();});});
+</script>
+
+<script>
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
