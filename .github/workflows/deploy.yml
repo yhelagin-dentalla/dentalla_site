@@ -8,6 +8,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Check FTP secrets
+        run: |
+          if [ -z "${{ secrets.FTP_SERVER }}" ]; then echo "FTP_SERVER is empty"; exit 1; fi
+          if [ -z "${{ secrets.FTP_USERNAME }}" ]; then echo "FTP_USERNAME is empty"; exit 1; fi
+          if [ -z "${{ secrets.FTP_PASSWORD }}" ]; then echo "FTP_PASSWORD is empty"; exit 1; fi
+          echo "All FTP secrets are present"
+          echo "Server: ${{ secrets.FTP_SERVER }}"
+          echo "Username: ${{ secrets.FTP_USERNAME }}"
+          echo "Password length: $(echo -n '${{ secrets.FTP_PASSWORD }}' | wc -c) chars"
+
       - name: Checkout
         uses: actions/checkout@v4
 
