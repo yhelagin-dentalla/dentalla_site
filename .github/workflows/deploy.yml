@@ -12,16 +12,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: ./
-          server-dir: /public_html/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-
+        run: |
+          sudo apt-get install -y lftp
+          lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} -e "
+            set ftp:ssl-allow yes
+            set ftp:ssl-force no
+            set ftp:passive-mode yes
+            set net:timeout 30
+            set net:max-retries 3
+            mirror --reverse --delete --exclude .git/ --exclude .github/ ./ /public_html/
+            quit
+          "
