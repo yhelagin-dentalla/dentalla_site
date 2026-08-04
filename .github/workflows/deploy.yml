@@ -11,15 +11,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
+      - name: Deploy via FTP (with auto-retry)
         run: |
           sudo apt-get install -y lftp
-          lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} -e "
-            set ftp:ssl-allow no
-            set ftp:passive-mode yes
-            set net:timeout 30
-            set net:max-retries 3
-            set net:reconnect-interval-base 5
-            mirror --reverse --only-newer --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
-            quit
-          "
+          for attempt in 1 2 3 4 5; do
+            echo "=== Attempt $attempt of 5 ==="
+            lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} -e "
+              set ftp:ssl-allow no
+              set ftp:passive-mode yes
+              set net:timeout 20
+              set net:max-retries 2
+              set net:reconnect-interval-base 3
+              set net:reconnect-interval-multiplier 1
+              mirror --reverse --only-newer --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
+              quit
+            " && { echo "Deploy succeeded on attempt $attempt"; exit 0; }
+            echo "Attempt $attempt failed, retrying in 10s..."
+            sleep 10
+          done
+          echo "All attempts failed"
+          exit 1
