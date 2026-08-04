@@ -23,7 +23,7 @@ jobs:
               set net:max-retries 2
               set net:reconnect-interval-base 3
               set net:reconnect-interval-multiplier 1
-              mirror --reverse --only-newer --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
+              mirror --reverse --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
               quit
             " && { echo "Deploy succeeded on attempt $attempt"; exit 0; }
             echo "Attempt $attempt failed, retrying in 10s..."
