@@ -15,15 +15,11 @@ jobs:
         run: |
           sudo apt-get install -y lftp
           lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} -e "
-            set ftp:ssl-allow yes
-            set ftp:ssl-force no
+            set ftp:ssl-allow no
             set ftp:passive-mode yes
-            set ssl:verify-certificate no
-            set ftp:ssl-protect-data yes
-            set net:timeout 60
-            set net:max-retries 5
+            set net:timeout 30
+            set net:max-retries 3
             set net:reconnect-interval-base 5
-            set ftp:use-feat no
-            mirror --reverse --delete --exclude .git/ --exclude .github/ --parallel=1 ./ /public_html/
+            mirror --reverse --only-newer --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
             quit
           "
