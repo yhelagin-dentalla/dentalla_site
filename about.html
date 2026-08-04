@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="О стоматологической клинике ДЕНТАЛЛА в Санкт-Петербурге. Авторская клиника основателя Наны Леонтиевны Елагиной. Комплексный подход, индивидуальные планы лечения с 2013 года.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>О клинике — ДЕНТАЛЛА</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap"></noscript>
+<style>
+:root{
+  --ink:#2B2418;--muted:#756B5D;--gold:#B09B3A;--gold-dark:#92811E;
+  --cream:#F7F3EA;--cream-2:#FCFBF7;--line:#EAE2D5;--white:#FFFFFF;
+  --shadow:0 18px 50px rgba(64,49,25,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;color:var(--ink);background:var(--cream-2);line-height:1.65;font-size:15px}
+a{text-decoration:none;color:inherit}button{cursor:pointer;font-family:inherit}
+
+/* ── HEADER ── */
+header{height:72px;padding:0 clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,226,213,.9);position:sticky;top:0;z-index:100}
+nav{display:flex;gap:clamp(18px,2.4vw,34px)}
+nav a{font-size:13px;color:#5A5248;font-weight:500;position:relative;padding:26px 0 24px}
+nav a:after{content:"";position:absolute;left:0;right:0;bottom:17px;height:1px;background:var(--gold);transform:scaleX(0);transition:.25s}
+nav a:hover,nav a.active{color:var(--gold-dark)}nav a:hover:after,nav a.active:after{transform:scaleX(1)}
+.header-right{display:flex;align-items:center;gap:18px}.h-phone{font-size:14px;font-weight:600;display:flex;align-items:center;gap:7px}.h-phone-icon{color:var(--gold)}
+.btn-header,.btn-appt{background:var(--gold);color:#fff;border:none;border-radius:8px;font-weight:500;transition:background .2s}.btn-header{padding:12px 24px;font-size:13.5px}.btn-header:hover,.btn-appt:hover{background:var(--gold-dark)}
+
+/* ── PAGE HERO ── */
+.page-hero{position:relative;overflow:hidden;background:#F5EFE3;padding:62px clamp(20px,6vw,88px) 58px;border-bottom:1px solid var(--line)}
+.hero-inner{max-width:1180px;margin:auto;position:relative;z-index:1}
+.breadcrumb{font-size:12px;color:#9B9080;margin-bottom:18px;letter-spacing:.02em}.breadcrumb a{color:var(--gold-dark)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,76px);line-height:.98;font-weight:500;letter-spacing:-.03em;margin-bottom:20px}
+.page-hero p{font-size:15px;color:var(--muted);max-width:600px}
+
+/* ── ABOUT CONTENT ── */
+.about-wrap{max-width:1180px;margin:0 auto;padding:64px 24px 40px}
+
+.about-intro{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:64px}
+.about-photo{border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.about-photo img{width:100%;height:auto;display:block}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;line-height:1.15;margin-bottom:20px;color:var(--ink)}
+.about-text p{font-size:15px;color:#5A5248;line-height:1.75;margin-bottom:16px}
+.about-text p:last-child{margin-bottom:0}
+
+.about-values{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.value-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px 28px;box-shadow:0 8px 26px rgba(64,49,25,.035);transition:box-shadow .25s,transform .4s;opacity:0;transform:translateY(18px)}
+.value-card.in-view{opacity:1;transform:none}
+.value-card:hover{box-shadow:var(--shadow)}
+.value-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#FAF6E8,#F5EFE3);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--gold);font-size:22px}
+.value-card h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin-bottom:10px}
+.value-card p{font-size:13.5px;color:var(--muted);line-height:1.65}
+
+.about-detail{background:#fff;border:1px solid var(--line);border-radius:22px;padding:48px;box-shadow:0 8px 26px rgba(64,49,25,.035);margin-bottom:64px;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.about-detail.in-view{opacity:1;transform:none}
+.about-detail h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;margin-bottom:24px;position:relative;padding-bottom:18px}
+.about-detail h2:after{content:"";position:absolute;left:0;bottom:0;width:48px;height:2px;background:var(--gold)}
+.about-detail p{font-size:15px;color:#5A5248;line-height:1.8;margin-bottom:18px;max-width:860px}
+.about-detail p:last-child{margin-bottom:0}
+
+.about-directions{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.dir-tag{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px 20px;font-size:14px;font-weight:500;color:var(--ink);text-align:center;transition:border-color .2s,background .2s}
+.dir-tag:hover{border-color:var(--gold);background:#FBF8EF}
+
+.about-quote{max-width:1180px;margin:0 auto 64px;border-radius:22px;background:var(--ink);padding:48px;position:relative;overflow:hidden;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.about-quote.in-view{opacity:1;transform:none}
+.about-quote:before{content:"\201C";position:absolute;top:-10px;left:28px;font-size:140px;font-family:'Cormorant Garamond',serif;color:rgba(200,184,91,.15);line-height:1}
+.about-quote p{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,30px);color:#EFE8DA;font-weight:400;font-style:italic;line-height:1.5;max-width:860px;position:relative;z-index:1}
+.about-quote cite{display:block;margin-top:20px;font-size:14px;font-style:normal;color:var(--gold);font-family:'Manrope',sans-serif;font-weight:500}
+
+/* ── CTA ── */
+.cta-bottom{max-width:1180px;margin:0 auto 72px;border-radius:28px;background:linear-gradient(135deg,#A99634,#B8A54A);padding:58px 40px;text-align:center;position:relative;overflow:hidden}.cta-bottom:before{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.24);border-radius:20px;pointer-events:none}
+.cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4vw,52px);line-height:1.05;color:#fff;font-weight:500;margin-bottom:14px;position:relative}.cta-bottom p{font-size:14px;color:rgba(255,255,255,.86);margin-bottom:28px;position:relative}.btn-cta-white{position:relative;padding:14px 30px;background:#fff;border-radius:999px;font-size:14px;font-weight:600;color:var(--gold-dark);border:0;transition:.25s}.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(43,36,24,.14)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24px}.footer-inner{max-width:1280px;margin:0 auto 34px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}.f-logo{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;letter-spacing:.07em;color:#EFE8DA;margin-bottom:8px}.f-tagline{font-size:12px;color:#756A5C;line-height:1.6}.f-col h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#756A5C;margin-bottom:14px}.f-col p,.f-col a{font-size:13px;color:#A99B8C;line-height:1.9}.f-col a:hover{color:#D1C36A}.footer-bottom{border-top:1px solid #3A3025;padding-top:20px;font-size:11.5px;color:#64594A;text-align:center;max-width:1280px;margin:auto}
+
+/* ── BACK TO TOP ── */
+.back-to-top{position:fixed;bottom:36px;right:36px;z-index:200;
+  background:var(--gold);color:#fff;border:none;border-radius:999px;
+  padding:12px 20px;font-size:13px;font-weight:600;font-family:'Manrope',sans-serif;
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(176,155,58,0.35);
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease,background .2s;}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.back-to-top:hover{background:var(--gold-dark);transform:translateY(-2px);}
+.back-to-top svg{flex-shrink:0;}
+
+/* ── MOBILE MENU ── */
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;z-index:200;}
+.burger span{display:block;width:22px;height:2px;background:#2B2418;border-radius:2px;transition:.3s;}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mobile-menu{display:none;position:fixed;inset:0;background:#fff;z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:40px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#2B2418;text-decoration:none;}
+.mobile-menu a:hover{color:#B09B3A;}
+.mobile-menu .mob-phone{font-size:18px;font-family:'Manrope',sans-serif;color:#5A5248;margin-top:16px;}
+.mobile-menu .mob-btn{background:#B09B3A;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{display:none;}
+  .burger{display:flex;}
+  .h-phone{display:none;}
+  .btn-header{display:none;}
+  .about-intro{grid-template-columns:1fr;gap:32px;}
+  .about-values{grid-template-columns:1fr 1fr;}
+  .about-directions{grid-template-columns:1fr 1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:30px}
+  .footer-inner>div:first-child{grid-column:1/-1}
+}
+@media(max-width:640px){
+  header{height:64px;padding:0 16px;}
+  header img{height:32px!important;}
+  .page-hero{padding:32px 16px 28px;}
+  .page-hero h1{font-size:36px;}
+  .about-wrap{padding:36px 16px 20px;}
+  .about-intro{gap:24px;}
+  .about-text h2{font-size:28px;}
+  .about-values{grid-template-columns:1fr;gap:16px;}
+  .value-card{padding:24px 20px;}
+  .about-detail{padding:28px 20px;border-radius:16px;}
+  .about-detail h2{font-size:28px;}
+  .about-directions{grid-template-columns:1fr 1fr;}
+  .about-quote{margin-left:16px;margin-right:16px;padding:32px 24px;border-radius:16px;}
+  .about-quote p{font-size:20px;}
+  .cta-bottom{margin:38px 16px 48px;padding:46px 24px;border-radius:22px;}
+  footer{padding:28px 16px 16px;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:24px;}
+}
+@media(max-width:420px){
+  .about-directions{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-inner>div:first-child{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html"><img src="logo_t.png" alt="Денталла" style="height:38px;width:auto;display:block;"></a>
+  <nav>
+    <a href="about.html" class="active">О клинике</a>
+    <a href="services.html">Услуги</a>
+    <a href="index.html#doctors">Врачи</a>
+    <a href="services.html">Цены</a>
+    <a href="contacts.html">Контакты</a>
+  </nav>
+  <div class="header-right">
+    <div class="h-phone"><span class="h-phone-icon">☎</span>8 812 605 72 07</div>
+    <button class="btn-header" onclick="openApptModal()">Записаться на приём</button>
+    <button class="burger" id="burger" aria-label="Меню" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMobileMenu()">О клинике</a>
+  <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
+  <a href="index.html#doctors" onclick="closeMobileMenu()">Наши врачи</a>
+  <a href="contacts.html" onclick="closeMobileMenu()">Контакты</a>
+  <span class="mob-phone">☎ 8 812 605 72 07</span>
+  <button class="mob-btn" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
+</div>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Главная</a> / О клинике</div>
+    <h1>О клинике</h1>
+    <p>Авторская стоматологическая клиника с комплексным подходом к каждому пациенту. Работаем с 2013 года.</p>
+  </div>
+</div>
+
+<main>
+
+<div class="about-wrap">
+
+<!-- Фото + вступление -->
+<div class="about-intro">
+  <div class="about-photo">
+    <img src="about_doctors.png" alt="Врачи клиники ДЕНТАЛЛА" width="800" height="1200" loading="lazy">
+  </div>
+  <div class="about-text">
+    <h2>«ДЕНТАЛЛА» — авторская стоматологическая клиника</h2>
+    <p>Клиника открыта в 2013 году врачом-стоматологом <strong>Наной Леонтиевной Елагиной</strong>. С первого дня в основе работы — ответственное отношение к каждому пациенту и каждому клиническому случаю.</p>
+    <p>Лечение здесь никогда не рассматривается как набор отдельных процедур. После тщательной диагностики наши специалисты определяют причину проблемы, оценивают состояние полости рта в целом и предлагают обоснованное, последовательное решение, рассчитанное на долгосрочный результат.</p>
+  </div>
+</div>
+
+<!-- Три ценности -->
+<div class="about-values">
+  <div class="value-card">
+    <div class="value-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    </div>
+    <h3>С 2013 года</h3>
+    <p>Более десяти лет клинической практики, тысячи выполненных планов лечения и доверие постоянных пациентов.</p>
+  </div>
+  <div class="value-card">
+    <div class="value-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <h3>Точная диагностика</h3>
+    <p>Каждый план лечения начинается с тщательного обследования — мы ищем причину, а не лечим симптомы.</p>
+  </div>
+  <div class="value-card">
+    <div class="value-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    <h3>Командный подход</h3>
+    <p>При необходимости к работе подключаются врачи разных специальностей, а этапы лечения согласуются между собой.</p>
+  </div>
+</div>
+
+<!-- Подробный текст -->
+<div class="about-detail">
+  <h2>Индивидуальный подход к лечению</h2>
+  <p>Каждый план лечения формируется индивидуально — с учётом диагноза, особенностей здоровья пациента, его пожеланий и клинического прогноза. При необходимости к работе подключаются врачи разных специальностей, а этапы лечения согласуются между собой и находятся под профессиональным контролем.</p>
+  <p>Мы уделяем особое внимание точности диагностики, качеству лечения и преемственности в работе специалистов. Для нас важно не только правильно провести лечение, но и подробно объяснить пациенту состояние его здоровья, возможные варианты решения, последовательность действий и ожидаемый результат.</p>
+
+  <h2 style="margin-top:40px;">Направления приёма</h2>
+  <p>Комплексный подход позволяет видеть клиническую ситуацию целиком и принимать решения, направленные на сохранение здоровья, функции и эстетики зубов.</p>
+  <div class="about-directions">
+    <div class="dir-tag">Терапия</div>
+    <div class="dir-tag">Ортопедия</div>
+    <div class="dir-tag">Хирургия</div>
+    <div class="dir-tag">Ортодонтия</div>
+    <div class="dir-tag">Пародонтология</div>
+    <div class="dir-tag">Детская стоматология</div>
+  </div>
+</div>
+
+</div>
+
+<!-- Цитата -->
+<div class="about-quote">
+  <p>Клиника внимательной стоматологии, где ценят профессиональную точность, личное участие и уважительное отношение к каждому пациенту.</p>
+  <cite>— Нана Леонтиевна Елагина, основатель клиники</cite>
+</div>
+
+<!-- CTA -->
+<div class="cta-bottom">
+  <h2>Запишитесь на консультацию</h2>
+  <p>Мы подробно расскажем о состоянии ваших зубов и предложим обоснованный план лечения</p>
+  <button class="btn-cta-white" onclick="openApptModal()">Записаться на приём</button>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div></div>
+    <div class="f-col"><h4>Адрес</h4><p>Санкт-Петербург,<br>Проспект Энгельса, 126к1<br>Станция метро «Озерки»</p></div>
+    <div class="f-col"><h4>Режим работы</h4><p>Пн–пт: 09:00–21:00<br>Сб: 09:00–16:00<br>Вс: выходной</p></div>
+    <div class="f-col"><h4>Контакты</h4><p><a href="tel:88126057207">8 812 605 72 07</a></p><p style="margin-top:4px;"><a href="mailto:dentalla@inbox.ru">dentalla@inbox.ru</a></p></div>
+  </div>
+  <div class="footer-bottom">Лицензия № 78-01-004014 · © ООО «Дентал Груп», 2026 · Информация и цены на сайте не являются публичной офертой</div>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+    <path d="M7 12V2M2 7l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  В начало
+</button>
+
+<script>
+// Анимация появления карточек
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); }
+  });
+}, {threshold: 0.05});
+document.querySelectorAll('.value-card,.about-detail,.about-quote').forEach(function(s) { obs.observe(s); });
+
+// Кнопка "В начало"
+var btn = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+  btn.classList[window.scrollY > 400 ? 'add' : 'remove']('visible');
+});
+</script>
+
+<!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
+<div id="appt-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;">
+      <button onclick="closeApptModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#2B2418;margin-bottom:4px;">Записаться на приём</h2>
+      <p style="font-size:13px;color:#7A7060;">Заполните хотя бы одно поле — мы перезвоним и подберём удобное время</p>
+    </div>
+    <div style="padding:24px 32px 28px;">
+      <form id="appt-form" action="https://formsubmit.co/dentalla@inbox.ru" method="POST">
+        <input type="hidden" name="_subject" value="Обращение с сайта — О клинике">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Имя</label>
+            <input id="appt-name" name="Имя" type="text" placeholder="Как вас зовут?" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
+            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
+            <select name="Врач" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+              <option value="">— Не важно, любой специалист —</option>
+              <option value="Елагина Нана Леонтиевна">Елагина Нана Леонтиевна — главный врач, ортопед</option>
+              <option value="Елагин Роман Владиславович">Елагин Роман Владиславович — хирург, имплантолог</option>
+              <option value="Марсавина Жанна Владимировна">Марсавина Жанна Владимировна — терапевт, микроскопист</option>
+              <option value="Гороховская Нинэль Юльевна">Гороховская Нинэль Юльевна — ортодонт</option>
+              <option value="Воронина Кристина Сергеевна">Воронина Кристина Сергеевна — детский стоматолог</option>
+              <option value="Фурса Анна Александровна">Фурса Анна Александровна — терапевт</option>
+              <option value="Разуваева Яна Евгеньевна">Разуваева Яна Евгеньевна — терапевт</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Комментарий</label>
+            <textarea id="appt-comment" name="Комментарий" placeholder="Какая услуга интересует? Удобное время?" rows="3" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;resize:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <p style="font-size:11px;color:#9B9080;line-height:1.5;max-width:240px;">Нажимая кнопку, вы соглашаетесь с <a href="politika.pdf" target="_blank" style="color:#B09B3A;">политикой обработки данных</a></p>
+          <button type="submit" id="appt-submit" disabled style="background:#C8C0A8;color:#fff;border:none;border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:not-allowed;transition:all .2s;font-family:'Manrope',sans-serif;">Отправить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function openApptModal(){var m=document.getElementById('appt-modal');m.style.display='flex';document.body.style.overflow='hidden';}
+function closeApptModal(){var m=document.getElementById('appt-modal');m.style.display='none';document.body.style.overflow='';}
+document.getElementById('appt-modal').addEventListener('click',function(e){if(e.target===this)closeApptModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeApptModal();});
+var apptFields=['appt-name','appt-phone','appt-comment'];
+var apptBtn=document.getElementById('appt-submit');
+function checkApptFields(){var filled=apptFields.some(function(id){return document.getElementById(id).value.trim().length>0;});apptBtn.disabled=!filled;apptBtn.style.background=filled?'#B09B3A':'#C8C0A8';apptBtn.style.cursor=filled?'pointer':'not-allowed';}
+apptFields.forEach(function(id){document.getElementById(id).addEventListener('input',checkApptFields);});
+</script>
+
+<script>
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
