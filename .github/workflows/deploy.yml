@@ -14,12 +14,16 @@ jobs:
       - name: Deploy via FTP
         run: |
           sudo apt-get install -y lftp
-          lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} -e "
-            set ftp:ssl-allow no
+          lftp -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" "${{ secrets.FTP_SERVER }}" -e "
+            set ftp:ssl-allow yes
+            set ftp:ssl-force no
+            set ftp:ssl-protect-data yes
+            set ssl:verify-certificate no
             set ftp:passive-mode yes
-            set net:timeout 30
-            set net:max-retries 3
-            set net:reconnect-interval-base 5
-            mirror --reverse --only-newer --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
+            set net:timeout 120
+            set net:max-retries 5
+            set net:reconnect-interval-base 10
+            set ftp:use-feat no
+            mirror --reverse --only-newer --delete --exclude .git/ --exclude .github/ --parallel=1 --use-pget-n=1 ./ /public_html/
             quit
           "
