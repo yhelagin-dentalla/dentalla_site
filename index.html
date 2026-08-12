@@ -636,6 +636,17 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       </div>
     </div>
 
+    <div class="doc-card">
+      <div class="doc-photo has-photo" style="background:none;position:relative;">
+        <img src="doctor_avgustovskikh.webp" alt="Августовских Оксана Владимировна" loading="lazy" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Августовских<br>Оксана Владимировна</div>
+        <div class="doc-role">Врач-стоматолог</div>
+        <div class="doc-exp">Стаж 10 лет</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1190,6 +1201,30 @@ window.addEventListener('load', function() {
   </div>
 </div>
 
+<div class="doc-modal" data-doctor="Августовских Оксана Владимировна">
+  <div class="doc-modal-box">
+    <button class="doc-modal-close">×</button>
+    <div class="doc-modal-hero">
+      <div class="doc-modal-photo"><img src="doctor_avgustovskikh.webp" alt=""></div>
+      <div class="doc-modal-head">
+        <h2>Августовских<br>Оксана Владимировна</h2>
+        <div class="doc-modal-role">Врач-стоматолог</div>
+        <div class="doc-modal-exp">Стаж 10 лет</div>
+      </div>
+    </div>
+    <div class="doc-modal-mob-head"><h2>Августовских Оксана Владимировна</h2><div class="doc-modal-mob-role">Врач-стоматолог</div><div class="doc-modal-mob-exp">Стаж 10 лет</div></div>
+    <div class="doc-modal-body">
+      <p class="doc-modal-bio">Врач-стоматолог общей практики. Внимательно подходит к диагностике и подбирает решение, подходящее именно вам.</p>
+      <p class="doc-modal-edu">Окончила Рязанский государственный медицинский университет им. академика Павлова. Аккредитация: врач-стоматолог общей практики.</p>
+      <div class="doc-modal-services"><h3>Специализация</h3></div>
+      <div class="doc-modal-tags">
+        <span class="doc-modal-tag">Стоматология общей практики</span>
+      </div>
+      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
+    </div>
+  </div>
+</div>
+
 <!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
 <div id="appt-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
   <div style="background:#fff;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;">
@@ -1226,6 +1261,7 @@ window.addEventListener('load', function() {
               <option value="Воронина Кристина Сергеевна">Воронина Кристина Сергеевна — детский стоматолог</option>
               <option value="Фурса Анна Александровна">Фурса Анна Александровна — терапевт</option>
               <option value="Разуваева Яна Евгеньевна">Разуваева Яна Евгеньевна — терапевт</option>
+              <option value="Августовских Оксана Владимировна">Августовских Оксана Владимировна — стоматолог общей практики</option>
             </select>
           </div>
           <div>
