@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Delete stale problem files, then full mirror
+      - name: Deploy via FTP (full sync, with auto-retry)
         run: |
           sudo apt-get install -y lftp
           for attempt in 1 2 3; do
@@ -28,9 +28,6 @@ jobs:
               set net:timeout 15
               set net:max-retries 2
               set net:reconnect-interval-base 3
-              rm -f /public_html/doctor_fursa.webp
-              rm -f /public_html/child.webp
-              rm -f /public_html/doctor_elagina.webp
               mirror --reverse --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
               quit
             " && { echo "Deploy succeeded on attempt $attempt"; exit 0; }
