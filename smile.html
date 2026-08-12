@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Эстетическая стоматология и отбеливание зубов: из чего складывается красивая улыбка, что действительно можно изменить и почему белизна — не главное. Стоматология ДЕНТАЛЛА, Санкт-Петербург.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эстетическая стоматология и отбеливание — ДЕНТАЛЛА</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap"></noscript>
+<style>
+:root{
+  --ink:#2B2418;--muted:#756B5D;--gold:#B09B3A;--gold-dark:#92811E;
+  --cream:#F7F3EA;--cream-2:#FCFBF7;--line:#EAE2D5;--white:#FFFFFF;
+  --shadow:0 18px 50px rgba(64,49,25,.08);--alert:#B24D3A;--alert-bg:#FBF1EC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;color:var(--ink);background:var(--cream-2);line-height:1.65;font-size:15px}
+a{text-decoration:none;color:inherit}button{cursor:pointer;font-family:inherit}
+
+/* ── HEADER ── */
+header{height:72px;padding:0 clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,226,213,.9);position:sticky;top:0;z-index:100}
+nav{display:flex;gap:clamp(18px,2.4vw,34px)}
+nav a{font-size:13px;color:#5A5248;font-weight:500;position:relative;padding:26px 0 24px}
+nav a:after{content:"";position:absolute;left:0;right:0;bottom:17px;height:1px;background:var(--gold);transform:scaleX(0);transition:.25s}
+nav a:hover,nav a.active{color:var(--gold-dark)}nav a:hover:after,nav a.active:after{transform:scaleX(1)}
+.header-right{display:flex;align-items:center;gap:18px}.h-phone{font-size:14px;font-weight:600;display:flex;align-items:center;gap:7px}.h-phone-icon{color:var(--gold)}
+.btn-header,.btn-appt{background:var(--gold);color:#fff;border:none;border-radius:8px;font-weight:500;transition:background .2s}.btn-header{padding:12px 24px;font-size:13.5px}.btn-header:hover,.btn-appt:hover{background:var(--gold-dark)}
+
+/* ── PAGE HERO ── */
+.page-hero{position:relative;overflow:hidden;background:#F5EFE3;padding:62px clamp(20px,6vw,88px) 58px;border-bottom:1px solid var(--line)}
+.hero-inner{max-width:860px;margin:auto;position:relative;z-index:1}
+.breadcrumb{font-size:12px;color:#9B9080;margin-bottom:18px;letter-spacing:.02em}.breadcrumb a{color:var(--gold-dark)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4.6vw,52px);line-height:1.1;font-weight:500;letter-spacing:-.02em;margin-bottom:20px}
+.page-hero p{font-size:16px;color:var(--muted);max-width:640px}
+
+/* ── ARTICLE ── */
+.article-wrap{max-width:860px;margin:0 auto;padding:56px 24px 8px}
+
+.lede{font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.5;color:#3E3527;margin-bottom:44px;font-weight:500}
+.lede strong{color:var(--gold-dark)}
+
+.art-section{background:#fff;border:1px solid var(--line);border-radius:22px;padding:40px 40px;box-shadow:0 8px 26px rgba(64,49,25,.035);margin-bottom:28px;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.art-section.in-view{opacity:1;transform:none}
+.art-section h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;margin-bottom:20px;position:relative;padding-bottom:16px}
+.art-section h2:after{content:"";position:absolute;left:0;bottom:0;width:44px;height:2px;background:var(--gold)}
+.art-section h3{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;margin:22px 0 8px;color:var(--ink)}
+.art-section p{font-size:15px;color:#5A5248;line-height:1.8;margin-bottom:16px}
+.art-section p:last-child{margin-bottom:0}
+.art-section strong{color:var(--ink)}
+
+/* возможности эстетической стоматологии — карточки-подпункты */
+.options-list{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.option-item{padding:22px 0;border-top:1px solid var(--line)}
+.option-item:first-child{border-top:none;padding-top:8px}
+.option-item h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:8px;color:var(--ink);display:flex;align-items:center;gap:10px}
+.option-item h3 .num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--cream);color:var(--gold-dark);font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.option-item p{font-size:14.5px;color:#5A5248;line-height:1.75;margin:0 0 0 38px}
+
+/* блок предупреждения (лимон/сода/уголь) */
+.warn-box{background:var(--alert-bg);border:1px solid #EBD3CB;border-radius:18px;padding:28px 30px;margin-top:20px}
+.warn-box h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--alert);margin-bottom:12px}
+.warn-box p{font-size:14.5px;color:#5A3A30;line-height:1.7;margin-bottom:0}
+.warn-box strong{color:var(--alert)}
+
+/* чек-лист (диагностика перед отбеливанием) */
+.checklist{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.checklist li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#4A3E30;line-height:1.6}
+.checklist li .ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#EFEADA;color:var(--gold-dark);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:1px}
+
+/* примеры фраз для консультации */
+.phrase-examples{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.phrase{background:var(--cream);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:14px 20px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#4A3E30}
+
+/* план лечения — стрелки */
+.plan-flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:20px;background:var(--cream);border-radius:14px;padding:20px 22px}
+.plan-flow .step{font-size:13.5px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+.plan-flow .arrow{color:var(--gold-dark);font-size:15px}
+
+/* закрывающая цитата */
+.art-quote{max-width:860px;margin:8px auto 44px;border-radius:22px;background:var(--ink);padding:44px;position:relative;overflow:hidden;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.art-quote.in-view{opacity:1;transform:none}
+.art-quote p{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.6vw,24px);color:#EFE8DA;font-weight:400;line-height:1.55;position:relative;z-index:1}
+.art-quote p+p{margin-top:14px}
+.art-quote .accent{color:var(--gold);font-weight:600}
+
+/* ── CTA ── */
+.cta-bottom{max-width:860px;margin:0 auto 72px;border-radius:28px;background:linear-gradient(135deg,#A99634,#B8A54A);padding:52px 40px;text-align:center;position:relative;overflow:hidden}.cta-bottom:before{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.24);border-radius:20px;pointer-events:none}
+.cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,44px);line-height:1.05;color:#fff;font-weight:500;margin-bottom:14px;position:relative}.cta-bottom p{font-size:14px;color:rgba(255,255,255,.86);margin-bottom:26px;position:relative}.btn-cta-white{position:relative;padding:14px 30px;background:#fff;border-radius:999px;font-size:14px;font-weight:600;color:var(--gold-dark);border:0;transition:.25s}.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(43,36,24,.14)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24px}.footer-inner{max-width:820px;margin:0 auto 34px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}.f-logo{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;letter-spacing:.07em;color:#EFE8DA;margin-bottom:8px}.f-tagline{font-size:12px;color:#756A5C;line-height:1.6}.f-col h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#756A5C;margin-bottom:14px}.f-col p,.f-col a{font-size:13px;color:#A99B8C;line-height:1.9}.f-col a:hover{color:#D1C36A}.footer-bottom{border-top:1px solid #3A3025;padding-top:20px;font-size:11.5px;color:#64594A;text-align:center;max-width:1280px;margin:auto}
+
+/* ── BACK TO TOP ── */
+.back-to-top{position:fixed;bottom:36px;right:36px;z-index:200;
+  background:var(--gold);color:#fff;border:none;border-radius:999px;
+  padding:12px 20px;font-size:13px;font-weight:600;font-family:'Manrope',sans-serif;
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(176,155,58,0.35);
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease,background .2s;}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.back-to-top:hover{background:var(--gold-dark);transform:translateY(-2px);}
+.back-to-top svg{flex-shrink:0;}
+
+/* ── MOBILE MENU ── */
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;z-index:200;}
+.burger span{display:block;width:22px;height:2px;background:#2B2418;border-radius:2px;transition:.3s;}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mobile-menu{display:none;position:fixed;inset:0;background:#fff;z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:40px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#2B2418;text-decoration:none;}
+.mobile-menu a:hover{color:#B09B3A;}
+.mobile-menu .mob-phone{font-size:18px;font-family:'Manrope',sans-serif;color:#5A5248;margin-top:16px;}
+.mobile-menu .mob-btn{background:#B09B3A;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{display:none;}
+  .burger{display:flex;}
+  .h-phone{display:none;}
+  .btn-header{display:none;}
+  .footer-inner{grid-template-columns:1fr 1fr 1fr;gap:24px}
+}
+@media(max-width:640px){
+  header{height:64px;padding:0 16px;}
+  header img{height:32px!important;}
+  .page-hero{padding:32px 16px 28px;}
+  .page-hero h1{font-size:27px;}
+  .article-wrap{padding:32px 16px 4px;}
+  .lede{font-size:19px;margin-bottom:28px;}
+  .art-section{padding:26px 22px;border-radius:16px;}
+  .art-section h2{font-size:24px;}
+  .option-item p{margin-left:0;margin-top:6px;}
+  .option-item h3{align-items:flex-start;}
+  .plan-flow{padding:16px;}
+  .art-quote{margin-left:16px;margin-right:16px;padding:30px 24px;border-radius:16px;}
+  .cta-bottom{margin:0 16px 48px;padding:44px 24px;border-radius:22px;}
+  footer{padding:28px 16px 16px;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:24px;}
+}
+@media(max-width:420px){
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html"><img src="logo_t.png" alt="Денталла" style="height:38px;width:auto;display:block;"></a>
+  <nav>
+    <a href="about.html">О клинике</a>
+    <a href="services.html">Услуги</a>
+    <a href="index.html#doctors">Врачи</a>
+    <a href="services.html">Цены</a>
+    <a href="contacts.html">Контакты</a>
+  </nav>
+  <div class="header-right">
+    <div class="h-phone"><span class="h-phone-icon">☎</span>8 812 605 72 07</div>
+    <button class="btn-header" onclick="openApptModal()">Записаться на приём</button>
+    <button class="burger" id="burger" aria-label="Меню" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMobileMenu()">О клинике</a>
+  <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
+  <a href="index.html#doctors" onclick="closeMobileMenu()">Наши врачи</a>
+  <a href="contacts.html" onclick="closeMobileMenu()">Контакты</a>
+  <span class="mob-phone">☎ 8 812 605 72 07</span>
+  <button class="mob-btn" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
+</div>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Главная</a> / Хочу красивую улыбку</div>
+    <h1>Эстетическая стоматология и отбеливание: из чего на самом деле складывается красивая улыбка</h1>
+    <p>Цвет зубов важен, но не меньшее значение имеют форма, пропорции, состояние десны и то, насколько естественно улыбка выглядит именно на вашем лице.</p>
+  </div>
+</div>
+
+<main>
+
+<div class="article-wrap">
+
+<p class="lede">Современная эстетическая стоматология давно перестала быть соревнованием в том, кто сможет сделать зубы белее. Её задача — <strong>сделать улыбку красивой и здоровой, сохранив ощущение, что она принадлежит именно этому человеку.</strong></p>
+
+<div class="art-section">
+  <h2>Голливудская улыбка: тогда и сейчас</h2>
+  <p>Стремление изменить цвет зубов — не изобретение эпохи соцсетей. Ещё в конце 1920-х калифорнийский стоматолог Чарльз Пинкус создавал для голливудских актёров тонкие накладки — предшественники современных виниров. Именно с этой эпохой связывают рождение «голливудской улыбки».</p>
+  <p>В массовом представлении это идеально ровный ряд крупных белоснежных зубов. Но сегодня эстетическая стоматология движется в противоположном направлении: по-настоящему сложной работой считается та, которую трудно заметить.</p>
+  <p>У естественного зуба нет одного равномерного цвета — он прозрачнее у края, теплее у десны, имеет едва заметные индивидуальные особенности. Поэтому современная красивая улыбка совсем не обязательно должна быть ослепительно белой. Гораздо важнее <strong>гармония</strong>.</p>
+</div>
+
+<div class="art-section">
+  <h2>Что вообще можно изменить в улыбке</h2>
+  <p>Эстетическая стоматология — это не одна процедура, а целый набор возможностей.</p>
+  <div class="options-list">
+    <div class="option-item">
+      <h3><span class="num">1</span>Профессиональная гигиена</h3>
+      <p>С неё зачастую и стоит начинать. Она очищает поверхность зуба и возвращает ему собственный цвет — в отличие от отбеливания, которое делает естественные ткани светлее исходного оттенка.</p>
+    </div>
+    <div class="option-item">
+      <h3><span class="num">2</span>Отбеливание</h3>
+      <p>Составы на основе перекисных соединений воздействуют на окрашенные молекулы в тканях зуба. Важно: отбеливаются только естественные ткани — пломбы, коронки и виниры своего цвета не изменят.</p>
+    </div>
+    <div class="option-item">
+      <h3><span class="num">3</span>Эстетические реставрации</h3>
+      <p>Небольшой скол, изменение формы, щель между зубами — иногда достаточно точной коррекции композитным материалом, без установки винира или коронки.</p>
+    </div>
+    <div class="option-item">
+      <h3><span class="num">4</span>Виниры</h3>
+      <p>Тонкая керамическая реставрация, закрывающая видимую поверхность зуба. Полноценное лечение со своими показаниями — не универсальный способ получить красивую улыбку.</p>
+    </div>
+    <div class="option-item">
+      <h3><span class="num">5</span>Ортодонтическое лечение</h3>
+      <p>Иногда проблема, которую хотят исправить винирами, на самом деле связана с положением зубов. После брекетов или элайнеров виниры нередко вообще не требуются.</p>
+    </div>
+    <div class="option-item">
+      <h3><span class="num">6</span>Работа с десной</h3>
+      <p>Улыбка — это не только зубы. Если линия десны несимметрична, эстетическая задача может находиться именно здесь.</p>
+    </div>
+  </div>
+</div>
+
+<div class="art-section">
+  <h2>Домашнее отбеливание: можно ли сделать зубы светлее дома?</h2>
+  <p>Можно — но есть большая разница между <strong>профессиональным домашним отбеливанием под наблюдением стоматолога</strong> и бесконтрольными экспериментами со случайными средствами из интернета. Врач подбирает систему, концентрацию препарата и режим применения индивидуальных капп, а пациент проводит процедуру дома, постепенно.</p>
+  <p>С отбеливающими зубными пастами ситуация другая: большинство из них лишь удаляет поверхностные пигменты и не даёт эффекта полноценного химического отбеливания.</p>
+  <h3>А что можно сделать дома совершенно безопасно?</h3>
+  <p>Самая эффективная домашняя «система поддержания красивой улыбки» — обычная регулярная гигиена: чистка зубов дважды в день фторсодержащей пастой и ежедневное очищение промежутков между зубами. Именно здоровая, чистая эмаль выглядит лучше всего после любого эстетического лечения.</p>
+</div>
+
+<div class="art-section">
+  <h2>Лимон, сода и уголь: почему народное отбеливание — плохая идея</h2>
+  <p>В интернете можно найти десятки рецептов: лимонный сок, сода, активированный уголь, перекись неизвестной концентрации. Проблема простая: <strong>эмаль нельзя бесконечно полировать, растворять и царапать.</strong></p>
+  <div class="warn-box">
+    <h3>Почему это рискованно</h3>
+    <p>Если абразивный состав удаляет налёт вместе с частью структуры поверхности зуба, поначалу может казаться, что зуб стал «чище». Но слишком агрессивное воздействие повышает чувствительность и ухудшает состояние зубов и дёсен. Особенно опасна логика «если немного помогло — нужно подержать подольше». <strong>Не экспериментируйте на зубах с кислотами и неизвестными составами</strong> — зубы не белая футболка, более сильный отбеливатель не значит лучший результат.</p>
+  </div>
+</div>
+
+<div class="art-section">
+  <h2>Почему перед отбеливанием нужен стоматолог</h2>
+  <p>Сначала нужно убедиться, что отбеливать вообще есть что и что делать это сейчас безопасно. Перед процедурой врач оценивает:</p>
+  <ul class="checklist">
+    <li><span class="ico">✓</span>Состояние эмали и наличие кариеса</li>
+    <li><span class="ico">✓</span>Состояние дёсен и чувствительность зубов</li>
+    <li><span class="ico">✓</span>Существующие пломбы, виниры и коронки</li>
+    <li><span class="ico">✓</span>Причины изменения цвета отдельных зубов</li>
+    <li><span class="ico">✓</span>Общий цвет зубного ряда</li>
+  </ul>
+  <p style="margin-top:22px;">Если один зуб потемнел после травмы или лечения каналов — отбеливать сразу весь ряд не всегда правильно, сначала нужно понять причину. Так же бессмысленно начинать эстетическую работу при активном воспалении дёсен или невылеченном кариесе. Сначала здоровье, потом эстетика.</p>
+</div>
+
+<div class="art-section">
+  <h2>Насколько белыми должны быть зубы?</h2>
+  <p>У природы нет оттенка «идеально белый». Естественные зубы могут быть тёплыми, кремовыми, иметь желтоватый или сероватый оттенок — это совершенно нормально. Восприятие цвета зависит от кожи, губ, освещения и соседних зубов, поэтому результат, который прекрасно смотрится у одного человека, у другого может казаться искусственным.</p>
+  <p>Красивой должна получиться <strong>улыбка человека</strong>, а не отдельный зуб на столе зубного техника.</p>
+</div>
+
+<div class="art-section">
+  <h2>Почему после отбеливания иногда болят зубы</h2>
+  <p>Самый известный побочный эффект — временное повышение чувствительности к холодному, горячему или сладкому, иногда раздражение дёсны. Обычно это явление временное, но вероятность возрастает при более концентрированных составах. Если у вас уже есть выраженная чувствительность — обязательно скажите об этом врачу до начала процедуры: иногда оптимальным вариантом становится более постепенное отбеливание.</p>
+</div>
+
+<div class="art-section">
+  <h2>Как подготовиться к визиту, если хочется изменить улыбку</h2>
+  <p>Самое полезное — не начинать консультацию словами «мне нужно двадцать виниров», а объяснить, что именно вас не устраивает:</p>
+  <div class="phrase-examples">
+    <div class="phrase">«Мне кажется, зубы слишком тёмные»</div>
+    <div class="phrase">«Не нравится щель между передними зубами»</div>
+    <div class="phrase">«Один зуб короче соседнего»</div>
+    <div class="phrase">«На фотографиях улыбка выглядит несимметричной»</div>
+  </div>
+  <p style="margin-top:22px;">Полезно заранее посмотреть старые фотографии — это помогает понять, действительно ли изменились зубы или изменилось восприятие себя. Хорошая консультация обычно заканчивается не названием процедуры, а планом, например:</p>
+  <div class="plan-flow">
+    <span class="step">Гигиена</span><span class="arrow">→</span>
+    <span class="step">Лечение кариеса</span><span class="arrow">→</span>
+    <span class="step">Отбеливание</span><span class="arrow">→</span>
+    <span class="step">Замена старых реставраций</span>
+  </div>
+</div>
+
+<div class="art-section">
+  <h2>Что делать после отбеливания</h2>
+  <p>Результат отбеливания не остаётся неизменным навсегда: зубы продолжают контактировать с кофе, чаем и красителями, поэтому со временем оттенок может немного меняться. Но пытаться постоянно «добавлять ещё немного белого» самостоятельно не стоит — чрезмерное отбеливание не улучшает результат, а лишь увеличивает риск нежелательных эффектов. Гораздо важнее хорошая гигиена и регулярные профессиональные осмотры.</p>
+</div>
+
+<div class="art-section">
+  <h2>Как сохранить улыбку сияющей</h2>
+  <p>Значительная часть привлекательности улыбки создаётся довольно обычными вещами:</p>
+  <ul class="checklist">
+    <li><span class="ico">✓</span>Чистые зубы и здоровая дёсна</li>
+    <li><span class="ico">✓</span>Отсутствие заметного налёта</li>
+    <li><span class="ico">✓</span>Своевременно заменённые старые реставрации</li>
+    <li><span class="ico">✓</span>Правильно подобранная домашняя гигиена</li>
+    <li><span class="ico">✓</span>Регулярная профессиональная гигиена и контроль у стоматолога</li>
+  </ul>
+</div>
+
+</div>
+
+<div class="art-quote">
+  <p>Хорошая эстетическая стоматология начинается не с вопроса «насколько белыми мы можем сделать эти зубы?». Она начинается с другого: «что именно здесь нужно изменить — и что можно не трогать?»</p>
+  <p><span class="accent">Главное, чтобы улыбка выглядела здоровой, ухоженной и гармоничной</span> — и чтобы, глядя на неё, окружающие замечали в первую очередь человека, а не работу стоматолога.</p>
+</div>
+
+<div class="cta-bottom">
+  <h2>Записаться на приём</h2>
+  <p>Оценим состояние зубов и дёсен и предложим план, который подойдёт именно вам</p>
+  <button class="btn-cta-white" onclick="openApptModal()">Записаться на приём</button>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="f-col"><h4>Адрес</h4><p>Санкт-Петербург,<br>Проспект Энгельса, 126к1<br>Станция метро «Озерки»</p></div>
+    <div class="f-col"><h4>Режим работы</h4><p>Пн–пт: 09:00–21:00<br>Сб: 09:00–16:00<br>Вс: выходной</p></div>
+    <div class="f-col"><h4>Контакты</h4><p><a href="tel:88126057207">8 812 605 72 07</a></p><p style="margin-top:4px;"><a href="mailto:dentalla@inbox.ru">dentalla@inbox.ru</a></p></div>
+  </div>
+  <div class="footer-bottom">Лицензия № 78-01-004014 · © ООО «Дентал Груп», 2026 · Информация и цены на сайте не являются публичной офертой</div>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+    <path d="M7 12V2M2 7l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  В начало
+</button>
+
+<script>
+// Анимация появления секций
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); }
+  });
+}, {threshold: 0.05});
+document.querySelectorAll('.art-section,.art-quote').forEach(function(s) { obs.observe(s); });
+
+// Кнопка "В начало"
+var btn = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+  btn.classList[window.scrollY > 400 ? 'add' : 'remove']('visible');
+});
+</script>
+
+<!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
+<div id="appt-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;">
+      <button onclick="closeApptModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#2B2418;margin-bottom:4px;">Записаться на приём</h2>
+      <p style="font-size:13px;color:#7A7060;">Заполните хотя бы одно поле — мы перезвоним и подберём удобное время</p>
+    </div>
+    <div style="padding:24px 32px 28px;">
+      <form id="appt-form" action="https://formsubmit.co/dentalla@inbox.ru" method="POST">
+        <input type="hidden" name="_subject" value="Обращение с сайта — Хочу красивую улыбку">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Имя</label>
+            <input id="appt-name" name="Имя" type="text" placeholder="Как вас зовут?" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
+            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
+            <select name="Врач" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+              <option value="">— Не важно, любой специалист —</option>
+              <option value="Елагина Нана Леонтиевна">Елагина Нана Леонтиевна — главный врач, ортопед</option>
+              <option value="Елагин Роман Владиславович">Елагин Роман Владиславович — хирург, имплантолог</option>
+              <option value="Марсавина Жанна Владимировна">Марсавина Жанна Владимировна — терапевт, микроскопист</option>
+              <option value="Гороховская Нинэль Юльевна">Гороховская Нинэль Юльевна — ортодонт</option>
+              <option value="Воронина Кристина Сергеевна">Воронина Кристина Сергеевна — детский стоматолог</option>
+              <option value="Фурса Анна Александровна">Фурса Анна Александровна — терапевт</option>
+              <option value="Разуваева Яна Евгеньевна">Разуваева Яна Евгеньевна — терапевт</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Комментарий</label>
+            <textarea id="appt-comment" name="Комментарий" placeholder="Какая услуга интересует? Удобное время?" rows="3" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;resize:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <p style="font-size:11px;color:#9B9080;line-height:1.5;max-width:240px;">Нажимая кнопку, вы соглашаетесь с <a href="politika.pdf" target="_blank" style="color:#B09B3A;">политикой обработки данных</a></p>
+          <button type="submit" id="appt-submit" disabled style="background:#C8C0A8;color:#fff;border:none;border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:not-allowed;transition:all .2s;font-family:'Manrope',sans-serif;">Отправить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function openApptModal(){var m=document.getElementById('appt-modal');m.style.display='flex';document.body.style.overflow='hidden';}
+function closeApptModal(){var m=document.getElementById('appt-modal');m.style.display='none';document.body.style.overflow='';}
+document.getElementById('appt-modal').addEventListener('click',function(e){if(e.target===this)closeApptModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeApptModal();});
+var apptFields=['appt-name','appt-phone','appt-comment'];
+var apptBtn=document.getElementById('appt-submit');
+function checkApptFields(){var filled=apptFields.some(function(id){return document.getElementById(id).value.trim().length>0;});apptBtn.disabled=!filled;apptBtn.style.background=filled?'#B09B3A':'#C8C0A8';apptBtn.style.cursor=filled?'pointer':'not-allowed';}
+apptFields.forEach(function(id){document.getElementById(id).addEventListener('input',checkApptFields);});
+</script>
+
+<script>
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
