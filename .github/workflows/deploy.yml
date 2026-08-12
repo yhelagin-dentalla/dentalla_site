@@ -12,30 +12,27 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Force-upload specific problem files
+      - name: Deploy via FTP (full sync, with auto-retry)
         run: |
           sudo apt-get install -y lftp
-          for attempt in 1 2 3 4 5; do
-            echo "=== Attempt $attempt of 5 ==="
-            lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} -e "
+          for attempt in 1 2 3; do
+            echo "=== Attempt $attempt of 3 ==="
+            timeout 180 lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} -e "
               set ftp:ssl-allow no
               set ftp:passive-mode yes
-              set net:timeout 20
+              set net:timeout 15
               set net:max-retries 2
               set net:reconnect-interval-base 3
-              cd /public_html/
-              put -O /public_html/ doctor_fursa.webp
-              put -O /public_html/ child.webp
-              put -O /public_html/ doctor_elagina.webp
-              put -O /public_html/ about_doctors.webp
+              mirror --reverse --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
               quit
             " && { echo "Deploy succeeded on attempt $attempt"; exit 0; }
-            echo "Attempt $attempt failed, retrying in 10s..."
-            sleep 10
+            echo "Attempt $attempt failed, retrying in 15s..."
+            sleep 15
           done
           echo "All attempts failed"
           exit 1
