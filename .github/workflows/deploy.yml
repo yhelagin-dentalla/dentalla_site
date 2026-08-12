@@ -7,6 +7,7 @@ concurrency:
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -15,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP (full sync, with auto-retry)
+      - name: Force-upload specific problem files
         run: |
           sudo apt-get install -y lftp
           for attempt in 1 2 3 4 5; do
@@ -26,8 +27,11 @@ jobs:
               set net:timeout 20
               set net:max-retries 2
               set net:reconnect-interval-base 3
-              set net:reconnect-interval-multiplier 1
-              mirror --reverse --delete --exclude .git/ --exclude .github/ --parallel=2 --verbose ./ /public_html/
+              cd /public_html/
+              put -O /public_html/ doctor_fursa.webp
+              put -O /public_html/ child.webp
+              put -O /public_html/ doctor_elagina.webp
+              put -O /public_html/ about_doctors.webp
               quit
             " && { echo "Deploy succeeded on attempt $attempt"; exit 0; }
             echo "Attempt $attempt failed, retrying in 10s..."
