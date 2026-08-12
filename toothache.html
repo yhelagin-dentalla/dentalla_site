@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Что делать, если заболел зуб: причины зубной боли, что можно и нельзя делать до приёма, когда обращаться за помощью немедленно. Стоматология ДЕНТАЛЛА, Санкт-Петербург.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Что делать, если заболел зуб — ДЕНТАЛЛА</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap"></noscript>
+<style>
+:root{
+  --ink:#2B2418;--muted:#756B5D;--gold:#B09B3A;--gold-dark:#92811E;
+  --cream:#F7F3EA;--cream-2:#FCFBF7;--line:#EAE2D5;--white:#FFFFFF;
+  --shadow:0 18px 50px rgba(64,49,25,.08);--alert:#B24D3A;--alert-bg:#FBF1EC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;color:var(--ink);background:var(--cream-2);line-height:1.65;font-size:15px}
+a{text-decoration:none;color:inherit}button{cursor:pointer;font-family:inherit}
+
+/* ── HEADER ── */
+header{height:72px;padding:0 clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,226,213,.9);position:sticky;top:0;z-index:100}
+nav{display:flex;gap:clamp(18px,2.4vw,34px)}
+nav a{font-size:13px;color:#5A5248;font-weight:500;position:relative;padding:26px 0 24px}
+nav a:after{content:"";position:absolute;left:0;right:0;bottom:17px;height:1px;background:var(--gold);transform:scaleX(0);transition:.25s}
+nav a:hover,nav a.active{color:var(--gold-dark)}nav a:hover:after,nav a.active:after{transform:scaleX(1)}
+.header-right{display:flex;align-items:center;gap:18px}.h-phone{font-size:14px;font-weight:600;display:flex;align-items:center;gap:7px}.h-phone-icon{color:var(--gold)}
+.btn-header,.btn-appt{background:var(--gold);color:#fff;border:none;border-radius:8px;font-weight:500;transition:background .2s}.btn-header{padding:12px 24px;font-size:13.5px}.btn-header:hover,.btn-appt:hover{background:var(--gold-dark)}
+
+/* ── PAGE HERO ── */
+.page-hero{position:relative;overflow:hidden;background:#F5EFE3;padding:62px clamp(20px,6vw,88px) 58px;border-bottom:1px solid var(--line)}
+.hero-inner{max-width:860px;margin:auto;position:relative;z-index:1}
+.breadcrumb{font-size:12px;color:#9B9080;margin-bottom:18px;letter-spacing:.02em}.breadcrumb a{color:var(--gold-dark)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5.2vw,58px);line-height:1.05;font-weight:500;letter-spacing:-.02em;margin-bottom:20px}
+.page-hero p{font-size:16px;color:var(--muted);max-width:640px}
+
+/* ── ARTICLE ── */
+.article-wrap{max-width:860px;margin:0 auto;padding:56px 24px 8px}
+
+.lede{font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.5;color:#3E3527;margin-bottom:44px;font-weight:500}
+.lede strong{color:var(--gold-dark)}
+
+.art-section{background:#fff;border:1px solid var(--line);border-radius:22px;padding:40px 40px;box-shadow:0 8px 26px rgba(64,49,25,.035);margin-bottom:28px;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.art-section.in-view{opacity:1;transform:none}
+.art-section h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;margin-bottom:20px;position:relative;padding-bottom:16px}
+.art-section h2:after{content:"";position:absolute;left:0;bottom:0;width:44px;height:2px;background:var(--gold)}
+.art-section h3{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;margin:22px 0 8px;color:var(--ink)}
+.art-section p{font-size:15px;color:#5A5248;line-height:1.8;margin-bottom:16px}
+.art-section p:last-child{margin-bottom:0}
+.art-section strong{color:var(--ink)}
+
+/* причины боли — сетка карточек */
+.causes-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.cause-card{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.cause-card h4{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.cause-card p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0}
+
+/* чек-лист (можно делать) */
+.checklist{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.checklist li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#4A3E30;line-height:1.6}
+.checklist li .ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#EFEADA;color:var(--gold-dark);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:1px}
+
+/* список — чего нельзя */
+.avoidlist{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.avoidlist li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#4A3E30;line-height:1.6}
+.avoidlist li .ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--alert-bg);color:var(--alert);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+
+/* блок срочности */
+.urgent-box{background:var(--alert-bg);border:1px solid #EBD3CB;border-radius:18px;padding:28px 30px;margin-top:20px}
+.urgent-box h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--alert);margin-bottom:14px}
+.urgent-box ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.urgent-box li{font-size:14.5px;color:#5A3A30;line-height:1.6;padding-left:18px;position:relative}
+.urgent-box li:before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--alert)}
+.urgent-note{margin-top:16px;padding-top:16px;border-top:1px solid #EBD3CB;font-size:14px;color:#5A3A30;font-weight:600;line-height:1.6}
+
+/* вопросы для самонаблюдения */
+.checkq{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-top:20px;list-style:none}
+.checkq li{font-size:14px;color:#5A5248;line-height:1.6;padding-left:16px;position:relative}
+.checkq li:before{content:"—";position:absolute;left:0;color:var(--gold-dark)}
+
+/* закрывающая цитата */
+.art-quote{max-width:860px;margin:8px auto 44px;border-radius:22px;background:var(--ink);padding:44px;position:relative;overflow:hidden;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.art-quote.in-view{opacity:1;transform:none}
+.art-quote p{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.6vw,24px);color:#EFE8DA;font-weight:400;line-height:1.55;position:relative;z-index:1}
+.art-quote p+p{margin-top:14px}
+.art-quote .accent{color:var(--gold);font-weight:600}
+
+/* ── ВРАЧИ-ТЕРАПЕВТЫ ── */
+.doctors-block{max-width:860px;margin:0 auto 44px;padding:0 24px}
+.doctors-block-head{text-align:center;margin-bottom:28px}
+.doctors-block-head h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;margin-bottom:10px}
+.doctors-block-head p{font-size:14.5px;color:var(--muted);max-width:520px;margin:0 auto}
+.doctors-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.doc-mini-card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 26px rgba(64,49,25,.035);transition:box-shadow .25s,transform .25s;display:flex;flex-direction:column}
+.doc-mini-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.doc-mini-photo{width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--cream)}
+.doc-mini-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.doc-mini-info{padding:22px 24px 24px}
+.doc-mini-info h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:4px}
+.doc-mini-role{font-size:13px;color:var(--gold-dark);font-weight:600;margin-bottom:4px}
+.doc-mini-exp{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.doc-mini-btn{display:block;width:100%;text-align:center;background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:11px;font-size:13.5px;font-weight:600;color:var(--ink);transition:background .2s,border-color .2s}
+.doc-mini-btn:hover{background:#F0EAD8;border-color:var(--gold)}
+
+/* ── CTA ── */
+.cta-bottom{max-width:860px;margin:0 auto 72px;border-radius:28px;background:linear-gradient(135deg,#A99634,#B8A54A);padding:52px 40px;text-align:center;position:relative;overflow:hidden}.cta-bottom:before{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.24);border-radius:20px;pointer-events:none}
+.cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,44px);line-height:1.05;color:#fff;font-weight:500;margin-bottom:14px;position:relative}.cta-bottom p{font-size:14px;color:rgba(255,255,255,.86);margin-bottom:26px;position:relative}.btn-cta-white{position:relative;padding:14px 30px;background:#fff;border-radius:999px;font-size:14px;font-weight:600;color:var(--gold-dark);border:0;transition:.25s}.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(43,36,24,.14)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24px}.footer-inner{max-width:820px;margin:0 auto 34px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}.f-logo{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;letter-spacing:.07em;color:#EFE8DA;margin-bottom:8px}.f-tagline{font-size:12px;color:#756A5C;line-height:1.6}.f-col h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#756A5C;margin-bottom:14px}.f-col p,.f-col a{font-size:13px;color:#A99B8C;line-height:1.9}.f-col a:hover{color:#D1C36A}.footer-bottom{border-top:1px solid #3A3025;padding-top:20px;font-size:11.5px;color:#64594A;text-align:center;max-width:1280px;margin:auto}
+
+/* ── BACK TO TOP ── */
+.back-to-top{position:fixed;bottom:36px;right:36px;z-index:200;
+  background:var(--gold);color:#fff;border:none;border-radius:999px;
+  padding:12px 20px;font-size:13px;font-weight:600;font-family:'Manrope',sans-serif;
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(176,155,58,0.35);
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease,background .2s;}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.back-to-top:hover{background:var(--gold-dark);transform:translateY(-2px);}
+.back-to-top svg{flex-shrink:0;}
+
+/* ── MOBILE MENU ── */
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;z-index:200;}
+.burger span{display:block;width:22px;height:2px;background:#2B2418;border-radius:2px;transition:.3s;}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mobile-menu{display:none;position:fixed;inset:0;background:#fff;z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:40px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#2B2418;text-decoration:none;}
+.mobile-menu a:hover{color:#B09B3A;}
+.mobile-menu .mob-phone{font-size:18px;font-family:'Manrope',sans-serif;color:#5A5248;margin-top:16px;}
+.mobile-menu .mob-btn{background:#B09B3A;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{display:none;}
+  .burger{display:flex;}
+  .h-phone{display:none;}
+  .btn-header{display:none;}
+  .footer-inner{grid-template-columns:1fr 1fr 1fr;gap:24px}
+}
+@media(max-width:640px){
+  header{height:64px;padding:0 16px;}
+  header img{height:32px!important;}
+  .page-hero{padding:32px 16px 28px;}
+  .page-hero h1{font-size:30px;}
+  .article-wrap{padding:32px 16px 4px;}
+  .lede{font-size:19px;margin-bottom:28px;}
+  .art-section{padding:26px 22px;border-radius:16px;}
+  .art-section h2{font-size:24px;}
+  .causes-grid{grid-template-columns:1fr;}
+  .checkq{grid-template-columns:1fr;}
+  .art-quote{margin-left:16px;margin-right:16px;padding:30px 24px;border-radius:16px;}
+  .doctors-block{padding:0 16px;}
+  .doctors-pair{grid-template-columns:1fr;gap:16px;}
+  .cta-bottom{margin:0 16px 48px;padding:44px 24px;border-radius:22px;}
+  footer{padding:28px 16px 16px;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:24px;}
+}
+@media(max-width:420px){
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html"><img src="logo_t.png" alt="Денталла" style="height:38px;width:auto;display:block;"></a>
+  <nav>
+    <a href="about.html">О клинике</a>
+    <a href="services.html">Услуги</a>
+    <a href="index.html#doctors">Врачи</a>
+    <a href="services.html">Цены</a>
+    <a href="contacts.html">Контакты</a>
+  </nav>
+  <div class="header-right">
+    <div class="h-phone"><span class="h-phone-icon">☎</span>8 812 605 72 07</div>
+    <button class="btn-header" onclick="openApptModal()">Записаться на приём</button>
+    <button class="burger" id="burger" aria-label="Меню" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMobileMenu()">О клинике</a>
+  <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
+  <a href="index.html#doctors" onclick="closeMobileMenu()">Наши врачи</a>
+  <a href="contacts.html" onclick="closeMobileMenu()">Контакты</a>
+  <span class="mob-phone">☎ 8 812 605 72 07</span>
+  <button class="mob-btn" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
+</div>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Главная</a> / Болит зуб</div>
+    <h1>Что делать, если заболел зуб: инструкция без паники</h1>
+    <p>Зубная боль — не заболевание, а сигнал. Разбираемся, что можно сделать до приёма, чего лучше избегать и когда обращаться за помощью немедленно.</p>
+  </div>
+</div>
+
+<main>
+
+<div class="article-wrap">
+
+<p class="lede">Обезболивающее может на время выключить сигнал боли, но не устранить его причину. Здесь важно спокойно пережить время до приёма и не сделать ничего, что осложнит последующее лечение.</p>
+
+<div class="art-section">
+  <h2>Почему вообще может заболеть зуб</h2>
+  <p>Самая распространённая причина — <strong>кариес</strong>. Пока разрушение находится только в поверхностных тканях зуба, человек может вообще ничего не чувствовать. Затем появляется чувствительность к сладкому, холодному или горячему, а по мере приближения кариеса к пульпе боль становится сильнее. Но вариантов гораздо больше.</p>
+  <div class="causes-grid">
+    <div class="cause-card"><h4>Воспаление пульпы</h4><p>Пациенты обычно называют это «воспалился нерв». Боль может возникать сама по себе, усиливаться вечером или ночью.</p></div>
+    <div class="cause-card"><h4>Воспаление тканей у корня</h4><p>Возникает ощущение, что зуб стал «выше» остальных и особенно сильно болит при накусывании.</p></div>
+    <div class="cause-card"><h4>Трещина или скол зуба</h4><p>Иногда почти незаметны. Зуб может резко реагировать на жевательную нагрузку или температуру пищи.</p></div>
+    <div class="cause-card"><h4>Проблема со старой пломбой</h4><p>Пломба может потерять герметичность, под ней — развиваться кариес.</p></div>
+    <div class="cause-card"><h4>Воспаление десны</h4><p>Боль, которую принимают за зубную, иногда возникает в окружающих зуб тканях.</p></div>
+    <div class="cause-card"><h4>Зуб мудрости</h4><p>Особенно если прорезался не полностью — в этом месте задерживается пища и развивается воспаление.</p></div>
+  </div>
+  <p style="margin-top:24px;">Зуб может болеть и после травмы или из-за повышенной нагрузки — например, при сильном сжатии челюстей. И есть ещё одна особенность: <strong>человек далеко не всегда правильно определяет, какой именно зуб болит</strong>. Боль способна распространяться по челюсти, отдавать в соседние зубы, ухо или висок.</p>
+</div>
+
+<div class="art-section">
+  <h2>Что можно сделать до визита к стоматологу</h2>
+  <p>Если попасть к врачу немедленно невозможно, задача домашней помощи довольно скромная: уменьшить неприятные ощущения и не мешать врачу впоследствии разобраться с причиной.</p>
+  <ul class="checklist">
+    <li><span class="ico">✓</span>Аккуратно почистить зубы и осторожно удалить застрявшую пищу зубной нитью</li>
+    <li><span class="ico">✓</span>Прополоскать рот тёплой водой</li>
+    <li><span class="ico">✓</span>Не нагружать болезненную сторону жёсткой пищей, избегать горячего, холодного и сладкого</li>
+    <li><span class="ico">✓</span>При необходимости использовать безрецептурное обезболивающее строго по инструкции, если оно вам разрешено и нет противопоказаний</li>
+  </ul>
+  <p style="margin-top:22px;">Здесь принципиально важно слово <strong>«временно»</strong>. Если таблетка помогла и зуб перестал болеть, это ещё не означает, что проблема исчезла.</p>
+</div>
+
+<div class="art-section">
+  <h2>Чего делать не нужно</h2>
+  <p>Зубная боль породила удивительное количество домашних рецептов. Некоторые из них не просто бесполезны, но могут дополнительно травмировать слизистую.</p>
+  <ul class="avoidlist">
+    <li><span class="ico">×</span>Прикладывать таблетку к зубу или десне — это может повредить ткани десны</li>
+    <li><span class="ico">×</span>Греть болезненную область, если причиной боли является воспаление</li>
+    <li><span class="ico">×</span>Самостоятельно вскрывать припухлость на десне</li>
+    <li><span class="ico">×</span>Ковырять зуб иглой, зубочисткой и другими предметами</li>
+    <li><span class="ico">×</span>Самостоятельно начинать приём антибиотиков без назначения врача</li>
+  </ul>
+  <p style="margin-top:22px;">Ещё одна распространённая ошибка — несколько дней подряд глушить боль лекарствами в надежде, что «само пройдёт». Иногда боль действительно уменьшается, но это не значит, что зуб выздоровел.</p>
+</div>
+
+<div class="art-section">
+  <h2>Когда ждать нельзя</h2>
+  <p>Большинство случаев зубной боли требует стоматолога, но не больницы. Однако существуют симптомы, при которых ситуация становится срочной.</p>
+  <div class="urgent-box">
+    <h3>Обращайтесь за помощью как можно быстрее, если:</h3>
+    <ul>
+      <li>Быстро увеличивается отёк дёсны, щеки или лица</li>
+      <li>Появилась температура и одновременно ухудшается общее самочувствие</li>
+      <li>Боль становится очень сильной и плохо контролируется</li>
+      <li>Отёк распространяется в сторону глаза или шеи</li>
+      <li>Становится трудно открыть рот</li>
+    </ul>
+    <div class="urgent-note">Если отёк мешает дышать, глотать или говорить — это признак возможного распространения инфекции. Необходима экстренная медицинская помощь.</div>
+  </div>
+</div>
+
+<div class="art-section">
+  <h2>Болит только от холодного — значит, ничего серьёзного?</h2>
+  <p>Не обязательно. Для стоматолога очень важно не только насколько сильно болит зуб, но и <strong>как именно он болит</strong>. Обратите внимание на следующее:</p>
+  <ul class="checkq">
+    <li>Боль возникает сама или только от раздражителя</li>
+    <li>Реагирует зуб на холодное, горячее или сладкое</li>
+    <li>Проходит боль сразу или сохраняется ещё некоторое время</li>
+    <li>Больно ли накусывать на зуб</li>
+    <li>Появились ли отёк или ощущение давления</li>
+    <li>Возникает ли боль ночью</li>
+    <li>Можете ли вы точно показать болезненный зуб</li>
+    <li>Лечили ли его раньше</li>
+  </ul>
+  <p style="margin-top:22px;">Эти сведения могут существенно помочь врачу во время диагностики. Но использовать их для самостоятельного определения диагноза не стоит — один и тот же симптом может встречаться при совершенно разных состояниях.</p>
+</div>
+
+<div class="art-section">
+  <h2>Как подготовиться к приёму</h2>
+  <p>Специальная подготовка обычно не требуется. Гораздо полезнее вспомнить историю появления боли: когда она возникла впервые, что её вызывает, как долго длится приступ, становится ли хуже, какие лекарства вы принимали и помогли ли они.</p>
+  <p>Если зуб раньше лечили в другой клинике и у вас сохранились недавние снимки, их тоже имеет смысл взять с собой. Не стоит намеренно терпеть сильную боль перед приёмом только ради того, чтобы врач «увидел, где болит» — современная диагностика на этом не строится.</p>
+  <p>На приёме врач осмотрит зубы и окружающие ткани, проведёт необходимые диагностические пробы, а при показаниях назначит рентгенологическое исследование. Хороший экстренный приём начинается не с обезболивающей манипуляции, а <strong>с диагностики</strong>: сначала нужно ответить на вопрос «почему болит?», и только затем — «что с этим делать?».</p>
+</div>
+
+<div class="art-section">
+  <h2>Как сделать так, чтобы зубная боль больше не застала врасплох</h2>
+  <p>Вероятность внезапной зубной боли можно заметно уменьшить. Для этого существует довольно скучный, зато работающий способ: <strong>не приходить к стоматологу только тогда, когда уже заболело</strong>.</p>
+  <p>Большинство стоматологических заболеваний развивается постепенно. Профилактический осмотр — не формальная процедура «посмотреть, нет ли дырочек». Его смысл в том, чтобы заметить проблему в тот момент, когда она ещё небольшая и её лечение проще и предсказуемее. К этому стоит добавить ежедневную тщательную чистку зубов, очистку межзубных промежутков и профессиональную гигиену с той периодичностью, которую рекомендует ваш стоматолог.</p>
+</div>
+
+</div>
+
+<div class="art-quote">
+  <p>Если заболел зуб, не нужно паниковать. Но и проверять, сколько дней он способен болеть, тоже не стоит.</p>
+  <p>Лучшая тактика проста: <span class="accent">уменьшить неприятные ощущения безопасным способом, записаться к стоматологу и разобраться с причиной</span>, пока небольшая проблема не превратилась в большую.</p>
+</div>
+
+<div class="doctors-block">
+  <div class="doctors-block-head">
+    <h2>Кто вам поможет</h2>
+    <p>Приём при острой зубной боли ведут стоматологи-терапевты клиники</p>
+  </div>
+  <div class="doctors-pair">
+    <div class="doc-mini-card">
+      <div class="doc-mini-photo"><img src="doctor_fursa.webp" alt="Фурса Анна Александровна" loading="lazy"></div>
+      <div class="doc-mini-info">
+        <h3>Фурса Анна Александровна</h3>
+        <div class="doc-mini-role">Стоматолог-терапевт</div>
+        <div class="doc-mini-exp">Стаж 6 лет</div>
+        <button class="doc-mini-btn" onclick="openApptModalWithDoctor('Фурса Анна Александровна')">Записаться на приём</button>
+      </div>
+    </div>
+    <div class="doc-mini-card">
+      <div class="doc-mini-photo"><img src="doctor_razuvaeva.webp" alt="Разуваева Яна Евгеньевна" loading="lazy"></div>
+      <div class="doc-mini-info">
+        <h3>Разуваева Яна Евгеньевна</h3>
+        <div class="doc-mini-role">Стоматолог-терапевт</div>
+        <div class="doc-mini-exp">Стаж 7 лет</div>
+        <button class="doc-mini-btn" onclick="openApptModalWithDoctor('Разуваева Яна Евгеньевна')">Записаться на приём</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-bottom">
+  <h2>Записаться на приём</h2>
+  <p>Снимем боль, найдём причину и предложим понятный план лечения</p>
+  <button class="btn-cta-white" onclick="openApptModal()">Записаться на приём</button>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="f-col"><h4>Адрес</h4><p>Санкт-Петербург,<br>Проспект Энгельса, 126к1<br>Станция метро «Озерки»</p></div>
+    <div class="f-col"><h4>Режим работы</h4><p>Пн–пт: 09:00–21:00<br>Сб: 09:00–16:00<br>Вс: выходной</p></div>
+    <div class="f-col"><h4>Контакты</h4><p><a href="tel:88126057207">8 812 605 72 07</a></p><p style="margin-top:4px;"><a href="mailto:dentalla@inbox.ru">dentalla@inbox.ru</a></p></div>
+  </div>
+  <div class="footer-bottom">Лицензия № 78-01-004014 · © ООО «Дентал Груп», 2026 · Информация и цены на сайте не являются публичной офертой</div>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+    <path d="M7 12V2M2 7l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  В начало
+</button>
+
+<script>
+// Анимация появления секций
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); }
+  });
+}, {threshold: 0.05});
+document.querySelectorAll('.art-section,.art-quote').forEach(function(s) { obs.observe(s); });
+
+// Кнопка "В начало"
+var btn = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+  btn.classList[window.scrollY > 400 ? 'add' : 'remove']('visible');
+});
+</script>
+
+<!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
+<div id="appt-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;">
+      <button onclick="closeApptModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#2B2418;margin-bottom:4px;">Записаться на приём</h2>
+      <p style="font-size:13px;color:#7A7060;">Заполните хотя бы одно поле — мы перезвоним и подберём удобное время</p>
+    </div>
+    <div style="padding:24px 32px 28px;">
+      <form id="appt-form" action="https://formsubmit.co/dentalla@inbox.ru" method="POST">
+        <input type="hidden" name="_subject" value="Обращение с сайта — Болит зуб">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Имя</label>
+            <input id="appt-name" name="Имя" type="text" placeholder="Как вас зовут?" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
+            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
+            <select id="appt-doctor" name="Врач" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+              <option value="">— Не важно, любой специалист —</option>
+              <option value="Елагина Нана Леонтиевна">Елагина Нана Леонтиевна — главный врач, ортопед</option>
+              <option value="Елагин Роман Владиславович">Елагин Роман Владиславович — хирург, имплантолог</option>
+              <option value="Марсавина Жанна Владимировна">Марсавина Жанна Владимировна — терапевт, микроскопист</option>
+              <option value="Гороховская Нинэль Юльевна">Гороховская Нинэль Юльевна — ортодонт</option>
+              <option value="Воронина Кристина Сергеевна">Воронина Кристина Сергеевна — детский стоматолог</option>
+              <option value="Фурса Анна Александровна">Фурса Анна Александровна — терапевт</option>
+              <option value="Разуваева Яна Евгеньевна">Разуваева Яна Евгеньевна — терапевт</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Комментарий</label>
+            <textarea id="appt-comment" name="Комментарий" placeholder="Какая услуга интересует? Удобное время?" rows="3" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;resize:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <p style="font-size:11px;color:#9B9080;line-height:1.5;max-width:240px;">Нажимая кнопку, вы соглашаетесь с <a href="politika.pdf" target="_blank" style="color:#B09B3A;">политикой обработки данных</a></p>
+          <button type="submit" id="appt-submit" disabled style="background:#C8C0A8;color:#fff;border:none;border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:not-allowed;transition:all .2s;font-family:'Manrope',sans-serif;">Отправить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function openApptModal(){var m=document.getElementById('appt-modal');m.style.display='flex';document.body.style.overflow='hidden';}
+function openApptModalWithDoctor(name){document.getElementById('appt-doctor').value=name;openApptModal();}
+function closeApptModal(){var m=document.getElementById('appt-modal');m.style.display='none';document.body.style.overflow='';}
+document.getElementById('appt-modal').addEventListener('click',function(e){if(e.target===this)closeApptModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeApptModal();});
+var apptFields=['appt-name','appt-phone','appt-comment'];
+var apptBtn=document.getElementById('appt-submit');
+function checkApptFields(){var filled=apptFields.some(function(id){return document.getElementById(id).value.trim().length>0;});apptBtn.disabled=!filled;apptBtn.style.background=filled?'#B09B3A':'#C8C0A8';apptBtn.style.cursor=filled?'pointer':'not-allowed';}
+apptFields.forEach(function(id){document.getElementById(id).addEventListener('input',checkApptFields);});
+</script>
+
+<script>
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
