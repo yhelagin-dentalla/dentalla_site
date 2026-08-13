@@ -28,7 +28,7 @@ jobs:
               set net:timeout 15
               set net:max-retries 2
               set net:reconnect-interval-base 3
-              mirror --reverse --delete --exclude .git/ --exclude .github/ --parallel=2 ./ /public_html/
+              mirror --reverse --delete --exclude .git/ --exclude .github/ --exclude ^services-data\.json$ --parallel=2 ./ /public_html/
               quit
             " && { echo "Deploy succeeded on attempt $attempt"; exit 0; }
             echo "Attempt $attempt failed, retrying in 15s..."
