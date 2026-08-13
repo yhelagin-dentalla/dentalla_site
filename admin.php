@@ -90,9 +90,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && strpos($contentType, 'application/j
 
 // ── Загрузка текущих данных для редактора ──
 $currentData = array('blocks' => array());
+$dentalla_diag = array();
+$dentalla_diag['path'] = $DATA_FILE;
+$dentalla_diag['exists'] = file_exists($DATA_FILE) ? 'yes' : 'no';
 if (file_exists($DATA_FILE)) {
-    $decoded = json_decode(file_get_contents($DATA_FILE), true);
-    if (is_array($decoded)) $currentData = $decoded;
+    $raw = file_get_contents($DATA_FILE);
+    $dentalla_diag['bytes'] = strlen($raw);
+    $decoded = json_decode($raw, true);
+    $dentalla_diag['json_error'] = function_exists('json_last_error_msg') ? json_last_error_msg() : json_last_error();
+    $dentalla_diag['decoded_is_array'] = is_array($decoded) ? 'yes' : 'no';
+    if (is_array($decoded)) {
+        $currentData = $decoded;
+        $dentalla_diag['blocks_count'] = isset($decoded['blocks']) ? count($decoded['blocks']) : 'no blocks key';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -207,6 +217,10 @@ button{cursor:pointer;font-family:inherit}
 
 <div class="admin-wrap">
   <div class="hint">Здесь можно менять цены, добавлять и удалять услуги, объединять их в блоки, оставлять внутренние комментарии к позиции (посетителям сайта они не показываются — видна только цена и название). После изменений обязательно нажмите <strong>«Сохранить изменения»</strong> — правки сразу появятся на странице «Услуги» сайта.</div>
+
+  <?php if (!empty($_GET['diag'])): ?>
+  <div class="hint" style="background:#FFF8E1;border-color:#E0C878;"><strong>Диагностика (временно):</strong><br><?php foreach ($dentalla_diag as $k => $v): ?><?php echo htmlspecialchars($k, ENT_QUOTES, 'UTF-8'); ?>: <?php echo htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); ?><br><?php endforeach; ?></div>
+  <?php endif; ?>
 
   <div id="blocks-container"></div>
 
