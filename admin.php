@@ -1,9 +1,23 @@
 <?php
 session_start();
 
-// bcrypt-хеш пароля "dentalla2026" — сам пароль нигде в открытом виде не хранится
-$ADMIN_PASSWORD_HASH = '$2b$10$zAaXYs0tg25oAxG/wpPwLualBhULv05TDjWnfVLhCxtr7Bt.hLd2C';
+// bcrypt-хеш пароля "dentalla2026" (формат $2a$, совместим со старым PHP crypt())
+$ADMIN_PASSWORD_HASH = '$2a$10$n.AlUesW411rNHyxMPyL2OxyTAeZBAlcCK8OhJEZlUwBYW1AU2GmG';
 $DATA_FILE = __DIR__ . '/services-data.json';
+
+// Проверка пароля, совместимая с PHP 5.3+ (без password_verify, которой нет в PHP < 5.5)
+function dentalla_check_password($plain, $hash) {
+    return crypt($plain, $hash) === $hash;
+}
+
+// Аналог http_response_code() для PHP < 5.4
+function dentalla_status($code) {
+    $messages = array(
+        200 => 'OK', 400 => 'Bad Request', 403 => 'Forbidden', 500 => 'Internal Server Error'
+    );
+    $msg = isset($messages[$code]) ? $messages[$code] : '';
+    header('HTTP/1.1 ' . $code . ' ' . $msg);
+}
 
 header('X-Robots-Tag: noindex, nofollow');
 
@@ -15,9 +29,10 @@ if (isset($_GET['logout'])) {
 }
 
 // ── Вход ──
+$loginError = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
-    $pass = $_POST['password'] ?? '';
-    if (password_verify($pass, $ADMIN_PASSWORD_HASH)) {
+    $pass = isset($_POST['password']) ? $_POST['password'] : '';
+    if (dentalla_check_password($pass, $ADMIN_PASSWORD_HASH)) {
         $_SESSION['dentalla_admin'] = true;
         header('Location: admin.php');
         exit;
@@ -29,54 +44,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 $isAuthed = !empty($_SESSION['dentalla_admin']);
 
 // ── API: сохранение данных (только для авторизованных) ──
-$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+$contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && strpos($contentType, 'application/json') !== false) {
     header('Content-Type: application/json; charset=utf-8');
     $raw = file_get_contents('php://input');
     $data = json_decode($raw, true);
     if (!is_array($data) || !isset($data['action']) || $data['action'] !== 'save') {
-        http_response_code(400);
-        echo json_encode(['ok' => false, 'error' => 'Некорректный запрос']);
+        dentalla_status(400);
+        echo json_encode(array('ok' => false, 'error' => 'Некорректный запрос'));
         exit;
     }
     if (!$isAuthed) {
-        http_response_code(403);
-        echo json_encode(['ok' => false, 'error' => 'Не авторизован']);
+        dentalla_status(403);
+        echo json_encode(array('ok' => false, 'error' => 'Не авторизован'));
         exit;
     }
     if (!isset($data['blocks']) || !is_array($data['blocks'])) {
-        http_response_code(400);
-        echo json_encode(['ok' => false, 'error' => 'Некорректные данные']);
+        dentalla_status(400);
+        echo json_encode(array('ok' => false, 'error' => 'Некорректные данные'));
         exit;
     }
     // Базовая валидация структуры
+    $structOk = true;
     foreach ($data['blocks'] as $b) {
-        if (!isset($b['id'], $b['title'], $b['items']) || !is_array($b['items'])) {
-            http_response_code(400);
-            echo json_encode(['ok' => false, 'error' => 'Некорректная структура блока']);
-            exit;
+        if (!isset($b['id']) || !isset($b['title']) || !isset($b['items']) || !is_array($b['items'])) {
+            $structOk = false;
+            break;
         }
     }
-    $toSave = ['blocks' => $data['blocks']];
-    foreach ($toSave['blocks'] as $b) {
-        if (!isset($b['id'], $b['title'], $b['items']) || !is_array($b['items'])) {
-            http_response_code(400);
-            echo json_encode(['ok' => false, 'error' => 'Некорректная структура блока']);
-            exit;
-        }
-    }
-    $json = json_encode($toSave, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-    if (@file_put_contents($DATA_FILE, $json) === false) {
-        http_response_code(500);
-        echo json_encode(['ok' => false, 'error' => 'Не удалось записать файл. Проверьте права доступа.']);
+    if (!$structOk) {
+        dentalla_status(400);
+        echo json_encode(array('ok' => false, 'error' => 'Некорректная структура блока'));
         exit;
     }
-    echo json_encode(['ok' => true]);
+    $toSave = array('blocks' => $data['blocks']);
+    $json = json_encode($toSave);
+    if (@file_put_contents($DATA_FILE, $json) === false) {
+        dentalla_status(500);
+        echo json_encode(array('ok' => false, 'error' => 'Не удалось записать файл. Проверьте права доступа.'));
+        exit;
+    }
+    echo json_encode(array('ok' => true));
     exit;
 }
 
 // ── Загрузка текущих данных для редактора ──
-$currentData = ['blocks' => []];
+$currentData = array('blocks' => array());
 if (file_exists($DATA_FILE)) {
     $decoded = json_decode(file_get_contents($DATA_FILE), true);
     if (is_array($decoded)) $currentData = $decoded;
@@ -169,7 +182,7 @@ button{cursor:pointer;font-family:inherit}
   <div class="login-box">
     <h1>ДЕНТАЛЛА</h1>
     <p>Управление услугами и ценами</p>
-    <?php if (!empty($loginError)): ?><div class="login-error"><?= htmlspecialchars($loginError) ?></div><?php endif; ?>
+    <?php if (!empty($loginError)): ?><div class="login-error"><?php echo htmlspecialchars($loginError); ?></div><?php endif; ?>
     <form method="POST">
       <input type="hidden" name="action" value="login">
       <input type="password" name="password" placeholder="Пароль" autofocus required>
@@ -201,7 +214,7 @@ button{cursor:pointer;font-family:inherit}
 </div>
 
 <script>
-var DATA = <?= json_encode($currentData, JSON_UNESCAPED_UNICODE) ?>;
+var DATA = <?php echo json_encode($currentData); ?>;
 
 function transliterate(str) {
   var map = {'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'c','ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya',' ':'-'};
