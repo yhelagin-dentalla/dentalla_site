@@ -182,7 +182,7 @@ button{cursor:pointer;font-family:inherit}
   <div class="login-box">
     <h1>ДЕНТАЛЛА</h1>
     <p>Управление услугами и ценами</p>
-    <?php if (!empty($loginError)): ?><div class="login-error"><?php echo htmlspecialchars($loginError); ?></div><?php endif; ?>
+    <?php if (!empty($loginError)): ?><div class="login-error"><?php echo htmlspecialchars($loginError, ENT_QUOTES, 'UTF-8'); ?></div><?php endif; ?>
     <form method="POST">
       <input type="hidden" name="action" value="login">
       <input type="password" name="password" placeholder="Пароль" autofocus required>
