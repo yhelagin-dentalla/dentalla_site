@@ -17,22 +17,62 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP (full sync, with auto-retry)
+            - name: Deploy via FTP (stable mode with diagnostics)
         run: |
           sudo apt-get install -y lftp
-          for attempt in 1 2 3; do
-            echo "=== Attempt $attempt of 3 ==="
-            timeout 180 lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} -e "
-              set ftp:ssl-allow no
-              set ftp:passive-mode yes
-              set net:timeout 15
-              set net:max-retries 2
-              set net:reconnect-interval-base 3
-              mirror --reverse --delete --exclude .git/ --exclude .github/ --exclude ^services-data\.json$ --parallel=2 ./ /public_html/
-              quit
-            " && { echo "Deploy succeeded on attempt $attempt"; exit 0; }
-            echo "Attempt $attempt failed, retrying in 15s..."
-            sleep 15
+
+          for attempt in 1 2 3 4; do
+            echo "======================================"
+            echo "=== FTP deploy attempt $attempt of 4 ==="
+            echo "======================================"
+
+            timeout 300 lftp -d \
+              -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" \
+              "${{ secrets.FTP_SERVER }}" \
+              -e "
+                set ftp:ssl-allow no;
+                set ftp:passive-mode yes;
+
+                set net:timeout 30;
+                set net:max-retries 6;
+                set net:reconnect-interval-base 5;
+                set net:reconnect-interval-multiplier 2;
+                set net:reconnect-interval-max 30;
+
+                set cmd:fail-exit yes;
+
+                echo FTP connection established;
+                pwd;
+                ls /public_html;
+
+                mirror \
+                  --reverse \
+                  --delete \
+                  --verbose \
+                  --exclude .git/ \
+                  --exclude .github/ \
+                  --exclude ^services-data\\.json$ \
+                  ./ /public_html/;
+
+                quit;
+              "
+
+            RESULT=$?
+
+            if [ $RESULT -eq 0 ]; then
+              echo "======================================"
+              echo "Deploy succeeded on attempt $attempt"
+              echo "======================================"
+              exit 0
+            fi
+
+            echo "======================================"
+            echo "Attempt $attempt failed with code $RESULT"
+            echo "Waiting 45 seconds before retry..."
+            echo "======================================"
+
+            sleep 45
           done
-          echo "All attempts failed"
+
+          echo "All FTP deployment attempts failed"
           exit 1
