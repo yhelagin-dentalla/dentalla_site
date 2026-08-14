@@ -17,14 +17,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP (stable mode with diagnostics)
+      - name: Deploy via FTP with connection diagnostics
         run: |
-          sudo apt-get install -y lftp
+          sudo apt-get update
+          sudo apt-get install -y lftp netcat-openbsd
+
+          echo "=== Runner public IP ==="
+          curl -s https://api.ipify.org
+          echo
+          echo
+
+          echo "=== FTP server DNS ==="
+          getent hosts "${{ secrets.FTP_SERVER }}" || true
+          echo
+
+          echo "=== Testing TCP port 21 ==="
+
+          for test in 1 2 3 4 5; do
+            echo "TCP test $test of 5"
+
+            if timeout 10 nc -vz "${{ secrets.FTP_SERVER }}" 21; then
+              echo "Port 21 is reachable"
+              break
+            fi
+
+            echo "Port 21 connection failed"
+            sleep 15
+          done
+
+          echo
+          echo "=== Starting FTP deployment ==="
 
           for attempt in 1 2 3 4; do
-            echo "======================================"
-            echo "=== FTP deploy attempt $attempt of 4 ==="
-            echo "======================================"
+            echo "=== FTP attempt $attempt of 4 ==="
 
             timeout 300 lftp -d \
               -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" \
@@ -41,7 +66,6 @@ jobs:
 
                 set cmd:fail-exit yes;
 
-                echo FTP connection established;
                 pwd;
                 ls /public_html;
 
@@ -60,17 +84,11 @@ jobs:
             RESULT=$?
 
             if [ $RESULT -eq 0 ]; then
-              echo "======================================"
               echo "Deploy succeeded on attempt $attempt"
-              echo "======================================"
               exit 0
             fi
 
-            echo "======================================"
             echo "Attempt $attempt failed with code $RESULT"
-            echo "Waiting 45 seconds before retry..."
-            echo "======================================"
-
             sleep 45
           done
 
