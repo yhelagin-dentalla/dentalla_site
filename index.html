@@ -101,7 +101,7 @@ nav a:hover{color:#9C8F20;}
 }
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
 @media(max-width:640px){
-  .scenarios-heading{display:block;font-size:20px;margin-bottom:16px;min-height:30px;}
+  .scenarios-heading{display:block;font-size:36px;line-height:1.1;margin-bottom:16px;min-height:42px;}
 }
 .btn-outline:hover{border-color:#B09B3A;color:#9C8F20;}
 
@@ -338,7 +338,8 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 
   /* Footer */
   footer{padding:32px 16px 20px;}
-  .footer-inner{grid-template-columns:1fr;gap:24px;}
+  .footer-inner{grid-template-columns:1fr;gap:20px;text-align:center;}
+  .f-col p,.f-col a{line-height:1.5;}
   .footer-bottom{font-size:11px;text-align:center;}
 
   /* Модальное окно записи */
@@ -381,8 +382,19 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       8 812 605 72 07
     </div>
     <button class="btn-header">Записаться на приём</button>
+    <button class="burger" id="burger" aria-label="Меню" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMobileMenu()">О клинике</a>
+  <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
+  <a href="index.html#doctors" onclick="closeMobileMenu()">Наши врачи</a>
+  <a href="faq.html" onclick="closeMobileMenu()">Пациентам</a>
+  <a href="contacts.html" onclick="closeMobileMenu()">Контакты</a>
+  <span class="mob-phone">☎ 8 812 605 72 07</span>
+  <button class="mob-btn" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
+</div>
 
 <!-- HERO -->
 <div class="hero-wrap">
@@ -400,7 +412,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       <p class="hero-sub">Внимательно слушаем, честно объясняем и подбираем лучшее решение именно для вас.<br>Комфорт, безопасность и забота — в каждой детали.</p>
       <div class="hero-btns">
         <button class="btn-primary">Записаться на приём</button>
-        <button class="btn-outline">Выбрать направление</button>
+        <a href="faq.html" class="btn-outline" style="display:inline-flex;align-items:center;justify-content:center;">Отвечаем на вопросы</a>
       </div>
     </div>
   </div>
@@ -1345,6 +1357,18 @@ document.querySelectorAll('.btn-primary,.btn-header,.btn-cta,.btn-cta-white,.doc
   if(b.form) return;
   b.addEventListener('click',function(e){e.preventDefault();openApptModal();});
 });
+
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
 </script>
 </body>
 </html>
