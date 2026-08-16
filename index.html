@@ -387,9 +387,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 <!-- HERO -->
 <div class="hero-wrap">
 <section class="hero-full">
-  <video id="hero-video" autoplay muted playsinline onended="this.pause()">
-    <source src="hero_video.mp4" type="video/mp4">
-  </video>
+  <video id="hero-video" muted playsinline onended="this.pause()" preload="none"></video>
   <div class="hero-full-fade"></div>
   <!-- Текст поверх видео слева -->
   <div class="hero-inner">
@@ -864,10 +862,14 @@ function showTagCloud() {
 // Облако тегов — показываем сразу при загрузке страницы
 window.addEventListener('load', function() {
   var v = document.getElementById('hero-video');
-  if (v) {
-    // При окончании видео — тоже показываем (если ещё не показали)
+  // На мобильных видео не загружаем вовсе — экономим трафик, оно всё равно скрыто через CSS
+  if (v && window.matchMedia('(min-width:641px)').matches) {
+    var source = document.createElement('source');
+    source.src = 'hero_video.mp4';
+    source.type = 'video/mp4';
+    v.appendChild(source);
+    v.load();
     v.addEventListener('ended', showTagCloud);
-    // Запускаем воспроизведение явно (обход блокировки браузера)
     v.play().catch(function() {});
   }
   // Показываем теги через 1.5 сек после загрузки, не ждём конца видео
