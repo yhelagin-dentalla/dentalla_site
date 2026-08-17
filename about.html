@@ -63,7 +63,7 @@ nav a:hover,nav a.active{color:var(--gold-dark)}nav a:hover:after,nav a.active:a
 .about-detail p:last-child{margin-bottom:0}
 
 .about-directions{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
-.dir-tag{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px 20px;font-size:14px;font-weight:500;color:var(--ink);text-align:center;transition:border-color .2s,background .2s}
+.dir-tag{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px 20px;font-size:14px;font-weight:500;color:var(--ink);text-align:center;transition:border-color .2s,background .2s;text-decoration:none;display:block}
 .dir-tag:hover{border-color:var(--gold);background:#FBF8EF}
 
 .about-quote{max-width:1180px;margin:0 auto 64px;border-radius:22px;background:var(--ink);padding:48px;position:relative;overflow:hidden;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
@@ -223,12 +223,12 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
   <h2 style="margin-top:40px;">Направления приёма</h2>
   <p>Комплексный подход позволяет видеть клиническую ситуацию целиком и принимать решения, направленные на сохранение здоровья, функции и эстетики зубов.</p>
   <div class="about-directions">
-    <div class="dir-tag">Терапия</div>
-    <div class="dir-tag">Ортопедия</div>
-    <div class="dir-tag">Хирургия</div>
-    <div class="dir-tag">Ортодонтия</div>
-    <div class="dir-tag">Пародонтология</div>
-    <div class="dir-tag">Детская стоматология</div>
+    <a href="services.html#lechenie" class="dir-tag">Терапия</a>
+    <a href="services.html#protezirovanie" class="dir-tag">Ортопедия</a>
+    <a href="services.html#hirurgiya" class="dir-tag">Хирургия</a>
+    <a href="services.html#ortodontiya" class="dir-tag">Ортодонтия</a>
+    <a href="services.html#parodontologiya" class="dir-tag">Пародонтология</a>
+    <a href="services.html#detskaya" class="dir-tag">Детская стоматология</a>
   </div>
 </div>
 
