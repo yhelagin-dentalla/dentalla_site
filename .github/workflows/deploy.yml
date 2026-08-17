@@ -76,6 +76,7 @@ jobs:
                   --exclude .git/ \
                   --exclude .github/ \
                   --exclude ^services-data\\.json$ \
+                  --exclude ^doctors-data\\.json$ \
                   --exclude ^doctor-photos/ \
                   ./ /public_html/;
 
