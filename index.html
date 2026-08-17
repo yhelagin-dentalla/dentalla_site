@@ -62,20 +62,23 @@ nav a:hover{color:#9C8F20;}
 
 /* Hero мобильный адрес */
 .hero-mob-address{display:none;}
+.hero-mob-address-line{display:flex;align-items:center;justify-content:center;gap:8px;}
+.hero-mob-phone{color:#2B2418;text-decoration:none;}
 @media(max-width:640px){
   .info-item-hide{display:none !important;}
   .info-row{display:none;}
   .hero-mob-address{
     display:flex;
+    flex-direction:column;
     align-items:center;
-    justify-content:center;
-    gap:8px;
+    gap:6px;
     font-size:13px;
     color:#5A5248;
     margin-bottom:16px;
     line-height:1.5;
     text-align:center;
   }
+  .hero-mob-phone{font-size:16px;font-weight:700;}
 }
 /* sc-card base — анимация управляется через JS */
 .sc-card{transition:box-shadow .25s,transform .25s;}
@@ -102,7 +105,8 @@ nav a:hover{color:#9C8F20;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
 @media(max-width:640px){
   .scenarios-heading{display:block;font-size:30px;line-height:1.15;margin-bottom:16px;min-height:36px;}
-  .mob-reviews-strip{display:flex !important;gap:8px;margin-top:18px;}
+  .mob-reviews-heading{display:block !important;text-align:center;font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#5A5248;margin-top:22px;margin-bottom:8px;}
+  .mob-reviews-strip{display:flex !important;gap:8px;margin-top:0;}
   .mob-reviews-link{display:block;text-align:center;margin-top:10px;font-size:12.5px;color:#B09B3A;font-weight:600;}
 }
 .btn-outline:hover{border-color:#B09B3A;color:#9C8F20;}
@@ -222,6 +226,8 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 
 /* Компактная лента отзывов — только мобильная версия */
 .mob-reviews-strip{display:none;}
+.mob-reviews-heading{display:none;}
+.yandex-red{color:#FC3F1D;font-weight:800;font-family:Arial,Helvetica,sans-serif;}
 .mob-review-box{background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-radius:12px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0;text-decoration:none;transition:background .2s;}
 .mob-review-box:hover{background:rgba(255,255,255,.95);}
 .mob-review-avatar{width:22px;height:22px;border-radius:50%;background:#B09B3A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;}
@@ -419,8 +425,11 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
   <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-mob-address">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;color:#B09B3A"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#B09B3A" stroke-width="1.5" fill="none"/><circle cx="12" cy="9" r="2.5" stroke="#B09B3A" stroke-width="1.5" fill="none"/></svg>
-        Санкт-Петербург, Проспект Энгельса, 126к1 / ст. метро «Озерки»
+        <div class="hero-mob-address-line">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;color:#B09B3A"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#B09B3A" stroke-width="1.5" fill="none"/><circle cx="12" cy="9" r="2.5" stroke="#B09B3A" stroke-width="1.5" fill="none"/></svg>
+          Санкт-Петербург, Проспект Энгельса, 126к1 / ст. метро «Озерки»
+        </div>
+        <a href="tel:88126057207" class="hero-mob-phone">8 812 605 72 07</a>
       </div>
       <h1>Мы лечим так,<br>как хотели бы<br>лечиться сами</h1>
       <p class="hero-sub">Внимательно слушаем, честно объясняем и подбираем лучшее решение именно для вас.<br>Комфорт, безопасность и забота — в каждой детали.</p>
@@ -428,6 +437,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
         <button class="btn-primary">Записаться на приём</button>
         <a href="faq.html" class="btn-outline" style="display:inline-flex;align-items:center;justify-content:center;">Отвечаем на вопросы</a>
       </div>
+      <div class="mob-reviews-heading">Отзывы <span class="yandex-red">Яндекс</span></div>
       <div class="mob-reviews-strip">
         <a class="mob-review-box" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">
           <div class="mob-review-avatar">О</div>
