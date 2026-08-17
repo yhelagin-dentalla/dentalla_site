@@ -610,95 +610,6 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
     <a href="#" class="section-link">Смотреть всех врачей &nbsp;→</a>
   </div>
   <div class="doctors-carousel" id="doctors-carousel">
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;">
-        <img src="doctor_elagina.webp" alt="Елагина Нана Леонтиевна" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Елагина<br>Нана Леонтиевна</div>
-        <div class="doc-role">Главный врач, стоматолог-ортопед</div>
-        <div class="doc-exp">Стаж 28 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_marsavina.webp" alt="Марсавина Жанна Владимировна" width="132" loading="lazy" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Марсавина<br>Жанна Владимировна</div>
-        <div class="doc-role">Стоматолог-терапевт, микроскопист</div>
-        <div class="doc-exp">Стаж 34 года</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_elagin.webp" alt="Елагин Роман" loading="lazy" Владиславович" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Елагин<br>Роман Владиславович</div>
-        <div class="doc-role">Стоматолог-хирург, имплантолог</div>
-        <div class="doc-exp">Стаж 8 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_gorokhovskaya.webp" alt="Гороховская" loading="lazy" Нинэль Юльевна" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Гороховская<br>Нинэль Юльевна</div>
-        <div class="doc-role">Ортодонт, ортопед</div>
-        <div class="doc-exp">Стаж 25 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;">
-        <img src="doctor_voronina.webp" alt="Воронина" loading="lazy" Кристина Сергеевна" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Воронина<br>Кристина Сергеевна</div>
-        <div class="doc-role">Детский стоматолог</div>
-        <div class="doc-exp">Стаж 11 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_fursa.webp" alt="Фурса" loading="lazy" Анна Александровна" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Фурса<br>Анна Александровна</div>
-        <div class="doc-role">Стоматолог-терапевт</div>
-        <div class="doc-exp">Стаж 6 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_razuvaeva.webp" alt="Разуваева" loading="lazy" Яна Евгеньевна" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Разуваева<br>Яна Евгеньевна</div>
-        <div class="doc-role">Стоматолог-терапевт</div>
-        <div class="doc-exp">Стаж 7 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_avgustovskikh.webp" alt="Августовских Оксана Владимировна" loading="lazy" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Августовских<br>Оксана Владимировна</div>
-        <div class="doc-role">Врач-стоматолог</div>
-        <div class="doc-exp">Стаж 10 лет</div>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -977,38 +888,93 @@ window.addEventListener('load', function() {
   });
 })();
 
-/* ── МОДАЛЬНЫЕ ОКНА ВРАЧЕЙ ── */
+/* ── ВРАЧИ: динамическая загрузка карточек, модалок и списка в форме записи ── */
 (function() {
-  // Вешаем клик на каждую карточку
-  document.querySelectorAll('.doc-card').forEach(function(card) {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', function() {
-      var name = card.querySelector('.doc-name');
-      if (!name) return;
-      var text = name.innerText.replace(/\n/g,' ').trim();
-      // Находим модал по data-doctor
-      var modal = document.querySelector('.doc-modal[data-doctor="' + text + '"]');
-      if (modal) {
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-    });
-  });
+  fetch('doctors-data.json?v=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var carousel = document.getElementById('doctors-carousel');
+      var select = document.getElementById('appt-doctor-select');
+      var modalsHost = document.createElement('div');
+      modalsHost.id = 'doc-modals-host';
 
-  // Закрытие
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('doc-modal') ||
-        e.target.classList.contains('doc-modal-close')) {
-      document.querySelectorAll('.doc-modal').forEach(function(m){ m.classList.remove('open'); });
-      document.body.style.overflow = '';
-    }
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.doc-modal').forEach(function(m){ m.classList.remove('open'); });
-      document.body.style.overflow = '';
-    }
-  });
+      var roleShort = {}; // id -> role for select option label
+
+      data.doctors.forEach(function(doc){
+        var fullName = doc.lastName + ' ' + doc.firstName;
+
+        /* — карточка в карусели — */
+        var card = document.createElement('div');
+        card.className = 'doc-card';
+        card.style.cursor = 'pointer';
+        card.dataset.docId = doc.id;
+        card.innerHTML =
+          '<div class="doc-photo has-photo" style="background:none;position:relative;">' +
+            '<img src="' + doc.photo + '" alt="' + fullName + '" loading="lazy" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">' +
+          '</div>' +
+          '<div class="doc-info">' +
+            '<div class="doc-name">' + doc.lastName + '<br>' + doc.firstName + '</div>' +
+            '<div class="doc-role">' + doc.role + '</div>' +
+            '<div class="doc-exp">' + doc.experience + '</div>' +
+          '</div>';
+        card.addEventListener('click', function(){
+          var modal = document.querySelector('.doc-modal[data-doc-id="' + doc.id + '"]');
+          if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        });
+        carousel.appendChild(card);
+
+        /* — модальное окно — */
+        var tagsHtml = (doc.tags || []).map(function(t){ return '<span class="doc-modal-tag">' + t + '</span>'; }).join('');
+        var eduHtml = doc.edu ? '<p class="doc-modal-edu">' + doc.edu + '</p>' : '';
+        var modal = document.createElement('div');
+        modal.className = 'doc-modal';
+        modal.setAttribute('data-doc-id', doc.id);
+        modal.innerHTML =
+          '<div class="doc-modal-box">' +
+            '<button class="doc-modal-close">×</button>' +
+            '<div class="doc-modal-hero">' +
+              '<div class="doc-modal-photo"><img src="' + doc.photo + '" alt=""></div>' +
+              '<div class="doc-modal-head">' +
+                '<h2>' + doc.lastName + '<br>' + doc.firstName + '</h2>' +
+                '<div class="doc-modal-role">' + doc.role + '</div>' +
+                '<div class="doc-modal-exp">' + doc.experience + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="doc-modal-mob-head"><h2>' + fullName + '</h2><div class="doc-modal-mob-role">' + doc.role + '</div><div class="doc-modal-mob-exp">' + doc.experience + '</div></div>' +
+            '<div class="doc-modal-body">' +
+              '<p class="doc-modal-bio">' + doc.bio + '</p>' +
+              eduHtml +
+              '<div class="doc-modal-services"><h3>Специализация</h3></div>' +
+              '<div class="doc-modal-tags">' + tagsHtml + '</div>' +
+              '<button class="doc-modal-btn" onclick="document.querySelectorAll(\'.doc-modal\').forEach(function(m){m.classList.remove(\'open\')});document.body.style.overflow=\'\';document.getElementById(\'appt-doctor-select\').value=\'' + fullName.replace(/'/g,"\\'") + '\';openApptModal();">Записаться на приём</button>' +
+            '</div>' +
+          '</div>';
+        modalsHost.appendChild(modal);
+
+        /* — опция в форме записи — */
+        var opt = document.createElement('option');
+        opt.value = fullName;
+        opt.textContent = fullName + ' — ' + doc.role.toLowerCase();
+        select.appendChild(opt);
+      });
+
+      document.body.appendChild(modalsHost);
+
+      // Закрытие модалок
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('doc-modal') || e.target.classList.contains('doc-modal-close')) {
+          document.querySelectorAll('.doc-modal').forEach(function(m){ m.classList.remove('open'); });
+          document.body.style.overflow = '';
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.doc-modal').forEach(function(m){ m.classList.remove('open'); });
+          document.body.style.overflow = '';
+        }
+      });
+    })
+    .catch(function(err){ console.error('Не удалось загрузить данные врачей', err); });
 })();
 </script>
 
@@ -1059,228 +1025,6 @@ window.addEventListener('load', function() {
 
 <!-- ── МОДАЛЫ ВРАЧЕЙ ── -->
 
-<div class="doc-modal" data-doctor="Елагина Нана Леонтиевна">
-  <div class="doc-modal-box">
-    <button class="doc-modal-close">×</button>
-    <div class="doc-modal-hero">
-      <div class="doc-modal-photo"><img src="doctor_elagina.webp" alt=""></div>
-      <div class="doc-modal-head">
-        <h2>Елагина<br>Нана Леонтиевна</h2>
-        <div class="doc-modal-role">Главный врач, стоматолог-ортопед</div>
-        <div class="doc-modal-exp">Стаж 28 лет</div>
-      </div>
-    </div>
-    <div class="doc-modal-mob-head"><h2>Елагина Нана Леонтиевна</h2><div class="doc-modal-mob-role">Главный врач, стоматолог-ортопед</div><div class="doc-modal-mob-exp">Стаж 28 лет</div></div>
-    <div class="doc-modal-body">
-      <p class="doc-modal-bio">Занимаюсь эстетическим и функциональным восстановлением зубного ряда. Девиз нашей клиники: «Мы лечим так, как хотели бы лечиться сами!» — и эти слова максимально отражают наш подход. Верю, что красивая улыбка и позитивный настрой меняют жизнь.</p>
-      <p class="doc-modal-edu">Окончила Первый государственный медицинский университет им. академика Павлова. Аккредитация: терапия, ортопедия.</p>
-      <div class="doc-modal-services"><h3>Специализация</h3></div>
-      <div class="doc-modal-tags">
-        <span class="doc-modal-tag">Виниры E-max</span>
-        <span class="doc-modal-tag">Циркониевые коронки</span>
-        <span class="doc-modal-tag">Металлокерамика</span>
-        <span class="doc-modal-tag">Съёмные протезы</span>
-        <span class="doc-modal-tag">All-on-4</span>
-        <span class="doc-modal-tag">Эстетическая реставрация</span>
-      </div>
-      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
-    </div>
-  </div>
-</div>
-
-<div class="doc-modal" data-doctor="Марсавина Жанна Владимировна">
-  <div class="doc-modal-box">
-    <button class="doc-modal-close">×</button>
-    <div class="doc-modal-hero">
-      <div class="doc-modal-photo"><img src="doctor_marsavina.webp" alt=""></div>
-      <div class="doc-modal-head">
-        <h2>Марсавина<br>Жанна Владимировна</h2>
-        <div class="doc-modal-role">Стоматолог-терапевт, микроскопист</div>
-        <div class="doc-modal-exp">Стаж 34 года</div>
-      </div>
-    </div>
-    <div class="doc-modal-mob-head"><h2>Марсавина Жанна Владимировна</h2><div class="doc-modal-mob-role">Стоматолог-терапевт, микроскопист</div><div class="doc-modal-mob-exp">Стаж 34 года</div></div>
-    <div class="doc-modal-body">
-      <p class="doc-modal-bio">В 1992 году окончила Санкт-Петербургский медицинский университет им. академика Павлова по специальности «Стоматология». Специализируется на лечении под микроскопом, ортопедии и эстетическом восстановлении зубов.</p>
-      <p class="doc-modal-edu">Окончила Первый государственный медицинский университет им. академика Павлова. Аккредитация: терапия, ортопедия.</p>
-      <div class="doc-modal-services"><h3>Специализация</h3></div>
-      <div class="doc-modal-tags">
-        <span class="doc-modal-tag">Лечение под микроскопом</span>
-        <span class="doc-modal-tag">Отбеливание Zoom</span>
-        <span class="doc-modal-tag">Виниры E-max</span>
-        <span class="doc-modal-tag">Циркониевые коронки</span>
-        <span class="doc-modal-tag">Протезирование</span>
-        <span class="doc-modal-tag">All-on-4</span>
-      </div>
-      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
-    </div>
-  </div>
-</div>
-
-<div class="doc-modal" data-doctor="Елагин Роман Владиславович">
-  <div class="doc-modal-box">
-    <button class="doc-modal-close">×</button>
-    <div class="doc-modal-hero">
-      <div class="doc-modal-photo"><img src="doctor_elagin.webp" alt=""></div>
-      <div class="doc-modal-head">
-        <h2>Елагин<br>Роман Владиславович</h2>
-        <div class="doc-modal-role">Стоматолог-хирург, имплантолог</div>
-        <div class="doc-modal-exp">Стаж 8 лет</div>
-      </div>
-    </div>
-    <div class="doc-modal-mob-head"><h2>Елагин Роман Владиславович</h2><div class="doc-modal-mob-role">Стоматолог-хирург, имплантолог</div><div class="doc-modal-mob-exp">Стаж 8 лет</div></div>
-    <div class="doc-modal-body">
-      <p class="doc-modal-bio">Занимаюсь установкой имплантатов, восстановлением разрушенных зубов и эстетикой улыбки. Люблю в своей профессии то, что параллельно с миссией лечить людей, мы имеем доступ к огромному количеству технологий и каждый день совершенствуем методики лечения.</p>
-      <p class="doc-modal-edu">Окончил Первый государственный медицинский университет им. академика Павлова. Аккредитация: терапия, хирургия.</p>
-      <div class="doc-modal-services"><h3>Специализация</h3></div>
-      <div class="doc-modal-tags">
-        <span class="doc-modal-tag">Имплантация Straumann</span>
-        <span class="doc-modal-tag">Имплантация Ankylos</span>
-        <span class="doc-modal-tag">Имплантация Dentium</span>
-        <span class="doc-modal-tag">Удаление зубов</span>
-        <span class="doc-modal-tag">Сложное удаление</span>
-        <span class="doc-modal-tag">Хирургия</span>
-      </div>
-      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
-    </div>
-  </div>
-</div>
-
-<div class="doc-modal" data-doctor="Гороховская Нинэль Юльевна">
-  <div class="doc-modal-box">
-    <button class="doc-modal-close">×</button>
-    <div class="doc-modal-hero">
-      <div class="doc-modal-photo"><img src="doctor_gorokhovskaya.webp" alt=""></div>
-      <div class="doc-modal-head">
-        <h2>Гороховская<br>Нинэль Юльевна</h2>
-        <div class="doc-modal-role">Ортодонт, ортопед</div>
-        <div class="doc-modal-exp">Стаж 25 лет</div>
-      </div>
-    </div>
-    <div class="doc-modal-mob-head"><h2>Гороховская Нинэль Юльевна</h2><div class="doc-modal-mob-role">Ортодонт, ортопед</div><div class="doc-modal-mob-exp">Стаж 25 лет</div></div>
-    <div class="doc-modal-body">
-      <p class="doc-modal-bio">Специалист по исправлению прикуса и выравниванию зубов. Работает с брекет-системами и современными элайнерами. Индивидуальный подход к каждому пациенту — основа её практики.</p>
-      <p class="doc-modal-edu">Окончила Первый государственный медицинский университет им. академика Павлова. Аккредитация: терапия, ортопедия, ортодонтия.</p>
-      <div class="doc-modal-services"><h3>Специализация</h3></div>
-      <div class="doc-modal-tags">
-        <span class="doc-modal-tag">Элайнеры Invisalign</span>
-        <span class="doc-modal-tag">Элайнеры Spark</span>
-        <span class="doc-modal-tag">Брекеты Damon</span>
-        <span class="doc-modal-tag">Ортопедия</span>
-        <span class="doc-modal-tag">Исправление прикуса</span>
-      </div>
-      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
-    </div>
-  </div>
-</div>
-
-<div class="doc-modal" data-doctor="Воронина Кристина Сергеевна">
-  <div class="doc-modal-box">
-    <button class="doc-modal-close">×</button>
-    <div class="doc-modal-hero">
-      <div class="doc-modal-photo"><img src="doctor_voronina.webp" alt=""></div>
-      <div class="doc-modal-head">
-        <h2>Воронина<br>Кристина Сергеевна</h2>
-        <div class="doc-modal-role">Детский стоматолог</div>
-        <div class="doc-modal-exp">Стаж 11 лет</div>
-      </div>
-    </div>
-    <div class="doc-modal-mob-head"><h2>Воронина Кристина Сергеевна</h2><div class="doc-modal-mob-role">Детский стоматолог</div><div class="doc-modal-mob-exp">Стаж 11 лет</div></div>
-    <div class="doc-modal-body">
-      <p class="doc-modal-bio">Специалист по лечению зубов у детей. Умеет находить подход к самым маленьким пациентам и превращать визит к стоматологу в спокойный и комфортный опыт. Лечение без страха и слёз — главный принцип работы.</p>
-      <p class="doc-modal-edu">Окончила СПб государственный Педиатрический медицинский университет. Аккредитация: терапия, детская стоматология.</p>
-      <div class="doc-modal-services"><h3>Специализация</h3></div>
-      <div class="doc-modal-tags">
-        <span class="doc-modal-tag">Лечение детей</span>
-        <span class="doc-modal-tag">Герметизация фиссур</span>
-        <span class="doc-modal-tag">Удаление молочных зубов</span>
-        <span class="doc-modal-tag">Детская чистка зубов</span>
-        <span class="doc-modal-tag">Обучение гигиене</span>
-      </div>
-      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
-    </div>
-  </div>
-</div>
-
-<div class="doc-modal" data-doctor="Фурса Анна Александровна">
-  <div class="doc-modal-box">
-    <button class="doc-modal-close">×</button>
-    <div class="doc-modal-hero">
-      <div class="doc-modal-photo"><img src="doctor_fursa.webp" alt=""></div>
-      <div class="doc-modal-head">
-        <h2>Фурса<br>Анна Александровна</h2>
-        <div class="doc-modal-role">Стоматолог-терапевт</div>
-        <div class="doc-modal-exp">Стаж 6 лет</div>
-      </div>
-    </div>
-    <div class="doc-modal-mob-head"><h2>Фурса Анна Александровна</h2><div class="doc-modal-mob-role">Стоматолог-терапевт</div><div class="doc-modal-mob-exp">Стаж 6 лет</div></div>
-    <div class="doc-modal-body">
-      <p class="doc-modal-bio">Стоматолог-терапевт, специализируется на лечении кариеса, пульпита и эстетической реставрации зубов. Внимательный и заботливый подход к каждому пациенту.</p>
-      <div class="doc-modal-services"><h3>Специализация</h3></div>
-      <div class="doc-modal-tags">
-        <span class="doc-modal-tag">Лечение кариеса</span>
-        <span class="doc-modal-tag">Лечение пульпита</span>
-        <span class="doc-modal-tag">Реставрация</span>
-        <span class="doc-modal-tag">Профессиональная чистка</span>
-        <span class="doc-modal-tag">Отбеливание</span>
-      </div>
-      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
-    </div>
-  </div>
-</div>
-
-<div class="doc-modal" data-doctor="Разуваева Яна Евгеньевна">
-  <div class="doc-modal-box">
-    <button class="doc-modal-close">×</button>
-    <div class="doc-modal-hero">
-      <div class="doc-modal-photo"><img src="doctor_razuvaeva.webp" alt=""></div>
-      <div class="doc-modal-head">
-        <h2>Разуваева<br>Яна Евгеньевна</h2>
-        <div class="doc-modal-role">Стоматолог-терапевт</div>
-        <div class="doc-modal-exp">Стаж 7 лет</div>
-      </div>
-    </div>
-    <div class="doc-modal-mob-head"><h2>Разуваева Яна Евгеньевна</h2><div class="doc-modal-mob-role">Стоматолог-терапевт</div><div class="doc-modal-mob-exp">Стаж 7 лет</div></div>
-    <div class="doc-modal-body">
-      <p class="doc-modal-bio">Стоматолог-терапевт с опытом в лечении кариеса, эндодонтии и эстетическом восстановлении. Уделяет особое внимание комфорту пациента и безболезненности процедур.</p>
-      <p class="doc-modal-edu">Окончила Алтайский государственный медицинский университет. Аккредитация: терапия.</p>
-      <div class="doc-modal-services"><h3>Специализация</h3></div>
-      <div class="doc-modal-tags">
-        <span class="doc-modal-tag">Лечение кариеса</span>
-        <span class="doc-modal-tag">Эндодонтия</span>
-        <span class="doc-modal-tag">Реставрация зубов</span>
-        <span class="doc-modal-tag">Профессиональная чистка</span>
-        <span class="doc-modal-tag">Лечение пульпита</span>
-      </div>
-      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
-    </div>
-  </div>
-</div>
-
-<div class="doc-modal" data-doctor="Августовских Оксана Владимировна">
-  <div class="doc-modal-box">
-    <button class="doc-modal-close">×</button>
-    <div class="doc-modal-hero">
-      <div class="doc-modal-photo"><img src="doctor_avgustovskikh.webp" alt=""></div>
-      <div class="doc-modal-head">
-        <h2>Августовских<br>Оксана Владимировна</h2>
-        <div class="doc-modal-role">Врач-стоматолог</div>
-        <div class="doc-modal-exp">Стаж 10 лет</div>
-      </div>
-    </div>
-    <div class="doc-modal-mob-head"><h2>Августовских Оксана Владимировна</h2><div class="doc-modal-mob-role">Врач-стоматолог</div><div class="doc-modal-mob-exp">Стаж 10 лет</div></div>
-    <div class="doc-modal-body">
-      <p class="doc-modal-bio">Врач-стоматолог общей практики. Внимательно подходит к диагностике и подбирает решение, подходящее именно вам.</p>
-      <p class="doc-modal-edu">Окончила Рязанский государственный медицинский университет им. академика Павлова. Аккредитация: врач-стоматолог общей практики.</p>
-      <div class="doc-modal-services"><h3>Специализация</h3></div>
-      <div class="doc-modal-tags">
-        <span class="doc-modal-tag">Стоматология общей практики</span>
-      </div>
-      <button class="doc-modal-btn" onclick="document.querySelectorAll('.doc-modal').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''">Записаться на приём</button>
-    </div>
-  </div>
-</div>
-
 <!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
 <div id="appt-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
   <div style="background:#fff;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;">
@@ -1308,16 +1052,8 @@ window.addEventListener('load', function() {
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
-            <select name="Врач" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B09B3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <select name="Врач" id="appt-doctor-select" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B09B3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
               <option value="">— Не важно, любой специалист —</option>
-              <option value="Елагина Нана Леонтиевна">Елагина Нана Леонтиевна — главный врач, ортопед</option>
-              <option value="Елагин Роман Владиславович">Елагин Роман Владиславович — хирург, имплантолог</option>
-              <option value="Марсавина Жанна Владимировна">Марсавина Жанна Владимировна — терапевт, микроскопист</option>
-              <option value="Гороховская Нинэль Юльевна">Гороховская Нинэль Юльевна — ортодонт</option>
-              <option value="Воронина Кристина Сергеевна">Воронина Кристина Сергеевна — детский стоматолог</option>
-              <option value="Фурса Анна Александровна">Фурса Анна Александровна — терапевт</option>
-              <option value="Разуваева Яна Евгеньевна">Разуваева Яна Евгеньевна — терапевт</option>
-              <option value="Августовских Оксана Владимировна">Августовских Оксана Владимировна — стоматолог общей практики</option>
             </select>
           </div>
           <div>
