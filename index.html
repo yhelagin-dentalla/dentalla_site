@@ -101,7 +101,9 @@ nav a:hover{color:#9C8F20;}
 }
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
 @media(max-width:640px){
-  .scenarios-heading{display:block;font-size:36px;line-height:1.1;margin-bottom:16px;min-height:42px;}
+  .scenarios-heading{display:block;font-size:20px;line-height:1.2;margin-bottom:16px;min-height:26px;white-space:nowrap;}
+  .mob-reviews-strip{display:flex;gap:8px;margin-top:18px;}
+  .mob-reviews-link{display:block;text-align:center;margin-top:10px;font-size:12.5px;color:#B09B3A;font-weight:600;}
 }
 .btn-outline:hover{border-color:#B09B3A;color:#9C8F20;}
 
@@ -215,6 +217,18 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 .burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 .mobile-menu{display:none;position:fixed;inset:0;background:#fff;z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:40px;}
 .mobile-menu.open{display:flex;}
+.mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border:none;background:#F5EFE3;border-radius:50%;font-size:22px;line-height:1;color:#2B2418;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;}
+.mobile-menu-close:hover{background:#EDE7DC;}
+
+/* Компактная лента отзывов — только мобильная версия */
+.mob-reviews-strip{display:none;}
+.mob-review-box{background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-radius:12px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0;text-decoration:none;transition:background .2s;}
+.mob-review-box:hover{background:rgba(255,255,255,.95);}
+.mob-review-avatar{width:22px;height:22px;border-radius:50%;background:#B09B3A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;}
+.mob-review-stars{color:#FFB800;font-size:10px;letter-spacing:1px;white-space:nowrap;}
+.mob-review-rating{background:rgba(176,155,58,.12);}
+.mob-review-score{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:#2B2418;line-height:1;}
+.mob-reviews-link{display:none;}
 .mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#2B2418;text-decoration:none;}
 .mobile-menu a:hover{color:#B09B3A;}
 .mobile-menu .mob-phone{font-size:18px;font-family:'Manrope',sans-serif;color:#5A5248;margin-top:16px;}
@@ -387,6 +401,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Закрыть меню">×</button>
   <a href="about.html" onclick="closeMobileMenu()">О клинике</a>
   <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
   <a href="faq.html" onclick="closeMobileMenu()">Пациентам</a>
@@ -413,6 +428,25 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
         <button class="btn-primary">Записаться на приём</button>
         <a href="faq.html" class="btn-outline" style="display:inline-flex;align-items:center;justify-content:center;">Отвечаем на вопросы</a>
       </div>
+      <div class="mob-reviews-strip">
+        <a class="mob-review-box" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">
+          <div class="mob-review-avatar">О</div>
+          <div class="mob-review-stars">★★★★★</div>
+        </a>
+        <a class="mob-review-box" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">
+          <div class="mob-review-avatar">И</div>
+          <div class="mob-review-stars">★★★★★</div>
+        </a>
+        <a class="mob-review-box" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">
+          <div class="mob-review-avatar">П</div>
+          <div class="mob-review-stars">★★★★★</div>
+        </a>
+        <div class="mob-review-box mob-review-rating">
+          <div class="mob-review-score">5.0</div>
+          <div class="mob-review-stars">★★★★★</div>
+        </div>
+      </div>
+      <a class="mob-reviews-link" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">Читать все 271 отзыв →</a>
     </div>
   </div>
   <!-- Облако тегов — абсолютный оверлей поверх правой части hero -->
