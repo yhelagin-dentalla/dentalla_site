@@ -62,11 +62,22 @@ nav a:hover{color:#9C8F20;}
 
 /* Hero мобильный адрес */
 .hero-mob-address{display:none;}
+.hero-mob-tagline{display:none;}
 .hero-mob-address-line{display:flex;align-items:center;justify-content:center;gap:8px;}
 .hero-mob-phone{color:#2B2418;text-decoration:none;}
 @media(max-width:640px){
   .info-item-hide{display:none !important;}
   .info-row{display:none;}
+  .hero-mob-tagline{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:16px;
+    color:#B09B3A;
+    letter-spacing:0.02em;
+    margin-bottom:8px;
+    text-align:center;
+  }
   .hero-mob-address{
     display:flex;
     flex-direction:column;
@@ -272,6 +283,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
   }
   .hero-content{display:flex;flex-direction:column;align-items:center;}
   .hero-content h1{font-size:36px;line-height:1.1;margin-bottom:16px;color:#2B2418;}
+  .h1-br-desktop{display:none;}
   .hero-sub{font-size:14px;line-height:1.65;margin-bottom:24px;max-width:100%;}
   .hero-btns{flex-direction:column;gap:10px;width:100%;max-width:280px;}
   .btn-primary{padding:13px 24px;font-size:14px;width:100%;}
@@ -424,14 +436,14 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
   <!-- Текст поверх видео слева -->
   <div class="hero-inner">
     <div class="hero-content">
+      <div class="hero-mob-tagline">Все грани стоматологии!</div>
       <div class="hero-mob-address">
         <div class="hero-mob-address-line">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;color:#B09B3A"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#B09B3A" stroke-width="1.5" fill="none"/><circle cx="12" cy="9" r="2.5" stroke="#B09B3A" stroke-width="1.5" fill="none"/></svg>
           Санкт-Петербург, Проспект Энгельса, 126к1 / ст. метро «Озерки»
         </div>
         <a href="tel:88126057207" class="hero-mob-phone">8 812 605 72 07</a>
       </div>
-      <h1>Мы лечим так,<br>как хотели бы<br>лечиться сами</h1>
+      <h1>Мы лечим так, <br class="h1-br-desktop">как хотели бы<br>лечиться сами</h1>
       <p class="hero-sub">Внимательно слушаем, честно объясняем и подбираем лучшее решение именно для вас.<br>Комфорт, безопасность и забота — в каждой детали.</p>
       <div class="hero-btns">
         <button class="btn-primary">Записаться на приём</button>
