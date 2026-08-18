@@ -184,7 +184,7 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
   </div>
   <div class="about-text">
     <h2>«ДЕНТАЛЛА» — авторская стоматологическая клиника</h2>
-    <p>Клиника открыта в 2013 году врачом-стоматологом <strong>Наной Леонтиевной Елагиной</strong>. С первого дня в основе работы — ответственное отношение к каждому пациенту и каждому клиническому случаю.</p>
+    <p>Клиника открыта в 2013 году врачом-стоматологом. С первого дня в основе работы — ответственное отношение к каждому пациенту и каждому клиническому случаю.</p>
     <p>Лечение здесь никогда не рассматривается как набор отдельных процедур. После тщательной диагностики наши специалисты определяют причину проблемы, оценивают состояние полости рта в целом и предлагают обоснованное, последовательное решение, рассчитанное на долгосрочный результат.</p>
   </div>
 </div>
@@ -255,8 +255,44 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
     <div class="f-col"><h4>Режим работы</h4><p>Пн–пт: 09:00–21:00<br>Сб: 09:00–16:00<br>Вс: выходной</p></div>
     <div class="f-col"><h4>Контакты</h4><p><a href="tel:88126057207">8 812 605 72 07</a></p><p style="margin-top:4px;"><a href="mailto:dentalla@inbox.ru">dentalla@inbox.ru</a></p></div>
   </div>
-  <div class="footer-bottom"><a href="https://kvrachu.info/files/Licenziya.pdf" target="_blank" style="color:inherit;text-decoration:underline;">Лицензия № 78-01-004014</a> · © ООО «Дентал Груп», 2026 · Информация и цены на сайте не являются публичной офертой · <a href="https://kvrachu.info/files/Politika.pdf" target="_blank" style="color:#8A7C68;text-decoration:underline;">Политика обработки персональных данных</a></div>
+  <div class="footer-bottom"><a href="https://kvrachu.info/files/Licenziya.pdf" target="_blank" style="color:inherit;text-decoration:underline;">Лицензия № 78-01-004014</a> · © ООО «Дентал Груп», 2026 · <a href="#" onclick="event.preventDefault();openRequisitesModal();" style="color:#8A7C68;text-decoration:underline;">Реквизиты ООО «Дентал Груп»</a> · Информация и цены на сайте не являются публичной офертой · <a href="https://kvrachu.info/files/Politika.pdf" target="_blank" style="color:#8A7C68;text-decoration:underline;">Политика обработки персональных данных</a></div>
 </footer>
+
+<!-- МОДАЛЬНОЕ ОКНО РЕКВИЗИТОВ -->
+<div id="requisites-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:20px;max-width:520px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;max-height:88vh;overflow-y:auto;">
+    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;position:sticky;top:0;">
+      <button onclick="closeRequisitesModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#2B2418;margin-bottom:2px;">Реквизиты</h2>
+      <p style="font-size:13px;color:#7A7060;">ООО «Дентал Груп»</p>
+    </div>
+    <div style="padding:26px 32px 30px;font-size:14px;line-height:1.85;color:#4A3E30;">
+      <p style="margin-bottom:14px;"><strong>Полное наименование:</strong><br>Общество с ограниченной ответственностью «Дентал Груп»</p>
+      <p style="margin-bottom:14px;"><strong>Адрес:</strong><br>194356, Санкт-Петербург, пр. Энгельса, д. 126, корп. 1, лит. А, пом. 22-Н</p>
+      <p style="margin-bottom:14px;">
+        <strong>ИНН:</strong> 7802827239<br>
+        <strong>КПП:</strong> 780201001<br>
+        <strong>ОГРН:</strong> 1137847210698
+      </p>
+      <p style="margin-bottom:14px;">
+        <strong>Р/С:</strong> 40702810602100020318<br>
+        в ОАО АКБ «АВАНГАРД»<br>
+        ИНН 7702021163, КПП 775001001<br>
+        БИК 044525201<br>
+        К/С 30101810000000000201
+      </p>
+      <p style="margin-bottom:14px;"><strong>Телефон:</strong> <a href="tel:88126057207" style="color:#B09B3A;">8 (812) 605-72-07</a><br><strong>Email:</strong> <a href="mailto:dentalla@inbox.ru" style="color:#B09B3A;">dentalla@inbox.ru</a></p>
+      <p style="margin-bottom:0;"><strong>Генеральный директор:</strong><br>Трифоненко Лали Леонтиевна</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openRequisitesModal(){var m=document.getElementById('requisites-modal');m.style.display='flex';document.body.style.overflow='hidden';}
+function closeRequisitesModal(){var m=document.getElementById('requisites-modal');m.style.display='none';document.body.style.overflow='';}
+document.getElementById('requisites-modal').addEventListener('click',function(e){if(e.target===this)closeRequisitesModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeRequisitesModal();});
+</script>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
