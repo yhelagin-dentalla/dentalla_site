@@ -289,6 +289,7 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
 
 <script>
 function openRequisitesModal(){var m=document.getElementById('requisites-modal');m.style.display='flex';document.body.style.overflow='hidden';}
+if (window.location.hash === '#requisites') { openRequisitesModal(); }
 function closeRequisitesModal(){var m=document.getElementById('requisites-modal');m.style.display='none';document.body.style.overflow='';}
 document.getElementById('requisites-modal').addEventListener('click',function(e){if(e.target===this)closeRequisitesModal();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeRequisitesModal();});
