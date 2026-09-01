@@ -701,6 +701,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       <p><a href="https://kvrachu.info/files/Licenziya.pdf" target="_blank">Лицензия № 78-01-004014</a></p>
       <p style="margin-top:4px;"><a href="https://kvrachu.info/files/Politika.pdf" target="_blank">Политика обработки персональных данных</a></p>
       <p style="margin-top:4px;"><a href="#" onclick="event.preventDefault();openRequisitesModal();">Реквизиты ООО «Дентал Груп»</a></p>
+      <p style="margin-top:4px;"><a href="#" onclick="event.preventDefault();openSupervisoryModal();">Надзорные органы</a></p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -744,6 +745,38 @@ document.getElementById('requisites-modal').addEventListener('click',function(e)
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeRequisitesModal();});
 </script>
 
+<!-- МОДАЛЬНОЕ ОКНО НАДЗОРНЫХ ОРГАНОВ -->
+<div id="supervisory-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:20px;max-width:520px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;max-height:88vh;overflow-y:auto;">
+    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;position:sticky;top:0;">
+      <button onclick="closeSupervisoryModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#2B2418;margin-bottom:2px;">Надзорные органы</h2>
+      <p style="font-size:13px;color:#7A7060;">Куда обратиться с жалобой на качество медицинских услуг</p>
+    </div>
+    <div style="padding:26px 32px 30px;font-size:14px;line-height:1.85;color:#4A3E30;">
+      <p style="margin-bottom:16px;">
+        <strong>Территориальный орган Росздравнадзора по г. Санкт-Петербургу и Ленинградской области</strong><br>
+        Адрес: 197342, Санкт-Петербург, ул. Кантемировская, д. 4, лит. А<br>
+        Телефон приёмной: <a href="tel:+78123146789" style="color:#B09B3A;">8 (812) 314-67-89</a><br>
+        Горячая линия Росздравнадзора: <a href="tel:88005509903" style="color:#B09B3A;">8 800 550-99-03</a><br>
+        Сайт: <a href="https://78reg.roszdravnadzor.gov.ru/" target="_blank" style="color:#B09B3A;">78reg.roszdravnadzor.gov.ru</a>
+      </p>
+      <p style="margin-bottom:0;">
+        <strong>Управление Роспотребнадзора по городу Санкт-Петербургу</strong><br>
+        Адрес: 191025, Санкт-Петербург, ул. Стремянная, д. 19<br>
+        Телефон: <a href="tel:+78127644238" style="color:#B09B3A;">8 (812) 764-42-38</a><br>
+        Сайт: <a href="https://78.rospotrebnadzor.ru/" target="_blank" style="color:#B09B3A;">78.rospotrebnadzor.ru</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openSupervisoryModal(){var m=document.getElementById('supervisory-modal');m.style.display='flex';document.body.style.overflow='hidden';}
+function closeSupervisoryModal(){var m=document.getElementById('supervisory-modal');m.style.display='none';document.body.style.overflow='';}
+document.getElementById('supervisory-modal').addEventListener('click',function(e){if(e.target===this)closeSupervisoryModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSupervisoryModal();});
+</script>
 
 <script>
 var tagCloudShown = false;
