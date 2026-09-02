@@ -448,5 +448,20 @@ function closeMobileMenu(){
   document.body.style.overflow='';
 }
 </script>
+
+<!-- УВЕДОМЛЕНИЕ ОБ УСПЕШНОЙ ОТПРАВКЕ ФОРМЫ -->
+<div id="dentalla-toast" style="display:none;position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:3000;background:#2B2418;color:#EFE8DA;padding:14px 26px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 12px 32px rgba(0,0,0,0.28);text-align:center;max-width:90%;">✓ Заявка отправлена. Мы скоро свяжемся с вами.</div>
+<script>
+if (window.location.search.indexOf('sent=1') !== -1) {
+  var dToast = document.getElementById('dentalla-toast');
+  if (dToast) {
+    dToast.style.display = 'block';
+    setTimeout(function(){ dToast.style.display = 'none'; }, 6000);
+  }
+  if (window.history && window.history.replaceState) {
+    window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+  }
+}
+</script>
 </body>
 </html>
