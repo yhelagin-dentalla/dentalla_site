@@ -49,6 +49,13 @@ if ($phone !== '') {
 
 @mail($to, $encodedSubject, $body, $headers);
 
-$next = dentalla_field('_next', 'contacts.html?sent=1');
+// Возвращаем пользователя на ту же страницу, откуда была отправка формы
+$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+if ($referer !== '') {
+    $refererPath = preg_replace('/[?#].*$/', '', $referer);
+    $next = $refererPath . '?sent=1';
+} else {
+    $next = dentalla_field('_next', 'index.html?sent=1');
+}
 header('Location: ' . $next);
 exit;
