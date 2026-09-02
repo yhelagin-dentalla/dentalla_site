@@ -348,11 +348,9 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
     </div>
     <div class="contact-card" id="form">
       <h3>Записаться на приём</h3>
-      <form id="appointment-form" action="https://formsubmit.co/dentalla@inbox.ru" method="POST">
+      <form id="appointment-form" action="send-form.php" method="POST">
         <input type="hidden" name="_subject" value="Новая запись на приём — ДЕНТАЛЛА">
         <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px;">
           <div class="form-group">
             <label class="form-label">Ваше имя *</label>
@@ -460,10 +458,8 @@ if (window.location.search.includes('sent=1')) {
       <p style="font-size:13px;color:#7A7060;">Заполните хотя бы одно поле — мы перезвоним и подберём удобное время</p>
     </div>
     <div style="padding:24px 32px 28px;">
-      <form id="appt-form" action="https://formsubmit.co/dentalla@inbox.ru" method="POST">
+      <form id="appt-form" action="send-form.php" method="POST">
         <input type="hidden" name="_subject" value="Обращение с сайта">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
           <div>
