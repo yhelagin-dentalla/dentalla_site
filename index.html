@@ -2,14 +2,10 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Стоматологическая клиника ДЕНТАЛЛА в Санкт-Петербурге. Лечение, имплантация, ортодонтия, детская стоматология. Проспект Энгельса, 126к1, метро Озерки. Запись по телефону 8 812 605 72 07.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ДЕНТАЛЛА — Стоматология в Санкт-Петербурге</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -18,7 +14,7 @@ a{text-decoration:none;color:inherit;}
 button{cursor:pointer;font-family:inherit;}
 
 /* ── HEADER ── */
-header{background:#fff;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid #F0EBE3;position:sticky;top:0;z-index:100;}
+header{background:#fff;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid #F0EBE3;}
 .logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;letter-spacing:0.06em;color:#2B2418;}
 nav{display:flex;gap:36px;}
 nav a{font-size:13.5px;color:#5A5248;font-weight:400;letter-spacing:0.01em;transition:color .2s;}
@@ -32,11 +28,11 @@ nav a:hover{color:#9C8F20;}
 /* ── HERO full-width с видео ── */
 .hero-wrap{padding:0;}
 .hero-full{position:relative;overflow:hidden;display:flex;align-items:center;
-  width:100%;min-height:580px;max-height:90vh;background:#FFFFFF;}
+  width:100%;aspect-ratio:2720/2160;min-height:480px;max-height:92vh;background:#FFFFFF;}
 .hero-full video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;}
 .hero-full-fade{position:absolute;inset:0;pointer-events:none;background:
-  linear-gradient(90deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.55) 28%, rgba(255,255,255,0.0) 55%),
-  linear-gradient(180deg, rgba(255,255,255,0.55) 0%, transparent 15%, transparent 85%, rgba(255,255,255,0.55) 100%);}
+  linear-gradient(180deg, rgba(255,255,255,0.92) 0%, transparent 18%, transparent 78%, rgba(255,255,255,0.92) 100%),
+  linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 25%, rgba(255,255,255,0.4) 45%, transparent 62%, rgba(255,255,255,0.0) 100%);}
 .hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:80px 40px;
   display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;width:100%;}
 .hero-content h1{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:500;line-height:1.08;color:#2B2418;margin-bottom:22px;letter-spacing:-0.01em;}
@@ -48,69 +44,18 @@ nav a:hover{color:#9C8F20;}
 .btn-outline:hover{border-color:#B09B3A;color:#9C8F20;}
 
 /* ── Облако тегов ── */
-.tag-cloud{position:absolute;top:50%;right:2%;width:52%;height:68%;transform:translateY(-50%);z-index:3;pointer-events:auto;overflow:hidden;}
+.tag-cloud{position:absolute;top:50%;right:0;width:55%;height:50%;transform:translateY(-50%);z-index:3;pointer-events:all;overflow:visible;}
 .tag{position:absolute;font-family:'Cormorant Garamond',serif;font-style:italic;
-  color:#2B2418;opacity:0;cursor:pointer;white-space:nowrap;line-height:1.15;text-decoration:none;
-  transform:translateY(10px);transform-origin:center center;
-  transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1),color .2s ease,text-shadow .2s ease;}
-.tag:hover{color:#B09B3A !important;z-index:10;text-shadow:0 8px 24px rgba(176,155,58,.18);}
-.tag.sz1{font-size:20px;font-weight:400;color:#9B9080;filter:blur(.15px);}
-.tag.sz2{font-size:26px;font-weight:400;color:#6B6050;filter:blur(.08px);}
+  color:#2B2418;opacity:0;cursor:pointer;white-space:nowrap;line-height:1.2;text-decoration:none;}
+.tag:hover{color:#B09B3A !important;}
+.tag.sz1{font-size:20px;font-weight:400;color:#9B9080;}
+.tag.sz2{font-size:26px;font-weight:400;color:#6B6050;}
 .tag.sz3{font-size:32px;font-weight:500;color:#4A3E30;}
-.tag.sz4{font-size:40px;font-weight:600;color:#2B2418;text-shadow:0 8px 28px rgba(43,36,24,.07);}
-.tag.sz5{font-size:44px;font-weight:600;color:#1A1208;text-shadow:0 10px 34px rgba(43,36,24,.09);}
+.tag.sz4{font-size:40px;font-weight:600;color:#2B2418;}
+.tag.sz5{font-size:50px;font-weight:600;color:#1A1208;}
 
-/* Hero мобильный адрес */
-.hero-mob-address{display:none;}
-.hero-mob-address-line{display:flex;align-items:center;justify-content:center;gap:8px;}
-.hero-mob-phone{color:#2B2418;text-decoration:none;}
-@media(max-width:640px){
-  .info-item-hide{display:none !important;}
-  .info-row{display:none;}
-  .hero-mob-address{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:6px;
-    font-size:13px;
-    color:#5A5248;
-    margin-bottom:16px;
-    line-height:1.5;
-    text-align:center;
-  }
-  .hero-mob-phone{font-size:16px;font-weight:700;}
-}
 /* sc-card base — анимация управляется через JS */
 .sc-card{transition:box-shadow .25s,transform .25s;}
-.scenarios-heading{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:28px;
-  font-weight:400;
-  color:#2B2418;
-  margin-bottom:24px;
-  min-height:40px;
-  opacity:0;
-  transition:opacity .4s ease;
-  display:none;
-}
-.scenarios-heading.visible{opacity:1;}
-.tasks-heading{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:34px;color:#2B2418;margin-bottom:28px;}
-.tasks-heading .accent{color:#B09B3A;font-style:normal;}
-.typewriter-cursor{
-  display:inline-block;
-  color:#B09B3A;
-  font-weight:300;
-  animation:blink .75s step-end infinite;
-  margin-left:1px;
-}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-@media(max-width:640px){
-  .scenarios-heading{display:block;font-size:30px;line-height:1.15;margin-bottom:16px;min-height:36px;}
-  .mob-reviews-heading{display:block !important;text-align:center;font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#5A5248;margin-top:22px;margin-bottom:8px;}
-  .mob-reviews-strip{display:flex !important;gap:8px;margin-top:0;}
-  .mob-reviews-link{display:block;text-align:center;margin-top:10px;font-size:12.5px;color:#B09B3A;font-weight:600;}
-}
 .btn-outline:hover{border-color:#B09B3A;color:#9C8F20;}
 
 /* ── INFO ROW ── */
@@ -122,13 +67,21 @@ nav a:hover{color:#9C8F20;}
 
 /* ── SCENARIOS ── */
 .scenarios{padding:48px 40px;max-width:1280px;margin:0 auto;}
+/* Заголовок секции */
+.scenarios-head{text-align:center;margin-bottom:36px;}
+.scenarios-eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:500;color:#8A7E72;letter-spacing:0.08em;text-transform:lowercase;margin-bottom:10px;}
+.scenarios-line{display:inline-block;width:32px;height:1px;background:#C8BFB2;}
+.scenarios-title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;color:#2B2418;line-height:1.1;margin:0;}
 .scenarios-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch;}
 .sc-card{border:1px solid #EDE7DC;border-radius:16px;overflow:hidden;background:#fff;transition:box-shadow .25s,transform .2s;cursor:pointer;display:flex;flex-direction:column;}
-.sc-card:hover{box-shadow:0 10px 36px rgba(43,36,24,0.10);transform:translateY(-3px);}
+.sc-card:hover{box-shadow:0 10px 36px rgba(43,36,24,0.18);transform:translateY(-3px);}
 .sc-top{padding:22px 20px 12px;flex:0 0 auto;}
 .sc-icon{width:44px;height:44px;background:#F5EFE4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.sc-title{font-family:'Manrope',sans-serif;font-size:17px;font-weight:700;color:#1A1410;margin-bottom:6px;line-height:1.2;text-shadow:0 1px 8px rgba(255,255,255,0.9),0 0px 20px rgba(255,255,255,0.7);}
-.sc-text{font-size:13px;color:#2B2418;line-height:1.45;font-weight:500;text-shadow:0 1px 8px rgba(255,255,255,1),0 0px 20px rgba(255,255,255,1);}
+.sc-title{font-family:'Manrope',sans-serif;font-size:17px;font-weight:700;color:#1A1410;margin-bottom:5px;line-height:1.2;}
+.sc-text{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.5;font-weight:500;}
+/* Стрелка-кнопка на карточке */
+.sc-arrow{width:36px;height:36px;background:#B09B3A;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .2s;}
+.sc-card:hover .sc-arrow{background:#9C8F20;transform:translateX(2px);}
 .sc-photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
 /* SVG photo placeholders */
 .sc-ph{width:100%;flex:1;min-height:160px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
@@ -202,7 +155,7 @@ nav a:hover{color:#9C8F20;}
 
 /* ── FOOTER ── */
 footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
-.footer-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
 .f-logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;letter-spacing:0.06em;color:#EAE3D6;margin-bottom:8px;}
 .f-tagline{font-size:12px;color:#6A6050;line-height:1.6;}
 .f-col h4{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6A6050;margin-bottom:14px;}
@@ -210,45 +163,17 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 .f-col a:hover{color:#C8BE48;}
 .footer-bottom{border-top:1px solid #3A3025;padding-top:20px;font-size:12px;color:#5A5040;text-align:center;max-width:1280px;margin:0 auto;}
 
-/* ── ПЛАНШЕТ ── */
-@media(max-width:1100px) and (min-width:961px){
-  .tag-cloud{width:50%;height:72%;}
-}
-
-/* ── МОБИЛЬНЫЙ HEADER ── */
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;z-index:200;}
-.burger span{display:block;width:22px;height:2px;background:#2B2418;border-radius:2px;transition:.3s;}
-.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-.burger.open span:nth-child(2){opacity:0;}
-.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mobile-menu{display:none;position:fixed;inset:0;background:#fff;z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:40px;}
-.mobile-menu.open{display:flex;}
-.mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border:none;background:#F5EFE3;border-radius:50%;font-size:22px;line-height:1;color:#2B2418;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;}
-.mobile-menu-close:hover{background:#EDE7DC;}
-
-/* Компактная лента отзывов — только мобильная версия */
-.mob-reviews-strip{display:none;}
-.mob-reviews-heading{display:none;}
-.yandex-red{color:#FC3F1D;font-weight:800;font-family:Arial,Helvetica,sans-serif;}
-.mob-review-box{background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-radius:12px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0;text-decoration:none;transition:background .2s;}
-.mob-review-box:hover{background:rgba(255,255,255,.95);}
-.mob-review-avatar{width:22px;height:22px;border-radius:50%;background:#B09B3A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;}
-.mob-review-stars{color:#FFB800;font-size:10px;letter-spacing:1px;white-space:nowrap;}
-.mob-review-rating{background:rgba(176,155,58,.12);}
-.mob-review-score{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:#2B2418;line-height:1;}
-.mob-reviews-link{display:none;}
-.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#2B2418;text-decoration:none;}
-.mobile-menu a:hover{color:#B09B3A;}
-.mobile-menu .mob-phone{font-size:18px;font-family:'Manrope',sans-serif;color:#5A5248;margin-top:16px;}
-.mobile-menu .mob-btn{background:#B09B3A;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
-
-/* ── ПЛАНШЕТ 960px ── */
 @media(max-width:960px){
   header{padding:0 20px;}
   nav{display:none;}
-  .burger{display:flex;}
-  .h-phone{display:none;}
-  .btn-header{display:none;}
+  .hero-inner{grid-template-columns:1fr;gap:28px;padding:56px 20px;}
+  .hero-content h1{font-size:36px;}
+  .tag-cloud{min-height:320px;}
+  .info-inner{grid-template-columns:1fr;padding:0 20px;}
+  .info-item{border-right:none;border-bottom:1px solid #EDE7DC;}
+  .scenarios{padding:32px 20px;}
+  .scenarios-head{margin-bottom:24px;}
+  .scenarios-title{font-size:32px;}
   .scenarios-grid{grid-template-columns:1fr 1fr;}
   .why{padding:48px 20px;}
   .why-grid{grid-template-columns:1fr;}
@@ -258,133 +183,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
   .prices-cards{grid-template-columns:1fr 1fr;}
   .cta-inner{flex-direction:column;align-items:flex-start;}
   footer{padding:32px 20px 20px;}
-}
-
-/* ── МОБИЛЬНЫЙ 640px ── */
-@media(max-width:640px){
-  /* Hero — мобильный */
-  .hero-full{min-height:auto;max-height:none;background:#F7F3EA;}
-  .hero-full video{display:none;}           /* убираем зуб/видео на мобильных */
-  .hero-full-fade{display:none;}
-  .hero-inner{
-    grid-template-columns:1fr;
-    padding:12px 20px 40px;
-    text-align:center;
-    justify-items:center;
-  }
-  .hero-content{display:flex;flex-direction:column;align-items:center;}
-  .hero-content h1{font-size:26px;line-height:1.25;margin-bottom:14px;color:#2B2418;}
-  .hero-sub{font-size:14px;line-height:1.65;margin-bottom:24px;max-width:100%;}
-  .hero-btns{flex-direction:column;gap:10px;width:100%;max-width:280px;}
-  .btn-primary{padding:13px 24px;font-size:14px;width:100%;}
-  .btn-outline{padding:12px 24px;font-size:14px;width:100%;}
-  .tag-cloud{display:none;}
-
-  /* Info row */
-  .info-inner{grid-template-columns:1fr;padding:0 20px;}
-  .info-item{border-right:none;border-bottom:1px solid #EDE7DC;padding:14px 0;font-size:13px;}
-  .info-item:last-child{border-bottom:none;}
-
-  /* Карточки услуг — 2 в ряд */
-  .scenarios{padding:28px 12px;}
-  .tasks-heading{font-size:24px;margin-bottom:16px;}
-  .scenarios-grid{grid-template-columns:1fr 1fr;gap:10px;}
-  .sc-card{border-radius:12px;}
-  .sc-card-img{aspect-ratio:3/4;}
-  .sc-label{font-size:15px;line-height:1.2;}
-  .sc-sub{font-size:11px;}
-
-  /* Why */
-  .why{padding:36px 16px;}
-  .why-grid{grid-template-columns:1fr;gap:16px;}
-  .why-card{padding:22px 18px;}
-
-  /* Врачи — вертикальные карточки */
-  .doctors{padding:32px 0 32px 12px;}
-  .doctors .section-header{padding-right:12px;margin-bottom:16px;}
-  .section-title{font-size:26px;}
-  .doctors-carousel{gap:10px;padding-bottom:16px;padding-right:12px;}
-  .doc-card{
-    width:150px;
-    flex-direction:column;
-    border-radius:14px;
-  }
-  .doc-photo{
-    width:100%;
-    min-height:180px;
-    flex-shrink:0;
-    border-radius:14px 14px 0 0;
-  }
-  .doc-photo img{border-radius:14px 14px 0 0;}
-  .doc-info{
-    padding:10px 10px 12px;
-    justify-content:flex-start;
-  }
-  .doc-name{font-size:13px;font-weight:600;line-height:1.25;margin-bottom:4px;}
-  .doc-role{font-size:11px;line-height:1.35;margin-bottom:4px;}
-  .doc-exp{font-size:11px;}
-
-  /* Модал врача — мобильный */
-  .doc-modal{padding:10px;}
-  .doc-modal-box{border-radius:16px;max-height:92vh;}
-  .doc-modal-close{top:10px;right:10px;width:30px;height:30px;font-size:16px;}
-  /* На мобильном скрываем боковую шапку с ФИО, показываем мобильную */
-  .doc-modal-head{display:none !important;}
-  .doc-modal-mob-head{display:block !important;}
-  /* Фото на всю ширину */
-  .doc-modal-hero{grid-template-columns:1fr;}
-  .doc-modal-photo{width:100%;min-height:220px;max-height:260px;border-radius:16px 16px 0 0;}
-  .doc-modal-photo img{object-position:center 15%;}
-  /* Показываем мобильную шапку с ФИО под фото */
-  .doc-modal-mob-head{display:block;}
-  .doc-modal-body{padding:14px 16px 18px;}
-  .doc-modal-bio{font-size:13px;margin-bottom:12px;line-height:1.6;}
-  .doc-modal-edu{font-size:12px;margin-bottom:16px;padding-top:10px;}
-  .doc-modal-services h3{font-size:17px;margin-bottom:10px;}
-  .doc-modal-tags{gap:6px;margin-bottom:16px;}
-  .doc-modal-tag{font-size:12px;padding:5px 12px;}
-  .doc-modal-btn{width:100%;text-align:center;}
-
-  /* Цены */
-  .prices{padding:32px 16px;grid-template-columns:1fr;gap:20px;}
-  .prices-cards{grid-template-columns:1fr;}
-  .price-card{padding:22px 18px;}
-
-  /* Гарантии */
-  .guarantee{padding:0 16px;}
-  .guarantee-inner{flex-direction:column;gap:12px;padding:18px 0;}
-
-  /* CTA */
-  .cta{margin:0 16px;border-radius:16px;}
-  .cta-inner{flex-direction:column;align-items:flex-start;gap:20px;padding:32px 20px;}
-  .cta-text h2{font-size:28px;}
-
-  /* Footer */
-  footer{padding:32px 16px 20px;}
-  .footer-inner{grid-template-columns:1fr;gap:18px;text-align:center;justify-items:center;}
-  .f-col{width:100%;}
-  .f-col h4{margin-bottom:8px;}
-  .f-col p,.f-col a{line-height:1.4;}
-  .footer-bottom{font-size:11px;text-align:center;line-height:1.6;}
-
-  /* Модальное окно записи */
-  #appt-modal{padding:12px;}
-  #appt-modal > div{border-radius:16px;}
-  #appt-modal h2{font-size:22px!important;}
-  #appt-modal > div > div:last-child{padding:18px 18px 22px!important;}
-  #appt-modal > div > div:first-child{padding:22px 18px 16px!important;}
-
-  /* Кнопка В начало */
-  .back-to-top{bottom:20px;right:16px;padding:10px 16px;font-size:12px;}
-}
-
-/* ── МОБИЛЬНЫЙ 390px (маленькие экраны) ── */
-@media(max-width:390px){
-  .hero-content h1{font-size:32px;}
-  .doc-card{width:138px;}
-  .doc-photo{min-height:160px;}
-  .doc-name{font-size:12px;}
-  .section-title{font-size:22px;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
 }
 </style>
 </head>
@@ -394,10 +193,12 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 <header>
   <a href="index.html"><img src="logo_t.png" alt="Денталла" style="height:38px;width:auto;display:block;"></a>
   <nav>
-    <a href="about.html">О клинике</a>
-    <a href="services.html">Услуги и цены</a>
-    <a href="faq.html">Пациентам</a>
-    <a href="contacts.html">Контакты</a>
+    <a href="index.html">О клинике</a>
+    <a href="services.html">Услуги</a>
+    <a href="index.html#doctors">Врачи</a>
+    <a href="services.html">Цены</a>
+    <a href="index.html">Пациентам</a>
+    <a href="index.html#contacts">Контакты</a>
   </nav>
   <div class="header-right">
     <div class="h-phone">
@@ -405,60 +206,25 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       8 812 605 72 07
     </div>
     <button class="btn-header">Записаться на приём</button>
-    <button class="burger" id="burger" aria-label="Меню" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
-
-<div class="mobile-menu" id="mobile-menu">
-  <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Закрыть меню">×</button>
-  <a href="about.html" onclick="closeMobileMenu()">О клинике</a>
-  <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
-  <a href="faq.html" onclick="closeMobileMenu()">Пациентам</a>
-  <a href="contacts.html" onclick="closeMobileMenu()">Контакты</a>
-  <span class="mob-phone">☎ 8 812 605 72 07</span>
-  <button class="mob-btn" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
-</div>
 
 <!-- HERO -->
 <div class="hero-wrap">
 <section class="hero-full">
-  <video id="hero-video" muted playsinline onended="this.pause()" preload="none"></video>
+  <video id="hero-video" autoplay muted playsinline>
+    <source src="hero_video3.mp4" type="video/mp4">
+  </video>
   <div class="hero-full-fade"></div>
   <!-- Текст поверх видео слева -->
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-mob-address">
-        <div class="hero-mob-address-line">
-          Санкт-Петербург, Проспект Энгельса, 126к1 / ст. метро «Озерки»
-        </div>
-        <a href="tel:88126057207" class="hero-mob-phone">8 812 605 72 07</a>
-      </div>
-      <h1>Мы лечим так, как<br>хотели бы лечиться сами</h1>
+      <h1>Мы лечим так,<br>как хотели бы<br>лечиться сами</h1>
       <p class="hero-sub">Внимательно слушаем, честно объясняем и подбираем лучшее решение именно для вас.<br>Комфорт, безопасность и забота — в каждой детали.</p>
       <div class="hero-btns">
         <button class="btn-primary">Записаться на приём</button>
-        <a href="faq.html" class="btn-outline" style="display:inline-flex;align-items:center;justify-content:center;">Отвечаем на вопросы</a>
+        <button class="btn-outline">Выбрать направление</button>
       </div>
-      <div class="mob-reviews-heading">Отзывы <span class="yandex-red">Яндекс</span></div>
-      <div class="mob-reviews-strip">
-        <a class="mob-review-box" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">
-          <div class="mob-review-avatar">О</div>
-          <div class="mob-review-stars">★★★★★</div>
-        </a>
-        <a class="mob-review-box" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">
-          <div class="mob-review-avatar">И</div>
-          <div class="mob-review-stars">★★★★★</div>
-        </a>
-        <a class="mob-review-box" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">
-          <div class="mob-review-avatar">П</div>
-          <div class="mob-review-stars">★★★★★</div>
-        </a>
-        <div class="mob-review-box mob-review-rating">
-          <div class="mob-review-score">5.0</div>
-          <div class="mob-review-stars">★★★★★</div>
-        </div>
-      </div>
-      <a class="mob-reviews-link" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">Читать все 271 отзыв →</a>
     </div>
   </div>
   <!-- Облако тегов — абсолютный оверлей поверх правой части hero -->
@@ -489,15 +255,11 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5C6.51 1.5 4.5 3.51 4.5 6c0 3.75 4.5 10.5 4.5 10.5S13.5 9.75 13.5 6c0-2.49-2.01-4.5-4.5-4.5zm0 6.75A2.25 2.25 0 1 1 9 3.75a2.25 2.25 0 0 1 0 4.5z" fill="#B09B3A"/></svg>
       Санкт-Петербург, Проспект Энгельса, 126к1
     </div>
-    <div class="info-item info-item-hide" style="justify-content:center;">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M10 2C6.5 2 3.5 4.5 3.5 7.8c0 1.2.4 2.4 1.1 3.4L10 18l5.4-6.8c.7-1 1.1-2.2 1.1-3.4C16.5 4.5 13.5 2 10 2z" stroke="#B09B3A" stroke-width="1.4" fill="none"/>
-        <circle cx="10" cy="7.5" r="1.8" fill="#B09B3A"/>
-        <path d="M6.5 13.5 Q8 11 10 10.5 Q12 11 13.5 13.5" stroke="#B09B3A" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-      </svg>
-      Все виды стоматологических услуг
+    <div class="info-item" style="justify-content:center;">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#B09B3A" stroke-width="1.4"/><path d="M9 5v4.5l3 1.5" stroke="#B09B3A" stroke-width="1.4" stroke-linecap="round"/></svg>
+      Ежедневно 9:00 – 21:00
     </div>
-    <div class="info-item info-item-hide" style="justify-content:flex-end;">
+    <div class="info-item" style="justify-content:flex-end;">
       <!-- Логотип метро Санкт-Петербург -->
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="10" cy="10" r="9.5" fill="#B09B3A"/>
@@ -510,59 +272,63 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 
 <!-- SCENARIOS -->
 <div class="scenarios">
-  <h2 class="tasks-heading">Поставьте нам задачу<span class="accent">:</span></h2>
-  <div class="scenarios-heading">
-    <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+  <!-- Заголовок секции -->
+  <div class="scenarios-head">
+    <div class="scenarios-eyebrow">
+      <span class="scenarios-line"></span>
+      поставьте нам задачу
+      <span class="scenarios-line"></span>
+    </div>
+    <h2 class="scenarios-title">Что вас беспокоит?</h2>
   </div>
+
   <div class="scenarios-grid">
 
-    <div class="sc-card" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;" onclick="window.location.href='toothache.html'">
-      <img src="toothache.webp" alt="Болит зуб" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:16px;">
-      <div style="position:absolute;inset:0;border-radius:16px;background:
-        linear-gradient(180deg, rgba(255,255,255,0.82) 0%, transparent 28%, transparent 55%, rgba(255,255,255,0.85) 100%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 20%, transparent 80%, rgba(255,255,255,0.3) 100%);
-      "></div>
-      <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 16px;">
-        <div class="sc-title">Болит зуб</div>
-        <div class="sc-text">Снимем боль и решим причину</div>
+    <div class="sc-card" onclick="openApptModal()" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;">
+      <img src="toothache.png" alt="Болит зуб" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:16px;">
+      <div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.55) 100%);"></div>
+      <div class="sc-bottom" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+        <div>
+          <div class="sc-title" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">Болит зуб</div>
+          <div class="sc-text" style="color:rgba(255,255,255,0.85);text-shadow:none;">Снимем боль и решим причину</div>
+        </div>
+        <div class="sc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5" stroke="#2B2418" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
 
-    <div class="sc-card" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;" onclick="window.location.href='smile.html'">
-      <img src="smile.webp" alt="Хочу красивую улыбку" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:16px;">
-      <div style="position:absolute;inset:0;border-radius:16px;background:
-        linear-gradient(180deg, rgba(255,255,255,0.82) 0%, transparent 28%, transparent 55%, rgba(255,255,255,0.85) 100%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 20%, transparent 80%, rgba(255,255,255,0.3) 100%);
-      "></div>
-      <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 16px;">
-        <div class="sc-title">Хочу красивую улыбку</div>
-        <div class="sc-text">Эстетическая стоматология и отбеливание</div>
+    <div class="sc-card" onclick="openApptModal()" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;">
+      <img src="smile.png" alt="Хочу красивую улыбку" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:16px;">
+      <div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.55) 100%);"></div>
+      <div class="sc-bottom" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+        <div>
+          <div class="sc-title" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">Хочу красивую улыбку</div>
+          <div class="sc-text" style="color:rgba(255,255,255,0.85);text-shadow:none;">Эстетическая стоматология и отбеливание</div>
+        </div>
+        <div class="sc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5" stroke="#2B2418" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
 
-    <div class="sc-card" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;" onclick="window.location.href='implant.html'">
-      <img src="implant2.webp" alt="Нужна имплантация" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;border-radius:16px;">
-      <!-- растворение по всем краям -->
-      <div style="position:absolute;inset:0;border-radius:16px;background:
-        linear-gradient(180deg, rgba(255,255,255,0.85) 0%, transparent 28%, transparent 55%, rgba(255,255,255,0.85) 100%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 22%, transparent 78%, rgba(255,255,255,0.3) 100%);
-      "></div>
-      <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 16px;">
-        <div class="sc-title">Нужна имплантация</div>
-        <div class="sc-text">Надёжные импланты и опытные хирурги</div>
+    <div class="sc-card" onclick="openApptModal()" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;">
+      <img src="implant2.png" alt="Нужна имплантация" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;border-radius:16px;">
+      <div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.55) 100%);"></div>
+      <div class="sc-bottom" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+        <div>
+          <div class="sc-title" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">Нужна имплантация</div>
+          <div class="sc-text" style="color:rgba(255,255,255,0.85);text-shadow:none;">Надёжные импланты и опытные хирурги</div>
+        </div>
+        <div class="sc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5" stroke="#2B2418" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
 
-    <div class="sc-card" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;" onclick="window.location.href='child.html'">
-      <img src="child.webp" alt="Детская стоматология" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;border-radius:16px;">
-      <!-- растворение по всем краям -->
-      <div style="position:absolute;inset:0;border-radius:16px;background:
-        linear-gradient(180deg, rgba(255,255,255,0.85) 0%, transparent 28%, transparent 55%, rgba(255,255,255,0.85) 100%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 22%, transparent 78%, rgba(255,255,255,0.3) 100%);
-      "></div>
-      <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 16px;">
-        <div class="sc-title">Ищу детского стоматолога</div>
-        <div class="sc-text">Лечение детей без страха и слёз!</div>
+    <div class="sc-card" onclick="openApptModal()" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;">
+      <img src="child.png" alt="Детская стоматология" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;border-radius:16px;">
+      <div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.55) 100%);"></div>
+      <div class="sc-bottom" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+        <div>
+          <div class="sc-title" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">Ищу детского стоматолога</div>
+          <div class="sc-text" style="color:rgba(255,255,255,0.85);text-shadow:none;">Лечение детей без страха и слёз</div>
+        </div>
+        <div class="sc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5" stroke="#2B2418" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
 
@@ -572,7 +338,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 <!-- WHY CALM -->
 <div class="why">
   <div class="why-inner">
-    <h2>Почему у нас спокойно</h2>
+    <h2>Почему здесь спокойно</h2>
     <div class="why-grid">
       <div class="why-item">
         <div class="why-icon-wrap">
@@ -614,6 +380,84 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
     <a href="#" class="section-link">Смотреть всех врачей &nbsp;→</a>
   </div>
   <div class="doctors-carousel" id="doctors-carousel">
+
+    <div class="doc-card">
+      <div class="doc-photo has-photo" style="background:none;">
+        <img src="doctor_elagina.png" alt="Елагина Нана Леонтиевна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Елагина<br>Нана Леонтиевна</div>
+        <div class="doc-role">Главный врач, стоматолог-ортопед</div>
+        <div class="doc-exp">Стаж 20 лет</div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-photo has-photo" style="background:none;position:relative;">
+        <img src="doctor_marsavina.png" alt="Марсавина Жанна Владимировна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Марсавина<br>Жанна Владимировна</div>
+        <div class="doc-role">Стоматолог-терапевт, микроскопист</div>
+        <div class="doc-exp">Стаж 16 лет</div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-photo has-photo" style="background:none;position:relative;">
+        <img src="doctor_elagin.png" alt="Елагин Роман Владиславович" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Елагин<br>Роман Владиславович</div>
+        <div class="doc-role">Стоматолог-хирург, имплантолог</div>
+        <div class="doc-exp">Стаж 14 лет</div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-photo has-photo" style="background:none;position:relative;">
+        <img src="doctor_gorokhovskaya.png" alt="Гороховская Нинэль Юльевна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Гороховская<br>Нинэль Юльевна</div>
+        <div class="doc-role">Ортодонт, ортопед</div>
+        <div class="doc-exp">Стаж 12 лет</div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-photo has-photo" style="background:none;">
+        <img src="doctor_voronina.png" alt="Воронина Кристина Сергеевна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Воронина<br>Кристина Сергеевна</div>
+        <div class="doc-role">Детский стоматолог</div>
+        <div class="doc-exp">Стаж 8 лет</div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-photo has-photo" style="background:none;position:relative;">
+        <img src="doctor_fursa.png" alt="Фурса Анна Александровна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Фурса<br>Анна Александровна</div>
+        <div class="doc-role">Стоматолог-терапевт</div>
+        <div class="doc-exp">Стаж 6 лет</div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-photo has-photo" style="background:none;position:relative;">
+        <img src="doctor_razuvaeva.png" alt="Разуваева Яна Евгеньевна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Разуваева<br>Яна Евгеньевна</div>
+        <div class="doc-role">Стоматолог-терапевт</div>
+        <div class="doc-exp">Стаж 9 лет</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -623,7 +467,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
   <div class="prices-left">
     <h2>Честный план<br>и понятные цены</h2>
     <p>Составим план лечения и рассчитаем стоимость до начала лечения.</p>
-    <a href="services.html" class="prices-link">Смотреть все цены &nbsp;→</a>
+    <a href="#" class="prices-link">Смотреть все цены &nbsp;→</a>
   </div>
   <div class="prices-cards">
     <div class="price-card">
@@ -632,7 +476,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       </div>
       <div class="price-title">Профессиональная гигиена</div>
       <div class="price-desc">Комплексная чистка зубов и полости рта</div>
-      <div class="price-val">6 800 ₽</div>
+      <div class="price-val">6 900 ₽</div>
     </div>
     <div class="price-card">
       <div class="price-icon">
@@ -683,10 +527,13 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
   </svg>
 </div>
 
-</main>
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
+    <div>
+      
+      
+    </div>
     <div class="f-col">
       <h4>Адрес</h4>
       <p>Санкт-Петербург,<br>Проспект Энгельса, 126к1<br>Станция метро «Озерки»</p>
@@ -700,87 +547,12 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       <p><a href="tel:88126057207">8 812 605 72 07</a></p>
       <p style="margin-top:4px;"><a href="mailto:dentalla@inbox.ru">dentalla@inbox.ru</a></p>
     </div>
-    <div class="f-col">
-      <h4>Документы</h4>
-      <p><a href="https://kvrachu.info/files/Licenziya.pdf" target="_blank">Лицензия № 78-01-004014</a></p>
-      <p style="margin-top:4px;"><a href="https://kvrachu.info/files/Politika.pdf" target="_blank">Политика обработки персональных данных</a></p>
-      <p style="margin-top:4px;"><a href="#" onclick="event.preventDefault();openRequisitesModal();">Реквизиты ООО «Дентал Груп»</a></p>
-      <p style="margin-top:4px;"><a href="#" onclick="event.preventDefault();openSupervisoryModal();">Надзорные органы</a></p>
-    </div>
   </div>
   <div class="footer-bottom">
-    © ООО «Дентал Груп», 2026 · Информация и цены на сайте не являются публичной офертой
+    Лицензия № 78-01-004014 · © ООО «Дентал Груп», 2026 · Информация и цены на сайте не являются публичной офертой
   </div>
 </footer>
 
-<!-- МОДАЛЬНОЕ ОКНО РЕКВИЗИТОВ -->
-<div id="requisites-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;max-width:520px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;max-height:88vh;overflow-y:auto;">
-    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;position:sticky;top:0;">
-      <button onclick="closeRequisitesModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#2B2418;margin-bottom:2px;">Реквизиты</h2>
-      <p style="font-size:13px;color:#7A7060;">ООО «Дентал Груп»</p>
-    </div>
-    <div style="padding:26px 32px 30px;font-size:14px;line-height:1.85;color:#4A3E30;">
-      <p style="margin-bottom:14px;"><strong>Полное наименование:</strong><br>Общество с ограниченной ответственностью «Дентал Груп»</p>
-      <p style="margin-bottom:14px;"><strong>Адрес:</strong><br>194356, Санкт-Петербург, пр. Энгельса, д. 126, корп. 1, лит. А, пом. 22-Н</p>
-      <p style="margin-bottom:14px;">
-        <strong>ИНН:</strong> 7802827239<br>
-        <strong>КПП:</strong> 780201001<br>
-        <strong>ОГРН:</strong> 1137847210698
-      </p>
-      <p style="margin-bottom:14px;">
-        <strong>Р/С:</strong> 40702810602100020318<br>
-        в ОАО АКБ «АВАНГАРД»<br>
-        ИНН 7702021163, КПП 775001001<br>
-        БИК 044525201<br>
-        К/С 30101810000000000201
-      </p>
-      <p style="margin-bottom:14px;"><strong>Телефон:</strong> <a href="tel:88126057207" style="color:#B09B3A;">8 (812) 605-72-07</a><br><strong>Email:</strong> <a href="mailto:dentalla@inbox.ru" style="color:#B09B3A;">dentalla@inbox.ru</a></p>
-      <p style="margin-bottom:0;"><strong>Генеральный директор:</strong><br>Трифоненко Лали Леонтиевна</p>
-    </div>
-  </div>
-</div>
-
-<script>
-function openRequisitesModal(){var m=document.getElementById('requisites-modal');m.style.display='flex';document.body.style.overflow='hidden';}
-function closeRequisitesModal(){var m=document.getElementById('requisites-modal');m.style.display='none';document.body.style.overflow='';}
-document.getElementById('requisites-modal').addEventListener('click',function(e){if(e.target===this)closeRequisitesModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeRequisitesModal();});
-</script>
-
-<!-- МОДАЛЬНОЕ ОКНО НАДЗОРНЫХ ОРГАНОВ -->
-<div id="supervisory-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;max-width:520px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;max-height:88vh;overflow-y:auto;">
-    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;position:sticky;top:0;">
-      <button onclick="closeSupervisoryModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#2B2418;margin-bottom:2px;">Надзорные органы</h2>
-      <p style="font-size:13px;color:#7A7060;">Куда обратиться с жалобой на качество медицинских услуг</p>
-    </div>
-    <div style="padding:26px 32px 30px;font-size:14px;line-height:1.85;color:#4A3E30;">
-      <p style="margin-bottom:16px;">
-        <strong>Территориальный орган Росздравнадзора по г. Санкт-Петербургу и Ленинградской области</strong><br>
-        Адрес: 197342, Санкт-Петербург, ул. Кантемировская, д. 4, лит. А<br>
-        Телефон приёмной: <a href="tel:+78123146789" style="color:#B09B3A;">8 (812) 314-67-89</a><br>
-        Горячая линия Росздравнадзора: <a href="tel:88005509903" style="color:#B09B3A;">8 800 550-99-03</a><br>
-        Сайт: <a href="https://78reg.roszdravnadzor.gov.ru/" target="_blank" style="color:#B09B3A;">78reg.roszdravnadzor.gov.ru</a>
-      </p>
-      <p style="margin-bottom:0;">
-        <strong>Управление Роспотребнадзора по городу Санкт-Петербургу</strong><br>
-        Адрес: 191025, Санкт-Петербург, ул. Стремянная, д. 19<br>
-        Телефон: <a href="tel:+78127644238" style="color:#B09B3A;">8 (812) 764-42-38</a><br>
-        Сайт: <a href="https://78.rospotrebnadzor.ru/" target="_blank" style="color:#B09B3A;">78.rospotrebnadzor.ru</a>
-      </p>
-    </div>
-  </div>
-</div>
-
-<script>
-function openSupervisoryModal(){var m=document.getElementById('supervisory-modal');m.style.display='flex';document.body.style.overflow='hidden';}
-function closeSupervisoryModal(){var m=document.getElementById('supervisory-modal');m.style.display='none';document.body.style.overflow='';}
-document.getElementById('supervisory-modal').addEventListener('click',function(e){if(e.target===this)closeSupervisoryModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSupervisoryModal();});
-</script>
 
 <script>
 var tagCloudShown = false;
@@ -790,134 +562,77 @@ function showTagCloud() {
   tagCloudShown = true;
 
   var cloud = document.getElementById('tag-cloud');
-  if (!cloud || window.getComputedStyle(cloud).display === 'none') return;
-
+  if (!cloud) return;
   var tags = Array.from(cloud.querySelectorAll('.tag'));
+
+  // Перемешиваем
+  for (var i = tags.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = tags[i]; tags[i] = tags[j]; tags[j] = t;
+  }
+
+  var cW = cloud.offsetWidth;
+  var cH = cloud.offsetHeight;
+
+  // Если контейнер не измерился — берём размеры секции
+  if (!cW || cW < 50) {
+    var section = document.querySelector('.hero-full');
+    cW = section ? section.offsetWidth * 0.55 : 500;
+    cH = section ? section.offsetHeight : 500;
+  }
+
+  var PAD = 18;
   var placed = [];
 
-  // Подготавливаем теги к точному измерению.
-  tags.forEach(function(tag) {
-    tag.style.transition = 'none';
-    tag.style.visibility = 'hidden';
+  tags.forEach(function(tag, idx) {
+    // Временно показываем в угол для измерения
+    tag.style.left = '0px';
+    tag.style.top = '-9999px';
     tag.style.opacity = '0';
-    tag.style.left = '0';
-    tag.style.top = '0';
-    tag.style.fontSize = '';
-    tag.style.transform = 'translateY(10px)';
-  });
 
-  requestAnimationFrame(function() {
-    var cloudWidth = cloud.clientWidth;
-    var cloudHeight = cloud.clientHeight;
-    var edgePadding = 8;
+    var tw = tag.offsetWidth || 100;
+    var th = tag.offsetHeight || 32;
 
-    // Крупные слова задают композицию, мелкие заполняют свободные зоны.
-    tags.sort(function(a, b) {
-      return (b.offsetWidth * b.offsetHeight) - (a.offsetWidth * a.offsetHeight);
-    });
+    var x = 0, y = 0, found = false;
 
-    var centerX = cloudWidth * 0.52;
-    var centerY = cloudHeight * 0.50;
+    for (var a = 0; a < 800; a++) {
+      var tx = Math.floor(Math.random() * Math.max(1, cW - tw));
+      var ty = Math.floor(Math.random() * Math.max(1, cH - th));
 
-    function collides(x, y, width, height, gapX, gapY) {
-      for (var i = 0; i < placed.length; i++) {
-        var item = placed[i];
-        if (
-          x < item.x + item.width + gapX &&
-          x + width + gapX > item.x &&
-          y < item.y + item.height + gapY &&
-          y + height + gapY > item.y
-        ) return true;
-      }
-      return false;
-    }
-
-    function findFreePosition(width, height, index, gapX, gapY) {
-      var startAngle = index * 2.15 + Math.random() * 0.8;
-
-      for (var step = 0; step < 2200; step++) {
-        var angle = startAngle + step * 0.13;
-        var radius = 4 + step * 0.34;
-
-        // Эллиптическая спираль создаёт естественное облако, а не строки.
-        var x = centerX + Math.cos(angle) * radius * 1.30 - width / 2;
-        var y = centerY + Math.sin(angle) * radius * 0.72 - height / 2;
-
-        // Нерегулярность разрушает ощущение математической схемы.
-        x += Math.sin(step * 0.71 + index) * 7;
-        y += Math.cos(step * 0.53 + index) * 5;
-
-        if (
-          x < edgePadding || y < edgePadding ||
-          x + width > cloudWidth - edgePadding ||
-          y + height > cloudHeight - edgePadding
-        ) continue;
-
-        if (!collides(x, y, width, height, gapX, gapY)) {
-          return {x: x, y: y};
+      var clash = false;
+      for (var k = 0; k < placed.length; k++) {
+        var p = placed[k];
+        if (tx < p.x2 + PAD && tx + tw + PAD > p.x1 &&
+            ty < p.y2 + PAD && ty + th + PAD > p.y1) {
+          clash = true; break;
         }
       }
-      return null;
+      if (!clash) { x = tx; y = ty; found = true; break; }
     }
 
-    tags.forEach(function(tag, index) {
-      var originalSize = parseFloat(window.getComputedStyle(tag).fontSize);
-      var position = null;
-      var width = 0;
-      var height = 0;
+    if (!found) {
+      x = Math.floor(Math.random() * Math.max(1, cW - tw));
+      y = Math.floor(Math.random() * Math.max(1, cH - th));
+    }
 
-      // Сначала ищем место в полном размере, затем мягко уменьшаем только
-      // конкретный тег, если плотность облака слишком высокая.
-      for (var attempt = 0; attempt < 5 && !position; attempt++) {
-        var scale = Math.pow(0.90, attempt);
-        tag.style.fontSize = Math.max(16, originalSize * scale) + 'px';
-        width = tag.offsetWidth;
-        height = tag.offsetHeight;
+    placed.push({x1:x, y1:y, x2:x+tw, y2:y+th});
+    tag.style.left = x + 'px';
+    tag.style.top  = y + 'px';
 
-        var gapX = Math.max(10, 20 - attempt * 2);
-        var gapY = Math.max(7, 13 - attempt);
-        position = findFreePosition(width, height, index, gapX, gapY);
-      }
-
-      // При крайне узком блоке оставляем тег скрытым вместо наложения.
-      if (!position) return;
-
-      placed.push({
-        x: position.x,
-        y: position.y,
-        width: width,
-        height: height
-      });
-
-      tag.style.left = Math.round(position.x) + 'px';
-      tag.style.top = Math.round(position.y) + 'px';
-      tag.style.visibility = 'visible';
-      tag.style.transform = 'translateY(10px)';
-
-      setTimeout(function() {
-        tag.style.transition = 'opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1), color .2s ease, text-shadow .2s ease';
-        tag.style.opacity = '1';
-        tag.style.transform = 'translateY(0)';
-      }, index * 115);
-    });
+    setTimeout(function(el) {
+      el.style.transition = 'opacity 0.65s ease';
+      el.style.opacity = '1';
+    }.bind(null, tag), 100 + idx * 220);
   });
 }
 
-// Облако тегов — показываем сразу при загрузке страницы
+// Вешаем на ended видео
 window.addEventListener('load', function() {
   var v = document.getElementById('hero-video');
-  // На мобильных видео не загружаем вовсе — экономим трафик, оно всё равно скрыто через CSS
-  if (v && window.matchMedia('(min-width:641px)').matches) {
-    var source = document.createElement('source');
-    source.src = 'hero_video.mp4';
-    source.type = 'video/mp4';
-    v.appendChild(source);
-    v.load();
-    v.addEventListener('ended', showTagCloud);
-    v.play().catch(function() {});
-  }
-  // Показываем теги через 1.5 сек после загрузки, не ждём конца видео
-  setTimeout(function(){ showTagCloud(); startTypewriter(); }, 1500);
+  if (!v) return;
+  v.addEventListener('ended', showTagCloud);
+  // Запасной: если видео уже кончилось
+  if (v.ended) showTagCloud();
 });
 
 // Карточки при скролле — услуги и врачи
@@ -966,279 +681,6 @@ window.addEventListener('load', function() {
     carousel.scrollLeft = scrollStart - (e.pageX - startX);
   });
 })();
-
-/* ── ВРАЧИ: динамическая загрузка карточек, модалок и списка в форме записи ── */
-(function() {
-  fetch('doctors-data.json?v=' + Date.now())
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      var carousel = document.getElementById('doctors-carousel');
-      var select = document.getElementById('appt-doctor-select');
-      var modalsHost = document.createElement('div');
-      modalsHost.id = 'doc-modals-host';
-
-      var roleShort = {}; // id -> role for select option label
-
-      data.doctors.forEach(function(doc){
-        var fullName = doc.lastName + ' ' + doc.firstName;
-
-        /* — карточка в карусели — */
-        var card = document.createElement('div');
-        card.className = 'doc-card';
-        card.style.cursor = 'pointer';
-        card.dataset.docId = doc.id;
-        card.innerHTML =
-          '<div class="doc-photo has-photo" style="background:none;position:relative;">' +
-            '<img src="' + doc.photo + '" alt="' + fullName + '" loading="lazy" width="132" height="180" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">' +
-          '</div>' +
-          '<div class="doc-info">' +
-            '<div class="doc-name">' + doc.lastName + '<br>' + doc.firstName + '</div>' +
-            '<div class="doc-role">' + doc.role + '</div>' +
-            '<div class="doc-exp">' + doc.experience + '</div>' +
-          '</div>';
-        card.addEventListener('click', function(){
-          var modal = document.querySelector('.doc-modal[data-doc-id="' + doc.id + '"]');
-          if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
-        });
-        carousel.appendChild(card);
-
-        /* — модальное окно — */
-        var tagsHtml = (doc.tags || []).map(function(t){ return '<span class="doc-modal-tag">' + t + '</span>'; }).join('');
-        var eduHtml = doc.edu ? '<p class="doc-modal-edu">' + doc.edu + '</p>' : '';
-        var modal = document.createElement('div');
-        modal.className = 'doc-modal';
-        modal.setAttribute('data-doc-id', doc.id);
-        modal.innerHTML =
-          '<div class="doc-modal-box">' +
-            '<button class="doc-modal-close">×</button>' +
-            '<div class="doc-modal-hero">' +
-              '<div class="doc-modal-photo"><img src="' + doc.photo + '" alt=""></div>' +
-              '<div class="doc-modal-head">' +
-                '<h2>' + doc.lastName + '<br>' + doc.firstName + '</h2>' +
-                '<div class="doc-modal-role">' + doc.role + '</div>' +
-                '<div class="doc-modal-exp">' + doc.experience + '</div>' +
-              '</div>' +
-            '</div>' +
-            '<div class="doc-modal-mob-head"><h2>' + fullName + '</h2><div class="doc-modal-mob-role">' + doc.role + '</div><div class="doc-modal-mob-exp">' + doc.experience + '</div></div>' +
-            '<div class="doc-modal-body">' +
-              '<p class="doc-modal-bio">' + doc.bio + '</p>' +
-              eduHtml +
-              '<div class="doc-modal-services"><h3>Специализация</h3></div>' +
-              '<div class="doc-modal-tags">' + tagsHtml + '</div>' +
-              '<button class="doc-modal-btn" onclick="document.querySelectorAll(\'.doc-modal\').forEach(function(m){m.classList.remove(\'open\')});document.body.style.overflow=\'\';document.getElementById(\'appt-doctor-select\').value=\'' + fullName.replace(/'/g,"\\'") + '\';openApptModal();">Записаться на приём</button>' +
-            '</div>' +
-          '</div>';
-        modalsHost.appendChild(modal);
-
-        /* — опция в форме записи — */
-        var opt = document.createElement('option');
-        opt.value = fullName;
-        opt.textContent = fullName + ' — ' + doc.role.toLowerCase();
-        select.appendChild(opt);
-      });
-
-      document.body.appendChild(modalsHost);
-
-      // Закрытие модалок
-      document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('doc-modal') || e.target.classList.contains('doc-modal-close')) {
-          document.querySelectorAll('.doc-modal').forEach(function(m){ m.classList.remove('open'); });
-          document.body.style.overflow = '';
-        }
-      });
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          document.querySelectorAll('.doc-modal').forEach(function(m){ m.classList.remove('open'); });
-          document.body.style.overflow = '';
-        }
-      });
-    })
-    .catch(function(err){ console.error('Не удалось загрузить данные врачей', err); });
-})();
-</script>
-
-<!-- ── CSS МОДАЛА ── -->
-<style>
-.doc-modal{position:fixed;inset:0;z-index:1000;background:rgba(43,36,24,0.45);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;}
-.doc-modal.open{opacity:1;pointer-events:auto;}
-.doc-modal-box{background:#fff;border-radius:20px;max-width:720px;width:100%;
-  max-height:88vh;overflow-y:auto;position:relative;
-  box-shadow:0 24px 80px rgba(43,36,24,0.18);
-  transform:translateY(20px);transition:transform .3s ease;}
-.doc-modal.open .doc-modal-box{transform:translateY(0);}
-.doc-modal-close{position:absolute;top:18px;right:20px;width:36px;height:36px;
-  border:none;background:#F5EFE4;border-radius:50%;cursor:pointer;font-size:18px;
-  color:#7A7060;display:flex;align-items:center;justify-content:center;
-  transition:background .2s;line-height:1;}
-.doc-modal-close:hover{background:#EDE7DC;color:#2B2418;}
-.doc-modal-hero{display:grid;grid-template-columns:180px 1fr;gap:0;border-radius:20px 20px 0 0;overflow:hidden;}
-.doc-modal-photo{width:180px;min-height:220px;background:#EDE7DC;flex-shrink:0;position:relative;overflow:hidden;}
-.doc-modal-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.doc-modal-head{background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:32px 28px 24px;}
-.doc-modal-head h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;
-  color:#2B2418;line-height:1.1;margin-bottom:8px;}
-.doc-modal-role{font-size:14px;color:#B09B3A;font-weight:600;letter-spacing:0.04em;margin-bottom:10px;}
-.doc-modal-exp{font-size:13px;color:#7A7060;display:flex;align-items:center;gap:6px;}
-.doc-modal-exp::before{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:#B09B3A;}
-.doc-modal-body{padding:28px 28px 32px;}
-.doc-modal-bio{font-size:15px;color:#4A3E30;line-height:1.7;margin-bottom:16px;}
-.doc-modal-edu{font-size:13px;color:#8A7E6E;line-height:1.6;margin-bottom:24px;padding-top:14px;border-top:1px solid #EDE7DC;}
-.doc-modal-services h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;
-  color:#2B2418;margin-bottom:14px;}
-.doc-modal-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
-.doc-modal-tag{padding:6px 14px;background:#F5EFE4;border:1px solid #EDE7DC;
-  border-radius:20px;font-size:13px;color:#5A5248;}
-.doc-modal-mob-head{display:none !important;background:linear-gradient(135deg,#FAFAF6,#F5EFE4);
-  padding:16px 20px 14px;text-align:center;border-bottom:1px solid #EDE7DC;}
-.doc-modal-mob-head h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;
-  color:#2B2418;line-height:1.25;margin-bottom:6px;}
-.doc-modal-mob-role{font-size:13px;color:#B09B3A;font-weight:600;margin-bottom:6px;}
-.doc-modal-mob-exp{font-size:12.5px;color:#7A7060;}
-.doc-modal-btn{display:inline-block;background:#B09B3A;color:#fff;border:none;
-  padding:13px 28px;border-radius:8px;font-size:14px;font-weight:600;
-  cursor:pointer;transition:background .2s;text-decoration:none;}
-.doc-modal-btn:hover{background:#9C8F20;}
-</style>
-
-<!-- ── МОДАЛЫ ВРАЧЕЙ ── -->
-
-<!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
-<div id="appt-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;">
-    <!-- Шапка -->
-    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;">
-      <button onclick="closeApptModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#2B2418;margin-bottom:4px;">Записаться на приём</h2>
-      <p style="font-size:13px;color:#7A7060;">Заполните хотя бы одно поле — мы перезвоним и подберём удобное время</p>
-    </div>
-    <!-- Форма -->
-    <div style="padding:24px 32px 28px;">
-      <form id="appt-form" action="send-form.php" method="POST">
-        <input type="hidden" name="_subject" value="Обращение с сайта">
-        <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
-          <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Имя</label>
-            <input id="appt-name" name="Имя" type="text" placeholder="Как вас зовут?" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
-          </div>
-          <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
-            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
-          </div>
-          <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
-            <select name="Врач" id="appt-doctor-select" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B09B3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
-              <option value="">— Не важно, любой специалист —</option>
-            </select>
-          </div>
-          <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Комментарий</label>
-            <textarea id="appt-comment" name="Комментарий" placeholder="Какая услуга интересует? Удобное время?" rows="3" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;resize:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#5A5248;line-height:1.5;cursor:pointer;">
-            <input type="checkbox" id="appt-consent" required style="margin-top:2px;flex-shrink:0;width:15px;height:15px;accent-color:#B09B3A;cursor:pointer;">
-            <span>Я даю согласие на обработку персональных данных в соответствии с <a href="consent.html" target="_blank" style="color:#B09B3A;text-decoration:underline;">Согласием на обработку персональных данных</a>.</span>
-          </label>
-          <button type="submit" id="appt-submit" disabled style="background:#C8C0A8;color:#fff;border:none;border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:not-allowed;transition:all .2s;font-family:'Manrope',sans-serif;width:100%;">Отправить</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<script>
-// Печатная машинка над карточками услуг
-function startTypewriter() {
-  var el = document.getElementById('typewriter-text');
-  var heading = el ? el.closest('.scenarios-heading') : null;
-  if (!el || !heading) return;
-  var text = 'Уточните: что вас беспокоит';
-  var i = 0;
-  heading.classList.add('visible');
-  function type() {
-    if (i <= text.length) {
-      el.textContent = text.slice(0, i);
-      i++;
-      setTimeout(type, i === text.length ? 0 : 55);
-    }
-  }
-  type();
-}
-
-// Модальное окно записи
-function openApptModal() {
-  var m = document.getElementById('appt-modal');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-function closeApptModal() {
-  var m = document.getElementById('appt-modal');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-}
-// Закрытие по клику на фон
-document.getElementById('appt-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeApptModal();
-});
-// Закрытие по Escape
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeApptModal();
-});
-
-// Активация кнопки при заполнении хотя бы одного поля и согласии на обработку данных
-var fields = ['appt-name','appt-phone','appt-comment'];
-var btn = document.getElementById('appt-submit');
-var consent = document.getElementById('appt-consent');
-function checkFields() {
-  var filled = fields.some(function(id) {
-    return document.getElementById(id).value.trim().length > 0;
-  });
-  var ok = filled && consent.checked;
-  btn.disabled = !ok;
-  btn.style.background = ok ? '#B09B3A' : '#C8C0A8';
-  btn.style.cursor = ok ? 'pointer' : 'not-allowed';
-}
-fields.forEach(function(id) {
-  document.getElementById(id).addEventListener('input', checkFields);
-});
-consent.addEventListener('change', checkFields);
-
-// Вешаем openApptModal на все кнопки "Записаться"
-document.querySelectorAll('.btn-primary,.btn-header,.btn-cta,.btn-cta-white,.doc-modal-btn').forEach(function(b){
-  if(b.form) return;
-  b.addEventListener('click',function(e){e.preventDefault();openApptModal();});
-});
-
-function toggleMobileMenu(){
-  var m=document.getElementById('mobile-menu');
-  var b=document.getElementById('burger');
-  m.classList.toggle('open');b.classList.toggle('open');
-  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
-}
-function closeMobileMenu(){
-  document.getElementById('mobile-menu').classList.remove('open');
-  document.getElementById('burger').classList.remove('open');
-  document.body.style.overflow='';
-}
-</script>
-
-<!-- УВЕДОМЛЕНИЕ ОБ УСПЕШНОЙ ОТПРАВКЕ ФОРМЫ -->
-<div id="dentalla-toast" style="display:none;position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:3000;background:#2B2418;color:#EFE8DA;padding:14px 26px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 12px 32px rgba(0,0,0,0.28);text-align:center;max-width:90%;">✓ Заявка отправлена. Мы скоро свяжемся с вами.</div>
-<script>
-if (window.location.search.indexOf('sent=1') !== -1) {
-  var dToast = document.getElementById('dentalla-toast');
-  if (dToast) {
-    dToast.style.display = 'block';
-    setTimeout(function(){ dToast.style.display = 'none'; }, 6000);
-  }
-  if (window.history && window.history.replaceState) {
-    window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
-  }
-}
 </script>
 </body>
 </html>
