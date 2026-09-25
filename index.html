@@ -185,6 +185,10 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
   footer{padding:32px 20px 20px;}
   .footer-inner{grid-template-columns:1fr 1fr;}
 }
+
+/* Doctor popup tags */
+.doc-tag{display:inline-block;background:#F5F0E8;color:#7A6A50;font-size:10.5px;padding:3px 9px;border-radius:999px;font-family:'Manrope',sans-serif;font-weight:500;}
+
 </style>
 </head>
 <body>
@@ -375,87 +379,27 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 <div class="doctors">
   <div class="section-header">
     <h2 class="section-title">Наши врачи</h2>
-    <a href="#" class="section-link">Смотреть всех врачей &nbsp;→</a>
+    <a href="https://kvrachu.info/services.html" class="section-link">Услуги и цены&nbsp;→</a>
   </div>
   <div class="doctors-carousel" id="doctors-carousel">
+    <!-- filled by JS from doctors-data.json -->
+  </div>
+</div>
 
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;">
-        <img src="doctor_elagina.png" alt="Елагина Нана Леонтиевна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Елагина<br>Нана Леонтиевна</div>
-        <div class="doc-role">Главный врач, стоматолог-ортопед</div>
-        <div class="doc-exp">Стаж 20 лет</div>
+<!-- Doctor hover popup -->
+<div id="doc-popup" style="display:none;position:fixed;z-index:3000;pointer-events:none;">
+  <div id="doc-popup-inner" style="background:#fff;border-radius:18px;box-shadow:0 16px 56px rgba(43,36,24,0.22);padding:24px 26px;width:300px;pointer-events:auto;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+      <img id="doc-popup-photo" src="" alt="" style="width:62px;height:62px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:2px solid #EDE7DC;">
+      <div>
+        <div id="doc-popup-name" style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#2B2418;line-height:1.25;"></div>
+        <div id="doc-popup-role" style="font-size:12px;color:#7A7060;margin-top:3px;line-height:1.4;"></div>
+        <div id="doc-popup-exp" style="font-size:12px;color:#B09B3A;font-weight:600;margin-top:2px;"></div>
       </div>
     </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_marsavina.png" alt="Марсавина Жанна Владимировна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Марсавина<br>Жанна Владимировна</div>
-        <div class="doc-role">Стоматолог-терапевт, микроскопист</div>
-        <div class="doc-exp">Стаж 16 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_elagin.png" alt="Елагин Роман Владиславович" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Елагин<br>Роман Владиславович</div>
-        <div class="doc-role">Стоматолог-хирург, имплантолог</div>
-        <div class="doc-exp">Стаж 14 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_gorokhovskaya.png" alt="Гороховская Нинэль Юльевна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Гороховская<br>Нинэль Юльевна</div>
-        <div class="doc-role">Ортодонт, ортопед</div>
-        <div class="doc-exp">Стаж 12 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;">
-        <img src="doctor_voronina.png" alt="Воронина Кристина Сергеевна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Воронина<br>Кристина Сергеевна</div>
-        <div class="doc-role">Детский стоматолог</div>
-        <div class="doc-exp">Стаж 8 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_fursa.png" alt="Фурса Анна Александровна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Фурса<br>Анна Александровна</div>
-        <div class="doc-role">Стоматолог-терапевт</div>
-        <div class="doc-exp">Стаж 6 лет</div>
-      </div>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-photo has-photo" style="background:none;position:relative;">
-        <img src="doctor_razuvaeva.png" alt="Разуваева Яна Евгеньевна" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Разуваева<br>Яна Евгеньевна</div>
-        <div class="doc-role">Стоматолог-терапевт</div>
-        <div class="doc-exp">Стаж 9 лет</div>
-      </div>
-    </div>
-
+    <div id="doc-popup-bio" style="font-size:12.5px;color:#5A5248;line-height:1.6;margin-bottom:12px;"></div>
+    <div id="doc-popup-edu" style="font-size:11.5px;color:#9B9080;line-height:1.5;margin-bottom:12px;border-top:1px solid #F0EBE3;padding-top:10px;"></div>
+    <div id="doc-popup-tags" style="display:flex;flex-wrap:wrap;gap:5px;"></div>
   </div>
 </div>
 
@@ -739,6 +683,84 @@ document.addEventListener('DOMContentLoaded',function(){
   var submit=document.getElementById('appt-submit');
   if(consent&&submit){consent.addEventListener('change',function(){submit.disabled=!this.checked;submit.style.background=this.checked?'#B09B3A':'#C8C0A8';submit.style.cursor=this.checked?'pointer':'not-allowed';});}
 });
+
+// ── Doctors from JSON ──
+(function(){
+  var popup = document.getElementById('doc-popup');
+  var inner = document.getElementById('doc-popup-inner');
+  var activeCard = null;
+  var hideTimer = null;
+
+  function positionPopup(card) {
+    var rect = card.getBoundingClientRect();
+    var pw = inner.offsetWidth || 300;
+    var ph = inner.offsetHeight || 320;
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var left = rect.left + rect.width / 2 - pw / 2;
+    var top = rect.top - ph - 12;
+    // keep on screen
+    if (left + pw > vw - 12) left = vw - pw - 12;
+    if (left < 12) left = 12;
+    if (top < 8) top = rect.bottom + 12;
+    popup.style.left = (left + window.scrollX) + 'px';
+    popup.style.top = (top + window.scrollY) + 'px';
+  }
+
+  function showPopup(card, doc) {
+    clearTimeout(hideTimer);
+    document.getElementById('doc-popup-photo').src = doc.photo;
+    document.getElementById('doc-popup-name').textContent = doc.lastName + ' ' + doc.firstName;
+    document.getElementById('doc-popup-role').textContent = doc.role;
+    document.getElementById('doc-popup-exp').textContent = doc.experience;
+    document.getElementById('doc-popup-bio').textContent = doc.bio || '';
+    var eduEl = document.getElementById('doc-popup-edu');
+    eduEl.textContent = doc.edu || '';
+    eduEl.style.display = doc.edu ? 'block' : 'none';
+    var tagsEl = document.getElementById('doc-popup-tags');
+    tagsEl.innerHTML = '';
+    (doc.tags || []).forEach(function(t){
+      var s = document.createElement('span');
+      s.className = 'doc-tag';
+      s.textContent = t;
+      tagsEl.appendChild(s);
+    });
+    popup.style.display = 'block';
+    positionPopup(card);
+  }
+
+  function hidePopup() {
+    hideTimer = setTimeout(function(){ popup.style.display = 'none'; }, 180);
+  }
+
+  inner.addEventListener('mouseenter', function(){ clearTimeout(hideTimer); });
+  inner.addEventListener('mouseleave', hidePopup);
+
+  fetch('/doctors-data.json?v=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var carousel = document.getElementById('doctors-carousel');
+      carousel.innerHTML = '';
+      (data.doctors || []).forEach(function(doc){
+        var card = document.createElement('div');
+        card.className = 'doc-card';
+        card.innerHTML =
+          '<div class="doc-photo has-photo" style="background:none;position:relative;">' +
+            '<img src="' + doc.photo + '" alt="' + doc.lastName + ' ' + doc.firstName + '" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;">' +
+          '</div>' +
+          '<div class="doc-info">' +
+            '<div class="doc-name">' + doc.lastName + '<br>' + doc.firstName + '</div>' +
+            '<div class="doc-role">' + doc.role + '</div>' +
+            '<div class="doc-exp">' + doc.experience + '</div>' +
+          '</div>';
+        card.addEventListener('mouseenter', function(){ showPopup(card, doc); });
+        card.addEventListener('mouseleave', hidePopup);
+        carousel.appendChild(card);
+      });
+    })
+    .catch(function(){ /* keep static fallback */ });
+})();
+
 </script>
 </body>
 </html>
