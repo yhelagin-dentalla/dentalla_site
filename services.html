@@ -27,7 +27,7 @@ html{scroll-behavior:smooth;scroll-padding-top:136px;overflow-x:hidden}
   opacity:0;transform:translateY(12px);pointer-events:none;
   transition:opacity .3s ease,transform .3s ease,background .2s;}
 .back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
-.back-to-top:hover{background:var(--gold-dark);transform:translateY(-2px);}
+.back-to-top:hover{transform:translateY(-2px);}
 .back-to-top svg{flex-shrink:0;}
 body{font-family:'Manrope',sans-serif;color:var(--ink);background:var(--cream-2);line-height:1.65;font-size:15px}
 a{text-decoration:none;color:inherit}button{cursor:pointer;font-family:inherit}
@@ -110,13 +110,7 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
   background-size:300% 300%;
   animation:btnShader 4s ease infinite;
 }
-.btn-shader-anim:hover{
-  animation:none;
-  background:#B09B3A!important;
-  background-size:100% 100%!important;
-  filter:none;
-  transition:background .2s;
-}
+.btn-shader-anim:hover{animation:none!important;background:#B09B3A!important;filter:none;}
 
 </style>
 </head>
