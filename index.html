@@ -122,13 +122,19 @@ nav a:hover{color:#9C8F20;}
 
 /* ── SCENARIOS ── */
 .scenarios{padding:48px 40px;max-width:1280px;margin:0 auto;}
+.scenarios-head{text-align:center;margin-bottom:36px;}
+.scenarios-eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:500;color:#8A7E72;letter-spacing:0.08em;text-transform:lowercase;margin-bottom:10px;}
+.scenarios-line{display:inline-block;width:32px;height:1px;background:#C8BFB2;}
+.scenarios-title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;color:#2B2418;line-height:1.1;margin:0;}
 .scenarios-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch;}
 .sc-card{border:1px solid #EDE7DC;border-radius:16px;overflow:hidden;background:#fff;transition:box-shadow .25s,transform .2s;cursor:pointer;display:flex;flex-direction:column;}
-.sc-card:hover{box-shadow:0 10px 36px rgba(43,36,24,0.10);transform:translateY(-3px);}
+.sc-card:hover{box-shadow:0 10px 36px rgba(43,36,24,0.18);transform:translateY(-3px);}
 .sc-top{padding:22px 20px 12px;flex:0 0 auto;}
 .sc-icon{width:44px;height:44px;background:#F5EFE4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.sc-title{font-family:'Manrope',sans-serif;font-size:17px;font-weight:700;color:#1A1410;margin-bottom:6px;line-height:1.2;text-shadow:0 1px 8px rgba(255,255,255,0.9),0 0px 20px rgba(255,255,255,0.7);}
-.sc-text{font-size:13px;color:#2B2418;line-height:1.45;font-weight:500;text-shadow:0 1px 8px rgba(255,255,255,1),0 0px 20px rgba(255,255,255,1);}
+.sc-title{font-family:'Manrope',sans-serif;font-size:17px;font-weight:700;color:#1A1410;margin-bottom:4px;line-height:1.2;}
+.sc-text{font-size:13px;color:#2B2418;line-height:1.45;font-weight:500;}
+.sc-arrow{width:36px;height:36px;background:#B09B3A;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .2s;}
+.sc-card:hover .sc-arrow{background:#9C8F20;transform:translateX(2px);}
 .sc-photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
 /* SVG photo placeholders */
 .sc-ph{width:100%;flex:1;min-height:160px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
@@ -287,7 +293,8 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 
   /* Карточки услуг — 2 в ряд */
   .scenarios{padding:28px 12px;}
-  .tasks-heading{font-size:24px;margin-bottom:16px;}
+  .scenarios-title{font-size:32px;}
+  .scenarios-head{margin-bottom:24px;}
   .scenarios-grid{grid-template-columns:1fr 1fr;gap:10px;}
   .sc-card{border-radius:12px;}
   .sc-card-img{aspect-ratio:3/4;}
@@ -510,59 +517,45 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 
 <!-- SCENARIOS -->
 <div class="scenarios">
-  <h2 class="tasks-heading">Поставьте нам задачу<span class="accent">:</span></h2>
-  <div class="scenarios-heading">
-    <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+  <div class="scenarios-head">
+    <div class="scenarios-eyebrow"><span class="scenarios-line"></span>поставьте нам задачу<span class="scenarios-line"></span></div>
+    <h2 class="scenarios-title">Что вас беспокоит?</h2>
   </div>
   <div class="scenarios-grid">
 
     <div class="sc-card" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;" onclick="window.location.href='toothache.html'">
       <img src="toothache.webp" alt="Болит зуб" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:16px;">
-      <div style="position:absolute;inset:0;border-radius:16px;background:
-        linear-gradient(180deg, rgba(255,255,255,0.82) 0%, transparent 28%, transparent 55%, rgba(255,255,255,0.85) 100%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 20%, transparent 80%, rgba(255,255,255,0.3) 100%);
-      "></div>
-      <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 16px;">
-        <div class="sc-title">Болит зуб</div>
-        <div class="sc-text">Снимем боль и решим причину</div>
+      <div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,0.58) 100%);"></div>
+      <div class="sc-bottom" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+        <div><div class="sc-title" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">Болит зуб</div><div class="sc-text" style="color:rgba(255,255,255,0.85);text-shadow:none;">Снимем боль и решим причину</div></div>
+        <div class="sc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5" stroke="#2B2418" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
 
     <div class="sc-card" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;" onclick="window.location.href='smile.html'">
       <img src="smile.webp" alt="Хочу красивую улыбку" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:16px;">
-      <div style="position:absolute;inset:0;border-radius:16px;background:
-        linear-gradient(180deg, rgba(255,255,255,0.82) 0%, transparent 28%, transparent 55%, rgba(255,255,255,0.85) 100%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 20%, transparent 80%, rgba(255,255,255,0.3) 100%);
-      "></div>
-      <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 16px;">
-        <div class="sc-title">Хочу красивую улыбку</div>
-        <div class="sc-text">Эстетическая стоматология и отбеливание</div>
+      <div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,0.58) 100%);"></div>
+      <div class="sc-bottom" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+        <div><div class="sc-title" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">Хочу красивую улыбку</div><div class="sc-text" style="color:rgba(255,255,255,0.85);text-shadow:none;">Эстетическая стоматология и отбеливание</div></div>
+        <div class="sc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5" stroke="#2B2418" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
 
     <div class="sc-card" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;" onclick="window.location.href='implant.html'">
       <img src="implant2.webp" alt="Нужна имплантация" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;border-radius:16px;">
-      <!-- растворение по всем краям -->
-      <div style="position:absolute;inset:0;border-radius:16px;background:
-        linear-gradient(180deg, rgba(255,255,255,0.85) 0%, transparent 28%, transparent 55%, rgba(255,255,255,0.85) 100%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 22%, transparent 78%, rgba(255,255,255,0.3) 100%);
-      "></div>
-      <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 16px;">
-        <div class="sc-title">Нужна имплантация</div>
-        <div class="sc-text">Надёжные импланты и опытные хирурги</div>
+      <div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,0.58) 100%);"></div>
+      <div class="sc-bottom" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+        <div><div class="sc-title" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">Нужна имплантация</div><div class="sc-text" style="color:rgba(255,255,255,0.85);text-shadow:none;">Надёжные импланты и опытные хирурги</div></div>
+        <div class="sc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5" stroke="#2B2418" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
 
     <div class="sc-card" style="border:none;background:transparent;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:2/3;display:flex;flex-direction:column;" onclick="window.location.href='child.html'">
       <img src="child.webp" alt="Детская стоматология" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;border-radius:16px;">
-      <!-- растворение по всем краям -->
-      <div style="position:absolute;inset:0;border-radius:16px;background:
-        linear-gradient(180deg, rgba(255,255,255,0.85) 0%, transparent 28%, transparent 55%, rgba(255,255,255,0.85) 100%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 22%, transparent 78%, rgba(255,255,255,0.3) 100%);
-      "></div>
-      <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 16px;">
-        <div class="sc-title">Ищу детского стоматолога</div>
-        <div class="sc-text">Лечение детей без страха и слёз!</div>
+      <div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,0.58) 100%);"></div>
+      <div class="sc-bottom" style="position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 18px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+        <div><div class="sc-title" style="color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">Ищу детского стоматолога</div><div class="sc-text" style="color:rgba(255,255,255,0.85);text-shadow:none;">Лечение детей без страха и слёз</div></div>
+        <div class="sc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5" stroke="#2B2418" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
 
