@@ -102,7 +102,7 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
 .mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#2B2418;text-decoration:none;}
 .mobile-menu a:hover{color:#B09B3A;}
 .mobile-menu .mob-phone{font-size:18px;font-family:'Manrope',sans-serif;color:#5A5248;margin-top:16px;}
-.mobile-menu .mob-btn{background:#B09B3A;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
+.mobile-menu .mob-btn{background:transparent;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
@@ -138,6 +138,23 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
   .about-directions{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr}
 }
+
+/* ── SHADER GRADIENT on buttons ── */
+@keyframes btnShader{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.btn-shader-anim{
+  background:linear-gradient(120deg,#C8A84E,#B09B3A,#8A7520,#CEB55A,#9C8F20,#B09B3A);
+  background-size:300% 300%;
+  animation:btnShader 4s ease infinite;
+}
+.btn-shader-anim:hover{
+  animation-duration:2s;
+  filter:brightness(1.08);
+}
+
 </style>
 </head>
 <body>
@@ -145,26 +162,24 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
 <header>
   <a href="index.html"><img src="logo_t.png" alt="Денталла" style="height:38px;width:auto;display:block;"></a>
   <nav>
-    <a href="https://kvrachu.info/about.html" class="active">О клинике</a>
-    <a href="https://kvrachu.info/services.html">Услуги и цены</a>
-    <a href="https://kvrachu.info/faq.html">Пациентам</a>
-    <a href="https://kvrachu.info/contacts.html">Контакты</a>
+    <a href="about.html" class="active">О клинике</a>
+    <a href="services.html">Услуги и цены</a>
+    <a href="contacts.html">Контакты</a>
   </nav>
   <div class="header-right">
     <div class="h-phone"><span class="h-phone-icon">☎</span>8 812 605 72 07</div>
-    <button class="btn-header" onclick="openApptModal()">Записаться на приём</button>
+    <button class="btn-header btn-shader-anim" onclick="openApptModal()">Записаться на приём</button>
     <button class="burger" id="burger" aria-label="Меню" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="https://kvrachu.info/about.html" onclick="closeMobileMenu()">О клинике</a>
-  <a href="https://kvrachu.info/services.html" onclick="closeMobileMenu()">Услуги и цены</a>
-  <a href="https://kvrachu.info/faq.html" onclick="closeMobileMenu()">Пациентам</a>
+  <a href="about.html" onclick="closeMobileMenu()">О клинике</a>
+  <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
   <a href="index.html#doctors" onclick="closeMobileMenu()">Наши врачи</a>
-  <a href="https://kvrachu.info/contacts.html" onclick="closeMobileMenu()">Контакты</a>
+  <a href="contacts.html" onclick="closeMobileMenu()">Контакты</a>
   <span class="mob-phone">☎ 8 812 605 72 07</span>
-  <button class="mob-btn" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
+  <button class="mob-btn btn-shader-anim" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
 </div>
 
 <div class="page-hero">
@@ -330,7 +345,7 @@ document.getElementById('supervisory-modal').addEventListener('click',function(e
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSupervisoryModal();});
 </script>
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button class="back-to-top btn-shader-anim" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
     <path d="M7 12V2M2 7l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
