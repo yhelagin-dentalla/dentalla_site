@@ -28,11 +28,8 @@ nav a{font-size:13px;color:#5A5248;font-weight:500;position:relative;padding:26p
 nav a:after{content:"";position:absolute;left:0;right:0;bottom:17px;height:1px;background:var(--gold);transform:scaleX(0);transition:.25s}
 nav a:hover,nav a.active{color:var(--gold-dark)}nav a:hover:after,nav a.active:after{transform:scaleX(1)}
 .header-right{display:flex;align-items:center;gap:18px}.h-phone{font-size:14px;font-weight:600;display:flex;align-items:center;gap:7px}.h-phone-icon{color:var(--gold)}
-.btn-header{background:var(--gold);color:#fff;border:none;border-radius:8px;font-weight:500;transition:background .2s;padding:12px 24px;font-size:13.5px}
-.btn-header:hover{background:var(--gold-dark)}
-
-/* HERO */
-.page-hero{position:relative;overflow:hidden;background:#F5EFE3;padding:62px clamp(20px,6vw,88px) 58px;border-bottom:1px solid var(--line)}
+.btn-header{background:transparent;color:#fff;border:none;border-radius:8px;font-weight:500;transition:background .2s;padding:12px 24px;font-size:13.5px}
+.btn-header:hover{filter:brightness(1.1);background:transparent;overflow:hidden;background:#F5EFE3;padding:62px clamp(20px,6vw,88px) 58px;border-bottom:1px solid var(--line)}
 .breadcrumb{font-size:12px;color:#9B9080;margin-bottom:18px;letter-spacing:.02em}.breadcrumb a{color:var(--gold-dark)}
 .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,76px);line-height:.98;font-weight:500;letter-spacing:-.03em;margin-bottom:20px}
 .page-hero p{font-size:15px;color:var(--muted);max-width:600px}
@@ -206,13 +203,30 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
 .mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#2B2418;text-decoration:none;}
 .mobile-menu a:hover{color:#B09B3A;}
 .mobile-menu .mob-phone{font-size:18px;font-family:'Manrope',sans-serif;color:#5A5248;margin-top:16px;}
-.mobile-menu .mob-btn{background:#B09B3A;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
+.mobile-menu .mob-btn{background:transparent;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:500;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:8px;}
 @media(max-width:960px){
   nav{display:none;}
   .burger{display:flex;}
   .h-phone{display:none;}
   .btn-header{display:none;}
 }
+
+/* ── SHADER GRADIENT on buttons ── */
+@keyframes btnShader{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.btn-shader-anim{
+  background:linear-gradient(120deg,#C8A84E,#B09B3A,#8A7520,#CEB55A,#9C8F20,#B09B3A);
+  background-size:300% 300%;
+  animation:btnShader 4s ease infinite;
+}
+.btn-shader-anim:hover{
+  animation-duration:2s;
+  filter:brightness(1.08);
+}
+
 </style>
 </head>
 <body>
@@ -220,25 +234,25 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
 <header>
   <a href="index.html"><img src="logo_t.png" alt="Денталла" style="height:38px;width:auto;display:block;"></a>
   <nav>
-    <a href="https://kvrachu.info/about.html">О клинике</a>
-    <a href="https://kvrachu.info/services.html">Услуги и цены</a>
-    <a href="https://kvrachu.info/faq.html">Пациентам</a>
-    <a href="https://kvrachu.info/contacts.html" class="active">Контакты</a>
+    <a href="about.html">О клинике</a>
+    <a href="services.html">Услуги и цены</a>
+    <a href="faq.html">Пациентам</a>
+    <a href="contacts.html" class="active">Контакты</a>
   </nav>
   <div class="header-right">
     <div class="h-phone"><span class="h-phone-icon">☎</span><a href="tel:88126057207">8 812 605 72 07</a></div>
-    <button class="btn-header" onclick="openApptModal()">Записаться на приём</button>
+    <button class="btn-header btn-shader-anim" onclick="openApptModal()">Записаться на приём</button>
     <button class="burger" id="burger" aria-label="Меню" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="https://kvrachu.info/about.html" onclick="closeMobileMenu()">О клинике</a>
-  <a href="https://kvrachu.info/services.html" onclick="closeMobileMenu()">Услуги и цены</a>
-  <a href="https://kvrachu.info/faq.html" onclick="closeMobileMenu()">Пациентам</a>
-  <a href="https://kvrachu.info/contacts.html" onclick="closeMobileMenu()">Контакты</a>
+  <a href="about.html" onclick="closeMobileMenu()">О клинике</a>
+  <a href="services.html" onclick="closeMobileMenu()">Услуги и цены</a>
+  <a href="index.html#doctors" onclick="closeMobileMenu()">Наши врачи</a>
+  <a href="contacts.html" onclick="closeMobileMenu()">Контакты</a>
   <span class="mob-phone">☎ 8 812 605 72 07</span>
-  <button class="mob-btn" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
+  <button class="mob-btn btn-shader-anim" onclick="closeMobileMenu();openApptModal();">Записаться на приём</button>
 </div>
 
 <!-- HERO -->
@@ -421,7 +435,7 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
   <div class="footer-bottom"><a href="https://kvrachu.info/files/Licenziya.pdf" target="_blank" style="color:inherit;text-decoration:underline;">Лицензия № 78-01-004014</a> · © ООО «Дентал Груп», 2026 · Информация и цены на сайте не являются публичной офертой · <a href="https://kvrachu.info/files/Politika.pdf" target="_blank" style="color:#8A7C68;text-decoration:underline;">Политика обработки персональных данных</a></div>
 </footer>
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button class="back-to-top btn-shader-anim" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
     <path d="M7 12V2M2 7l5-5 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
