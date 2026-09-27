@@ -14,7 +14,7 @@ function dentalla_field($key, $default = '') {
     return isset($_POST[$key]) ? trim($_POST[$key]) : $default;
 }
 
-$subject = dentalla_field('_subject', 'Заявка с сайта kvrachu.info');
+$subject = dentalla_field('_subject', 'Заявка с сайта dentalla.ru');
 $name    = dentalla_field('Имя');
 $phone   = dentalla_field('Телефон');
 $doctor  = dentalla_field('Врач');
@@ -26,7 +26,7 @@ if ($name === '' && $phone === '' && $comment === '') {
     exit;
 }
 
-$body  = "Новая заявка с сайта kvrachu.info\r\n\r\n";
+$body  = "Новая заявка с сайта dentalla.ru\r\n\r\n";
 $body .= "Имя: " . ($name !== '' ? $name : '(не указано)') . "\r\n";
 $body .= "Телефон: " . ($phone !== '' ? $phone : '(не указан)') . "\r\n";
 if ($doctor !== '') {
@@ -35,7 +35,6 @@ if ($doctor !== '') {
 if ($comment !== '') {
     $body .= "Комментарий: " . $comment . "\r\n";
 }
-$body .= "\r\nСтраница: " . (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '—') . "\r\n";
 $body .= "Дата: " . date('d.m.Y H:i:s') . "\r\n";
 
 $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
