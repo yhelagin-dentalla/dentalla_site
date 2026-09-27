@@ -722,14 +722,14 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 </footer>
 
 <!-- МОДАЛЬНОЕ ОКНО РЕКВИЗИТОВ -->
-<div id="requisites-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;max-width:520px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;max-height:88vh;overflow-y:auto;">
-    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;position:sticky;top:0;">
-      <button onclick="closeRequisitesModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#2B2418;margin-bottom:2px;">Реквизиты</h2>
-      <p style="font-size:13px;color:#7A7060;">ООО «Дентал Груп»</p>
+<div id="requisites-modal" class="glass-modal" onclick="if(event.target===this)closeGlassModal('requisites-modal')">
+  <div class="glass-panel" style="max-width:520px;width:100%;position:relative;overflow:hidden;max-height:88vh;overflow-y:auto;">
+    <div class="glass-head">
+      <button class="glass-close" onclick="closeGlassModal('requisites-modal')">×</button>
+      <h2>Реквизиты</h2>
+      <p>ООО «Дентал Груп»</p>
     </div>
-    <div style="padding:26px 32px 30px;font-size:14px;line-height:1.85;color:#4A3E30;">
+    <div style="padding:26px 30px 30px;font-size:14px;line-height:1.85;color:#4A3E30;">
       <p style="margin-bottom:14px;"><strong>Полное наименование:</strong><br>Общество с ограниченной ответственностью «Дентал Груп»</p>
       <p style="margin-bottom:14px;"><strong>Адрес:</strong><br>194356, Санкт-Петербург, пр. Энгельса, д. 126, корп. 1, лит. А, пом. 22-Н</p>
       <p style="margin-bottom:14px;">
@@ -751,21 +751,19 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 </div>
 
 <script>
-function openRequisitesModal(){var m=document.getElementById('requisites-modal');m.style.display='flex';document.body.style.overflow='hidden';}
-function closeRequisitesModal(){var m=document.getElementById('requisites-modal');m.style.display='none';document.body.style.overflow='';}
-document.getElementById('requisites-modal').addEventListener('click',function(e){if(e.target===this)closeRequisitesModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeRequisitesModal();});
+function openRequisitesModal(){openGlassModal('requisites-modal');}
+function closeRequisitesModal(){closeGlassModal('requisites-modal');}
 </script>
 
 <!-- МОДАЛЬНОЕ ОКНО НАДЗОРНЫХ ОРГАНОВ -->
-<div id="supervisory-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;max-width:520px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;max-height:88vh;overflow-y:auto;">
-    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;position:sticky;top:0;">
-      <button onclick="closeSupervisoryModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#2B2418;margin-bottom:2px;">Надзорные органы</h2>
-      <p style="font-size:13px;color:#7A7060;">Куда обратиться с жалобой на качество медицинских услуг</p>
+<div id="supervisory-modal" class="glass-modal" onclick="if(event.target===this)closeGlassModal('supervisory-modal')">
+  <div class="glass-panel" style="max-width:520px;width:100%;position:relative;overflow:hidden;max-height:88vh;overflow-y:auto;">
+    <div class="glass-head">
+      <button class="glass-close" onclick="closeGlassModal('supervisory-modal')">×</button>
+      <h2>Надзорные органы</h2>
+      <p>Куда обратиться с жалобой на качество медицинских услуг</p>
     </div>
-    <div style="padding:26px 32px 30px;font-size:14px;line-height:1.85;color:#4A3E30;">
+    <div style="padding:26px 30px 30px;font-size:14px;line-height:1.85;color:#4A3E30;">
       <p style="margin-bottom:16px;">
         <strong>Территориальный орган Росздравнадзора по г. Санкт-Петербургу и Ленинградской области</strong><br>
         Адрес: 197342, Санкт-Петербург, ул. Кантемировская, д. 4, лит. А<br>
@@ -784,10 +782,86 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeRequisi
 </div>
 
 <script>
-function openSupervisoryModal(){var m=document.getElementById('supervisory-modal');m.style.display='flex';document.body.style.overflow='hidden';}
-function closeSupervisoryModal(){var m=document.getElementById('supervisory-modal');m.style.display='none';document.body.style.overflow='';}
-document.getElementById('supervisory-modal').addEventListener('click',function(e){if(e.target===this)closeSupervisoryModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSupervisoryModal();});
+function openSupervisoryModal(){openGlassModal('supervisory-modal');}
+function closeSupervisoryModal(){closeGlassModal('supervisory-modal');}
+</script>
+
+<!-- ── GLASS MODAL SYSTEM ── -->
+<style>
+/* Оверлей — общий для всех модалок */
+.glass-modal{
+  position:fixed;inset:0;z-index:2000;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  background:rgba(20,14,6,0);
+  backdrop-filter:blur(0px) saturate(100%);
+  -webkit-backdrop-filter:blur(0px) saturate(100%);
+  opacity:0;pointer-events:none;
+  transition:background .35s ease, backdrop-filter .35s ease, -webkit-backdrop-filter .35s ease, opacity .35s ease;
+}
+.glass-modal.open{
+  background:rgba(20,14,6,0.38);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  opacity:1;pointer-events:auto;
+}
+/* Панель модалки */
+.glass-panel{
+  background:rgba(253,250,246,0.82);
+  backdrop-filter:blur(40px) saturate(180%);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
+  border:1px solid rgba(255,255,255,0.55);
+  box-shadow:0 32px 80px rgba(20,14,6,0.22), 0 2px 0 rgba(255,255,255,0.6) inset;
+  border-radius:22px;
+  transform:scale(0.96) translateY(12px);
+  transition:transform .35s cubic-bezier(0.34,1.16,0.64,1), box-shadow .35s ease;
+}
+.glass-modal.open .glass-panel{
+  transform:scale(1) translateY(0);
+}
+/* Кнопка закрытия */
+.glass-close{
+  position:absolute;top:16px;right:16px;
+  width:30px;height:30px;border:none;border-radius:50%;
+  background:rgba(43,36,24,0.08);
+  color:#6B5E4E;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .2s;line-height:1;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.glass-close:hover{background:rgba(43,36,24,0.15);}
+/* Шапка панели */
+.glass-head{
+  background:rgba(245,239,228,0.7);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(234,226,213,0.6);
+  padding:26px 30px 20px;
+  border-radius:22px 22px 0 0;
+  position:sticky;top:0;z-index:1;
+}
+.glass-head h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#2B2418;margin-bottom:3px;}
+.glass-head p{font-size:13px;color:#7A7060;}
+</style>
+
+<script>
+/* ── Универсальная система открытия/закрытия glass-модалок ── */
+function openGlassModal(id){
+  var m=document.getElementById(id);
+  m.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeGlassModal(id){
+  var m=document.getElementById(id);
+  m.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    document.querySelectorAll('.glass-modal.open').forEach(function(m){
+      m.classList.remove('open');
+    });
+    document.body.style.overflow='';
+  }
+});
 </script>
 
 <script>
@@ -1067,11 +1141,11 @@ window.addEventListener('load', function() {
 
 <!-- ── CSS МОДАЛА ── -->
 <style>
-.doc-modal{position:fixed;inset:0;z-index:1000;background:rgba(43,36,24,0.45);
+.doc-modal{position:fixed;inset:0;z-index:1000;background:rgba(20,14,6,0);backdrop-filter:blur(0px) saturate(100%);-webkit-backdrop-filter:blur(0px) saturate(100%);
   display:flex;align-items:center;justify-content:center;
   opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;}
-.doc-modal.open{opacity:1;pointer-events:auto;}
-.doc-modal-box{background:#fff;border-radius:20px;max-width:720px;width:100%;
+.doc-modal.open{opacity:1;pointer-events:auto;background:rgba(20,14,6,0.38);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);}
+.doc-modal-box{background:rgba(253,250,246,0.88);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,0.55);border-radius:20px;max-width:720px;width:100%;
   max-height:88vh;overflow-y:auto;position:relative;
   box-shadow:0 24px 80px rgba(43,36,24,0.18);
   transform:translateY(20px);transition:transform .3s ease;}
@@ -1084,7 +1158,7 @@ window.addEventListener('load', function() {
 .doc-modal-hero{display:grid;grid-template-columns:180px 1fr;gap:0;border-radius:20px 20px 0 0;overflow:hidden;}
 .doc-modal-photo{width:180px;min-height:220px;background:#EDE7DC;flex-shrink:0;position:relative;overflow:hidden;}
 .doc-modal-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.doc-modal-head{background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:32px 28px 24px;}
+.doc-modal-head{background:rgba(245,239,228,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:32px 28px 24px;}
 .doc-modal-head h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;
   color:#2B2418;line-height:1.1;margin-bottom:8px;}
 .doc-modal-role{font-size:14px;color:#B09B3A;font-weight:600;letter-spacing:0.04em;margin-bottom:10px;}
@@ -1113,16 +1187,16 @@ window.addEventListener('load', function() {
 <!-- ── МОДАЛЫ ВРАЧЕЙ ── -->
 
 <!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
-<div id="appt-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(43,36,24,0.5);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(43,36,24,0.2);position:relative;overflow:hidden;">
+<div id="appt-modal" class="glass-modal" onclick="if(event.target===this)closeApptModal()">
+  <div class="glass-panel" style="max-width:480px;width:100%;position:relative;overflow:hidden;">
     <!-- Шапка -->
-    <div style="background:linear-gradient(135deg,#FAFAF6,#F5EFE4);padding:28px 32px 22px;border-bottom:1px solid #EDE7DC;">
-      <button onclick="closeApptModal()" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border:none;background:#EDE7DC;border-radius:50%;font-size:18px;cursor:pointer;color:#7A7060;line-height:1;display:flex;align-items:center;justify-content:center;">×</button>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#2B2418;margin-bottom:4px;">Записаться на приём</h2>
-      <p style="font-size:13px;color:#7A7060;">Заполните хотя бы одно поле — мы перезвоним и подберём удобное время</p>
+    <div class="glass-head">
+      <button class="glass-close" onclick="closeApptModal()">×</button>
+      <h2 style="font-size:28px;">Записаться на приём</h2>
+      <p>Заполните хотя бы одно поле — мы перезвоним и подберём удобное время</p>
     </div>
     <!-- Форма -->
-    <div style="padding:24px 32px 28px;">
+    <div style="padding:24px 30px 28px;">
       <form id="appt-form" action="send-form.php" method="POST">
         <input type="hidden" name="_subject" value="Обращение с сайта">
         <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
@@ -1179,23 +1253,11 @@ function startTypewriter() {
 
 // Модальное окно записи
 function openApptModal() {
-  var m = document.getElementById('appt-modal');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  openGlassModal('appt-modal');
 }
 function closeApptModal() {
-  var m = document.getElementById('appt-modal');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
+  closeGlassModal('appt-modal');
 }
-// Закрытие по клику на фон
-document.getElementById('appt-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeApptModal();
-});
-// Закрытие по Escape
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeApptModal();
-});
 
 // Активация кнопки при заполнении хотя бы одного поля и согласии на обработку данных
 var fields = ['appt-name','appt-phone','appt-comment'];
