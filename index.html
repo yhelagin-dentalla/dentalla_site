@@ -1125,7 +1125,7 @@ window.addEventListener('load', function() {
               eduHtml +
               '<div class="doc-modal-services"><h3>Специализация</h3></div>' +
               '<div class="doc-modal-tags">' + tagsHtml + '</div>' +
-              '<button class="doc-modal-btn btn-shader-anim" onclick="document.querySelectorAll(\'.doc-modal\').forEach(function(m){m.classList.remove(\'open\')});document.body.style.overflow=\'\';document.getElementById(\'appt-doctor-select\').value=\'' + fullName.replace(/'/g,"\\'") + '\';openApptModal();">Записаться на приём</button>' +
+              '<button class="doc-modal-btn" onclick="document.querySelectorAll(\'.doc-modal\').forEach(function(m){m.classList.remove(\'open\')});document.body.style.overflow=\'\';document.getElementById(\'appt-doctor-select\').value=\'' + fullName.replace(/'/g,"\\'") + '\';openApptModal();">Записаться на приём</button>' +
             '</div>' +
           '</div>';
         modalsHost.appendChild(modal);
@@ -1168,10 +1168,11 @@ window.addEventListener('load', function() {
   box-shadow:0 24px 80px rgba(43,36,24,0.18);
   transform:translateY(20px);transition:transform .3s ease;}
 .doc-modal.open .doc-modal-box{transform:translateY(0);}
-.doc-modal-close{position:absolute;top:18px;right:20px;width:36px;height:36px;
-  border:none;background:#F5EFE4;border-radius:50%;cursor:pointer;font-size:18px;
-  color:#7A7060;display:flex;align-items:center;justify-content:center;
-  transition:background .2s;line-height:1;}
+.doc-modal-close{position:sticky;top:12px;float:right;margin:12px 12px -44px 0;
+  width:36px;height:36px;flex-shrink:0;
+  border:none;background:rgba(43,36,24,0.08);border-radius:50%;cursor:pointer;font-size:18px;
+  color:#5A5248;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;line-height:1;z-index:10;}
 .doc-modal-close:hover{background:#EDE7DC;color:#2B2418;}
 .doc-modal-hero{display:grid;grid-template-columns:180px 1fr;gap:0;border-radius:20px 20px 0 0;overflow:hidden;}
 .doc-modal-photo{width:180px;min-height:220px;background:#EDE7DC;flex-shrink:0;position:relative;overflow:hidden;}
@@ -1198,10 +1199,11 @@ window.addEventListener('load', function() {
   color:#2B2418;line-height:1.25;margin-bottom:6px;}
 .doc-modal-mob-role{font-size:13px;color:#B09B3A;font-weight:600;margin-bottom:6px;}
 .doc-modal-mob-exp{font-size:12.5px;color:#7A7060;}
-.doc-modal-btn{display:inline-block;background:transparent;color:#fff;border:none;
-  padding:13px 28px;border-radius:8px;font-size:14px;font-weight:600;
-  cursor:pointer;text-decoration:none;}
-.doc-modal-btn:hover{}
+.doc-modal-btn{display:inline-block;background:#2B2418;color:#B09B3A;border:none;
+  padding:13px 32px;border-radius:999px;font-size:14px;font-weight:600;
+  font-family:'Manrope',sans-serif;letter-spacing:0.02em;
+  cursor:pointer;text-decoration:none;transition:background .2s,color .2s;}
+.doc-modal-btn:hover{background:#1A160F;color:#C8B050;}
 </style>
 
 <!-- ── МОДАЛЫ ВРАЧЕЙ ── -->
