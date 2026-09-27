@@ -1229,7 +1229,7 @@ window.addEventListener('load', function() {
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
-            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
@@ -1287,7 +1287,13 @@ var btn = document.getElementById('appt-submit');
 var consent = document.getElementById('appt-consent');
 function checkFields() {
   var filled = fields.some(function(id) {
-    return document.getElementById(id).value.trim().length > 0;
+    var el = document.getElementById(id);
+    var val = el.value.trim();
+    if (id === 'appt-phone') {
+      // считаем заполненным только если введены все 10 цифр
+      return val.replace(/\D/g,'').replace(/^[78]/,'').length === 10;
+    }
+    return val.length > 0;
   });
   var ok = filled && consent.checked;
   btn.disabled = !ok;
@@ -1299,6 +1305,93 @@ fields.forEach(function(id) {
   document.getElementById(id).addEventListener('input', checkFields);
 });
 consent.addEventListener('change', checkFields);
+
+// Жёсткая маска для поля телефона: +7 (___) ___-__-__
+(function(){
+  var ph = document.getElementById('appt-phone');
+  var MASK = '+7 (___) ___-__-__';
+  var DIGIT_POS = [4,5,6,9,10,11,13,14,16,17]; // индексы цифр в маске
+
+  function applyMask(digits) {
+    // digits — массив введённых цифр (без ведущей 7 из +7)
+    var result = MASK.split('');
+    for (var i = 0; i < DIGIT_POS.length; i++) {
+      result[DIGIT_POS[i]] = digits[i] !== undefined ? digits[i] : '_';
+    }
+    return result.join('');
+  }
+
+  function getDigits(val) {
+    // берём только цифры, убираем ведущую 7 если есть
+    var raw = val.replace(/\D/g, '');
+    if (raw.charAt(0) === '7') raw = raw.slice(1);
+    if (raw.charAt(0) === '8') raw = raw.slice(1);
+    return raw.slice(0, 10).split('');
+  }
+
+  function getCursorPos(digits) {
+    // позиция курсора — сразу после последней введённой цифры
+    var filled = digits.length;
+    if (filled === 0) return 4; // после +7 (
+    return DIGIT_POS[Math.min(filled, DIGIT_POS.length) - 1] + 1;
+  }
+
+  ph.addEventListener('focus', function() {
+    if (this.value === '' || this.value === '+7 ') {
+      this.value = MASK;
+      var pos = 4;
+      this.setSelectionRange(pos, pos);
+    }
+  });
+
+  ph.addEventListener('blur', function() {
+    var digits = getDigits(this.value);
+    if (digits.length === 0) {
+      this.value = '';
+    }
+  });
+
+  ph.addEventListener('keydown', function(e) {
+    var digits = getDigits(this.value);
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      if (digits.length > 0) {
+        digits.pop();
+        this.value = applyMask(digits);
+        var pos = getCursorPos(digits);
+        this.setSelectionRange(pos, pos);
+      }
+      checkFields();
+    } else if (e.key === 'Delete') {
+      e.preventDefault();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Tab') {
+      // разрешаем навигацию
+    } else if (/^\d$/.test(e.key)) {
+      e.preventDefault();
+      if (digits.length < 10) {
+        digits.push(e.key);
+        this.value = applyMask(digits);
+        var pos2 = getCursorPos(digits);
+        this.setSelectionRange(pos2, pos2);
+      }
+      checkFields();
+    } else if (!e.ctrlKey && !e.metaKey) {
+      e.preventDefault();
+    }
+  });
+
+  ph.addEventListener('paste', function(e) {
+    e.preventDefault();
+    var text = (e.clipboardData || window.clipboardData).getData('text');
+    var raw = text.replace(/\D/g, '');
+    if (raw.charAt(0) === '7' || raw.charAt(0) === '8') raw = raw.slice(1);
+    var digits = raw.slice(0, 10).split('');
+    this.value = applyMask(digits);
+    var pos = getCursorPos(digits);
+    this.setSelectionRange(pos, pos);
+    checkFields();
+  });
+})();
 
 // Вешаем openApptModal на все кнопки "Записаться"
 document.querySelectorAll('.btn-primary,.btn-header,.btn-cta,.btn-cta-white,.doc-modal-btn').forEach(function(b){
