@@ -157,6 +157,7 @@ footer{background:var(--ink);color:#A99B8C;padding:48px clamp(24px,4vw,56px) 24p
 .back-to-top{position:fixed;bottom:36px;right:36px;z-index:200;background:var(--gold);color:#fff;border:none;border-radius:999px;padding:12px 20px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 8px 24px rgba(176,155,58,0.35);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s ease,transform .3s ease}
 .back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
 .back-to-top:hover{padding:28px 16px 24px;}
+@media(max-width:700px){
   .hero-right-reviews{display:none;}
   .page-hero h1{font-size:34px;}
   .contacts-wrap{padding:20px 16px 36px;}
@@ -320,7 +321,11 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
       <h3>Приезжайте</h3>
       <p>5 минут пешком от метро Озерки. Удобная парковка прямо у клиники</p>
     </div>
-  </div>
+  <div class="phone-block">
+    <div class="phone-block-text">
+      <h2>Звоните нам</h2>
+      <p>Ответим на вопросы, запишем на удобное время</p>
+    </div>
     <div class="phone-block-number">
       <a href="tel:88126057207" class="phone-big">8 812 605 72 07</a>
       <div class="phone-hours">Пн–пт: 09:00–21:00<br>Суббота: 09:00–16:00<br>Воскресенье: выходной</div>
