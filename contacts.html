@@ -95,7 +95,7 @@ nav a:hover,nav a.active{color:var(--gold-dark)}nav a:hover:after,nav a.active:a
 .phone-hours{font-size:13px;color:rgba(255,255,255,.75);text-align:right;line-height:1.6}
 
 /* КОНТАКТ ИНФО */
-.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.contacts-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:20px}
 .contact-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:0 8px 26px rgba(64,49,25,.035)}
 .contact-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--ink);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);position:relative}
 .contact-card h3:after{content:"";position:absolute;left:0;bottom:-1px;width:36px;height:2px;background:var(--gold)}
@@ -108,7 +108,7 @@ nav a:hover,nav a.active{color:var(--gold-dark)}nav a:hover:after,nav a.active:a
 .map-section{margin-bottom:20px}
 .map-section h2{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:var(--ink);margin-bottom:24px}
 .map-frame{border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 26px rgba(64,49,25,.06)}
-.map-frame iframe{width:100%;height:480px;display:block;border:none}
+.map-frame iframe{width:100%;height:400px;display:block;border:none}
 
 /* ОТЗЫВЫ */
 .reviews-section h2{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:var(--ink);margin-bottom:8px}
@@ -255,7 +255,7 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
   <div class="hero-left">
     <div class="breadcrumb"><a href="index.html">Главная</a> / Контакты</div>
     <h1>Звоните. Приезжайте.<br>Мы вас ждём.</h1>
-    <p>Запишитесь по телефону или оставьте заявку — мы перезвоним и подберём удобное время.</p>
+    <p>Запишитесь по телефону или оставьте заявку на сайте — мы перезвоним и подберём удобное время.</p>
   </div>
   <!-- Правая часть: рейтинг + мини-отзывы -->
   <div class="hero-right-reviews">
@@ -321,16 +321,7 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
       <h3>Приезжайте</h3>
       <p>5 минут пешком от метро Озерки. Удобная парковка прямо у клиники</p>
     </div>
-  <div class="phone-block">
-    <div class="phone-block-text">
-      <h2>Звоните нам</h2>
-      <p>Ответим на вопросы, запишем на удобное время</p>
-    </div>
-    <div class="phone-block-number">
-      <a href="tel:88126057207" class="phone-big">8 812 605 72 07</a>
-      <div class="phone-hours">Пн–пт: 09:00–21:00<br>Суббота: 09:00–16:00<br>Воскресенье: выходной</div>
-    </div>
-  </div>
+
 
   <!-- КОНТАКТНАЯ ИНФОРМАЦИЯ -->
   <div class="contacts-grid">
@@ -358,52 +349,7 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
         </div>
       </div>
     </div>
-    <div class="contact-card" id="form">
-      <h3>Записаться на приём</h3>
-      <form id="appointment-form" action="send-form.php" method="POST">
-        <input type="hidden" name="_subject" value="Новая запись на приём — ДЕНТАЛЛА">
-        <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
-        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px;">
-          <div class="form-group">
-            <label class="form-label">Ваше имя *</label>
-            <input class="form-input" type="text" name="Имя" placeholder="Как вас зовут?" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Телефон *</label>
-            <input class="form-input" type="tel" name="Телефон" placeholder="+7 (___) ___-__-__" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Удобное время</label>
-            <input class="form-input" type="text" name="Удобное время" placeholder="Например: завтра после 18:00">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Услуга</label>
-            <input class="form-input" type="text" name="Услуга" placeholder="Имплантация, лечение, чистка...">
-          </div>
-            <div class="form-group">
-              <label class="form-label">Выбрать врача</label>
-              <select name="Врач" class="form-input" style="appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B09B3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;">
-                <option value="">— Не важно, любой специалист —</option>
-                <option value="Елагина Нана Леонтиевна">Елагина Нана Леонтиевна — главный врач, ортопед</option>
-                <option value="Елагин Роман Владиславович">Елагин Роман Владиславович — хирург, имплантолог</option>
-                <option value="Марсавина Жанна Владимировна">Марсавина Жанна Владимировна — терапевт, микроскопист</option>
-                <option value="Гороховская Нинэль Юльевна">Гороховская Нинэль Юльевна — ортодонт</option>
-                <option value="Воронина Кристина Сергеевна">Воронина Кристина Сергеевна — детский стоматолог</option>
-                <option value="Фурса Анна Александровна">Фурса Анна Александровна — терапевт</option>
-                <option value="Разуваева Яна Евгеньевна">Разуваева Яна Евгеньевна — терапевт</option>
-              </select>
-            </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <label style="display:flex;align-items:flex-start;gap:9px;font-size:11px;color:#5A5248;line-height:1.5;cursor:pointer;">
-            <input type="checkbox" required style="margin-top:2px;flex-shrink:0;width:15px;height:15px;accent-color:#B09B3A;cursor:pointer;">
-            <span>Я даю согласие на обработку персональных данных в соответствии с <a href="consent.html" target="_blank" style="text-decoration:underline;">Согласием на обработку персональных данных</a>.</span>
-          </label>
-          <button type="submit" class="btn-submit" style="width:100%;">Записаться</button>
-        </div>
-        <div class="form-success" id="form-success">✓ Заявка отправлена. Перезвоним в течение 30 минут.</div>
-      </form>
-    </div>
+
   </div>
 
   <!-- КАРТА -->
@@ -414,25 +360,6 @@ footer{flex-direction:column;align-items:flex-start}.phone-big{font-size:30px}.m
         src="https://yandex.ru/map-widget/v1/?um=constructor%3A2afd19877e94b199d961917b3be429fdbcefee38161bc64a04a091f4b446d5bf&amp;source=constructor&amp;scroll=false"
         width="100%" height="480" frameborder="0" allowfullscreen loading="lazy"
         style="display:block;border:none;">
-      </iframe>
-    </div>
-  </div>
-
-  <!-- ОТЗЫВЫ ЯНДЕКС -->
-  <div class="reviews-section" style="margin-top:48px;">
-    <div class="reviews-header">
-      <div>
-        <h2>Отзывы пациентов</h2>
-        <p class="section-sub">Реальные отзывы на Яндекс Картах</p>
-      </div>
-      <a class="reviews-link" href="https://yandex.ru/maps/org/dentalla/1144293310/reviews/" target="_blank">Все отзывы на Яндексе →</a>
-    </div>
-    <div class="reviews-widget">
-      <iframe
-        src="https://yandex.ru/maps-reviews-widget/1144293310?comments"
-        width="100%" height="520" frameborder="0"
-        style="display:block;border:none;"
-        loading="lazy">
       </iframe>
     </div>
   </div>
@@ -573,4 +500,5 @@ if (window.location.search.indexOf('sent=1') !== -1) {
 </script>
 </body>
 </html>
+
 
