@@ -796,13 +796,16 @@ function closeSupervisoryModal(){closeGlassModal('supervisory-modal');}
   backdrop-filter:blur(0px) saturate(100%);
   -webkit-backdrop-filter:blur(0px) saturate(100%);
   opacity:0;pointer-events:none;
-  transition:background .35s ease, backdrop-filter .35s ease, -webkit-backdrop-filter .35s ease, opacity .35s ease;
+  visibility:hidden;
+  transition:background .35s ease, backdrop-filter .35s ease, -webkit-backdrop-filter .35s ease, opacity .35s ease, visibility 0s linear .35s;
 }
 .glass-modal.open{
   background:rgba(20,14,6,0.28);
   backdrop-filter:blur(6px) saturate(120%);
   -webkit-backdrop-filter:blur(6px) saturate(120%);
   opacity:1;pointer-events:auto;
+  visibility:visible;
+  transition:background .35s ease, backdrop-filter .35s ease, -webkit-backdrop-filter .35s ease, opacity .35s ease, visibility 0s linear 0s;
 }
 /* Анимация mesh-градиента */
 @keyframes meshShift{
@@ -1161,8 +1164,8 @@ window.addEventListener('load', function() {
 <style>
 .doc-modal{position:fixed;inset:0;z-index:1000;background:rgba(20,14,6,0);backdrop-filter:blur(0px) saturate(100%);-webkit-backdrop-filter:blur(0px) saturate(100%);
   display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;}
-.doc-modal.open{opacity:1;pointer-events:auto;background:rgba(20,14,6,0.28);backdrop-filter:blur(6px) saturate(120%);-webkit-backdrop-filter:blur(6px) saturate(120%);}
+  opacity:0;pointer-events:none;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s;padding:20px;}
+.doc-modal.open{opacity:1;pointer-events:auto;visibility:visible;transition:opacity .3s ease,visibility 0s linear 0s;background:rgba(20,14,6,0.28);backdrop-filter:blur(6px) saturate(120%);-webkit-backdrop-filter:blur(6px) saturate(120%);}
 .doc-modal-box{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.45);border-radius:20px;max-width:720px;width:100%;
   max-height:88vh;overflow-y:auto;position:relative;
   box-shadow:0 24px 80px rgba(43,36,24,0.18);
