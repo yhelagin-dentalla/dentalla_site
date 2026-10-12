@@ -707,6 +707,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
       <h4>Контакты</h4>
       <p><a href="tel:88126057207">8 812 605 72 07</a></p>
       <p style="margin-top:4px;"><a href="mailto:dentalla@inbox.ru">dentalla@inbox.ru</a></p>
+      <p style="margin-top:8px;"><a href="#" onclick="event.preventDefault();openTaxModal();">Справка для налогового вычета</a></p>
     </div>
     <div class="f-col">
       <h4>Документы</h4>
@@ -1257,6 +1258,51 @@ window.addEventListener('load', function() {
   </div>
 </div>
 
+
+<!-- МОДАЛЬНОЕ ОКНО СПРАВКИ ДЛЯ НАЛОГОВОГО ВЫЧЕТА -->
+<div id="tax-modal" class="glass-modal" onclick="if(event.target===this)closeTaxModal()">
+  <div class="glass-panel" style="max-width:480px;width:100%;position:relative;overflow:hidden;">
+    <div class="glass-head">
+      <button class="glass-close" onclick="closeTaxModal()">×</button>
+      <h2 style="font-size:26px;">Справка для налогового вычета</h2>
+      <p>Заполните заявку — мы подготовим документы и свяжемся с вами</p>
+    </div>
+    <div style="padding:24px 30px 28px;">
+      <form id="tax-form" action="send-tax-form.php" method="POST">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Имя</label>
+            <input id="tax-name" name="Имя" type="text" placeholder="Как вас зовут?" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
+            <input id="tax-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Год(ы) лечения</label>
+            <input id="tax-year" name="Год" type="text" placeholder="Например: 2024 или 2023–2024" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Email (для получения справки)</label>
+            <input id="tax-email" name="Email" type="email" placeholder="your@email.ru" autocomplete="email" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Комментарий</label>
+            <textarea id="tax-comment" name="Комментарий" placeholder="Дополнительные пожелания" rows="2" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;resize:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#5A5248;line-height:1.5;cursor:pointer;">
+            <input type="checkbox" id="tax-consent" required style="margin-top:2px;flex-shrink:0;width:15px;height:15px;accent-color:#B09B3A;cursor:pointer;">
+            <span>Я даю согласие на обработку персональных данных в соответствии с <a href="consent.html" target="_blank" style="color:#B09B3A;text-decoration:underline;">Согласием на обработку персональных данных</a>.</span>
+          </label>
+          <button type="submit" id="tax-submit" disabled style="background:rgba(176,155,58,0.25);color:rgba(255,255,255,0.7);border:none;border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:not-allowed;transition:all .25s;font-family:'Manrope',sans-serif;width:100%;">Отправить заявку</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script>
 // Печатная машинка над карточками услуг
 function startTypewriter() {
@@ -1283,6 +1329,34 @@ function openApptModal() {
 function closeApptModal() {
   closeGlassModal('appt-modal');
 }
+
+// Модальное окно заявки на справку для налогового вычета
+function openTaxModal() {
+  openGlassModal('tax-modal');
+}
+function closeTaxModal() {
+  closeGlassModal('tax-modal');
+}
+(function(){
+  var taxName = document.getElementById('tax-name');
+  var taxPhone = document.getElementById('tax-phone');
+  var taxConsent = document.getElementById('tax-consent');
+  var taxSubmit = document.getElementById('tax-submit');
+  function checkTax() {
+    var filled = (taxName && taxName.value.trim() !== '') || (taxPhone && taxPhone.value.trim() !== '');
+    var ok = filled && taxConsent && taxConsent.checked;
+    if (taxSubmit) {
+      taxSubmit.disabled = !ok;
+      taxSubmit.style.background = ok ? '#2B2418' : 'rgba(176,155,58,0.25)';
+      taxSubmit.style.color = ok ? '#fff' : 'rgba(255,255,255,0.7)';
+      taxSubmit.style.cursor = ok ? 'pointer' : 'not-allowed';
+    }
+  }
+  if (taxName) taxName.addEventListener('input', checkTax);
+  if (taxPhone) taxPhone.addEventListener('input', checkTax);
+  if (taxConsent) taxConsent.addEventListener('change', checkTax);
+})();
+
 
 // Активация кнопки при заполнении хотя бы одного поля и согласии на обработку данных
 var fields = ['appt-name','appt-phone','appt-comment'];
