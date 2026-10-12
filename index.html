@@ -1167,7 +1167,7 @@ window.addEventListener('load', function() {
   display:flex;align-items:center;justify-content:center;
   opacity:0;pointer-events:none;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s;padding:20px;}
 .doc-modal.open{opacity:1;pointer-events:auto;visibility:visible;transition:opacity .3s ease,visibility 0s linear 0s;background:rgba(20,14,6,0.28);backdrop-filter:blur(6px) saturate(120%);-webkit-backdrop-filter:blur(6px) saturate(120%);}
-.doc-modal-box{position:relative;overflow-y:auto;border:1px solid rgba(255,255,255,0.45);border-radius:20px;max-width:720px;width:100%;max-height:88vh;box-shadow:0 24px 80px rgba(43,36,24,0.18);transform:translateY(20px);transition:transform .3s ease;}
+.doc-modal-box{position:relative;overflow-y:auto;border:1px solid rgba(255,255,255,0.45);border-radius:20px;max-width:720px;width:100%;max-height:88vh;box-shadow:0 24px 80px rgba(43,36,24,0.18);transform:translateY(20px);transition:transform .3s ease;background-color:rgba(250,252,248,0.92);}
 .doc-modal.open .doc-modal-box{transform:translateY(0);}
 .doc-modal-close{position:sticky;top:12px;float:right;margin:12px 12px -44px 0;
   width:36px;height:36px;flex-shrink:0;
@@ -1178,8 +1178,8 @@ window.addEventListener('load', function() {
 .doc-modal-hero{display:grid;grid-template-columns:180px 1fr;gap:0;border-radius:20px 20px 0 0;overflow:hidden;}
 .doc-modal-photo{width:180px;min-height:220px;background:#EDE7DC;flex-shrink:0;position:relative;overflow:hidden;}
 .doc-modal-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.doc-modal-box::before{content:'';position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 80% at 15% 20%,rgba(176,155,58,0.13) 0%,transparent 65%),radial-gradient(ellipse 70% 70% at 82% 8%,rgba(255,255,255,0.95) 0%,transparent 60%),radial-gradient(ellipse 90% 90% at 55% 88%,rgba(176,155,58,0.07) 0%,transparent 55%);background-size:200% 200%,200% 200%,200% 200%;background-color:rgba(250,252,248,0.85);animation:meshShift 9s ease infinite;border-radius:20px;}
-.doc-modal-box>*{position:relative;z-index:1;}
+/* ::before background moved to .doc-modal-box directly */
+
 .doc-modal-head{background:rgba(255,255,255,0.60);border-bottom:1px solid rgba(176,155,58,0.15);padding:32px 28px 24px;}
 .doc-modal-head h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;
   color:#2B2418;line-height:1.1;margin-bottom:8px;}
