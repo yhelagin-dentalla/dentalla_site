@@ -1267,26 +1267,71 @@ window.addEventListener('load', function() {
     <div style="padding:24px 30px 28px;">
       <form id="tax-form" action="send-tax-form.php" method="POST">
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+
+          <!-- Имя получателя вычета -->
           <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Имя</label>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Ваше имя (получатель вычета)</label>
             <input id="tax-name" name="Имя" type="text" placeholder="Как вас зовут?" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
+
+          <!-- ИНН получателя вычета -->
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">ИНН получателя вычета</label>
+            <input id="tax-inn" name="ИНН" type="text" inputmode="numeric" maxlength="12" placeholder="12 цифр" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" oninput="this.value=this.value.replace(/\D/g,'')" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+          </div>
+
+          <!-- Телефон -->
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
             <input id="tax-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" oninput="taxPhoneMask(event)" onfocus="this.style.borderColor='#B09B3A';taxPhoneMaskFocus(this)" onblur="this.style.borderColor='#EDE7DC';taxPhoneMaskBlur(this)">
           </div>
+
+          <!-- Год(ы) лечения -->
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Год(ы) лечения</label>
             <input id="tax-year" name="Год" type="text" placeholder="Например: 2024 или 2023–2024" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
+
+          <!-- Email -->
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Email (для получения справки)</label>
             <input id="tax-email" name="Email" type="email" placeholder="your@email.ru" autocomplete="email" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
+
+          <!-- За кого оформляется вычет -->
+          <div>
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Вычет оформляется</label>
+            <div style="display:flex;gap:8px;">
+              <label style="flex:1;display:flex;align-items:center;gap:8px;border:1px solid #EDE7DC;border-radius:10px;padding:11px 14px;cursor:pointer;font-size:13px;color:#4A3E30;transition:border-color .2s;" id="tax-for-self-label">
+                <input type="radio" name="ВычетЗа" value="за себя" id="tax-for-self" checked style="accent-color:#B09B3A;width:15px;height:15px;" onchange="taxForToggle()"> За себя
+              </label>
+              <label style="flex:1;display:flex;align-items:center;gap:8px;border:1px solid #EDE7DC;border-radius:10px;padding:11px 14px;cursor:pointer;font-size:13px;color:#4A3E30;transition:border-color .2s;" id="tax-for-other-label">
+                <input type="radio" name="ВычетЗа" value="за другого" id="tax-for-other" style="accent-color:#B09B3A;width:15px;height:15px;" onchange="taxForToggle()"> За члена семьи
+              </label>
+            </div>
+          </div>
+
+          <!-- Пациенты (показываются только при выборе "За другого") -->
+          <div id="tax-patients-block" style="display:none;flex-direction:column;gap:10px;">
+            <div style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px;">Пациенты, за которых получается вычет</div>
+            <div id="tax-patients-list">
+              <!-- первый пациент -->
+              <div class="tax-patient-row" style="display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;">
+                <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+                  <input name="ПациентФИО[]" type="text" placeholder="ФИО пациента" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+                  <input name="ПациентИНН[]" type="text" inputmode="numeric" maxlength="12" placeholder="ИНН пациента (12 цифр)" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" oninput="this.value=this.value.replace(/\D/g,'')" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+                </div>
+              </div>
+            </div>
+            <button type="button" onclick="taxAddPatient()" style="align-self:flex-start;background:none;border:1px dashed #B09B3A;color:#B09B3A;border-radius:8px;padding:7px 14px;font-size:13px;font-family:'Manrope',sans-serif;cursor:pointer;">+ Добавить пациента</button>
+          </div>
+
+          <!-- Комментарий -->
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Комментарий</label>
-            <textarea id="tax-comment" name="Комментарий" placeholder="Дополнительные пожелания" rows="2" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;resize:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
+            <textarea id="tax-comment" name="Комментарий" placeholder="Дополнительные пожелания" rows="2" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;resize:none;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
           </div>
+
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;">
           <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#5A5248;line-height:1.5;cursor:pointer;">
@@ -1369,10 +1414,10 @@ function taxPhoneMaskBlur(el) {
 }
 
 (function(){
-  var taxName = document.getElementById('tax-name');
-  var taxPhone = document.getElementById('tax-phone');
+  var taxName    = document.getElementById('tax-name');
+  var taxPhone   = document.getElementById('tax-phone');
   var taxConsent = document.getElementById('tax-consent');
-  var taxSubmit = document.getElementById('tax-submit');
+  var taxSubmit  = document.getElementById('tax-submit');
   function checkTax() {
     var filled = (taxName && taxName.value.trim() !== '') || (taxPhone && taxPhone.value.trim() !== '');
     var ok = filled && taxConsent && taxConsent.checked;
@@ -1383,10 +1428,40 @@ function taxPhoneMaskBlur(el) {
       taxSubmit.style.cursor = ok ? 'pointer' : 'not-allowed';
     }
   }
-  if (taxName) taxName.addEventListener('input', checkTax);
-  if (taxPhone) taxPhone.addEventListener('input', checkTax);
+  if (taxName)    taxName.addEventListener('input', checkTax);
+  if (taxPhone)   taxPhone.addEventListener('input', checkTax);
   if (taxConsent) taxConsent.addEventListener('change', checkTax);
 })();
+
+/* Переключатель «За себя / За члена семьи» */
+function taxForToggle() {
+  var forOther = document.getElementById('tax-for-other');
+  var block    = document.getElementById('tax-patients-block');
+  var selfLbl  = document.getElementById('tax-for-self-label');
+  var otherLbl = document.getElementById('tax-for-other-label');
+  if (!forOther || !block) return;
+  var isOther = forOther.checked;
+  block.style.display = isOther ? 'flex' : 'none';
+  selfLbl.style.borderColor  = isOther ? '#EDE7DC' : '#B09B3A';
+  otherLbl.style.borderColor = isOther ? '#B09B3A' : '#EDE7DC';
+}
+
+/* Добавить ещё одного пациента */
+function taxAddPatient() {
+  var list = document.getElementById('tax-patients-list');
+  if (!list) return;
+  var FIELD = "width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:\'Manrope\',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;";
+  var row = document.createElement('div');
+  row.className = 'tax-patient-row';
+  row.style.cssText = 'display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;';
+  row.innerHTML =
+    '<div style="flex:1;display:flex;flex-direction:column;gap:6px;">' +
+      '<input name="ПациентФИО[]" type="text" placeholder="ФИО пациента" style="' + FIELD + '" onfocus="this.style.borderColor=\'#B09B3A\'" onblur="this.style.borderColor=\'#EDE7DC\'">' +
+      '<input name="ПациентИНН[]" type="text" inputmode="numeric" maxlength="12" placeholder="ИНН пациента (12 цифр)" style="' + FIELD + '" oninput="this.value=this.value.replace(/\\D/g,\'\')" onfocus="this.style.borderColor=\'#B09B3A\'" onblur="this.style.borderColor=\'#EDE7DC\'">' +
+    '</div>' +
+    '<button type="button" onclick="this.closest(\'.tax-patient-row\').remove()" style="flex-shrink:0;margin-top:12px;background:none;border:none;color:#C0A878;font-size:20px;cursor:pointer;line-height:1;padding:0 4px;" title="Удалить">×</button>';
+  list.appendChild(row);
+}
 
 
 // Активация кнопки при заполнении хотя бы одного поля и согласии на обработку данных
