@@ -334,7 +334,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 
   /* Модал врача — мобильный */
   .doc-modal{padding:10px;}
-  .doc-modal-box{border-radius:16px;max-height:92vh;}
+  .doc-modal-box{border-radius:16px;max-height:90vh;overflow-y:auto;}
   .doc-modal-close{top:10px;right:10px;width:30px;height:30px;font-size:16px;}
   /* На мобильном скрываем боковую шапку с ФИО, показываем мобильную */
   .doc-modal-head{display:none !important;}
@@ -1167,10 +1167,7 @@ window.addEventListener('load', function() {
   display:flex;align-items:center;justify-content:center;
   opacity:0;pointer-events:none;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s;padding:20px;}
 .doc-modal.open{opacity:1;pointer-events:auto;visibility:visible;transition:opacity .3s ease,visibility 0s linear 0s;background:rgba(20,14,6,0.28);backdrop-filter:blur(6px) saturate(120%);-webkit-backdrop-filter:blur(6px) saturate(120%);}
-.doc-modal-box{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.45);border-radius:20px;max-width:720px;width:100%;
-  max-height:88vh;overflow-y:auto;position:relative;
-  box-shadow:0 24px 80px rgba(43,36,24,0.18);
-  transform:translateY(20px);transition:transform .3s ease;}
+.doc-modal-box{position:relative;overflow-y:auto;border:1px solid rgba(255,255,255,0.45);border-radius:20px;max-width:720px;width:100%;max-height:88vh;box-shadow:0 24px 80px rgba(43,36,24,0.18);transform:translateY(20px);transition:transform .3s ease;}
 .doc-modal.open .doc-modal-box{transform:translateY(0);}
 .doc-modal-close{position:sticky;top:12px;float:right;margin:12px 12px -44px 0;
   width:36px;height:36px;flex-shrink:0;
@@ -1276,7 +1273,7 @@ window.addEventListener('load', function() {
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
-            <input id="tax-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <input id="tax-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" oninput="taxPhoneMask(event)" onfocus="this.style.borderColor='#B09B3A';taxPhoneMaskFocus(this)" onblur="this.style.borderColor='#EDE7DC';taxPhoneMaskBlur(this)">
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Год(ы) лечения</label>
@@ -1337,6 +1334,40 @@ function openTaxModal() {
 function closeTaxModal() {
   closeGlassModal('tax-modal');
 }
+
+// Маска телефона для формы налогового вычета
+function taxPhoneMask(e) {
+  var el = e.target;
+  var v = el.value.replace(/\D/g, '');
+  if (v.length === 0) { el.value = '+7 ('; return; }
+  if (v[0] === '7') v = v.slice(1);
+  if (v[0] === '8') v = v.slice(1);
+  var res = '+7 (';
+  if (v.length > 0) res += v.slice(0,3);
+  if (v.length >= 3) res += ') ' + v.slice(3,6);
+  if (v.length >= 6) res += '-' + v.slice(6,8);
+  if (v.length >= 8) res += '-' + v.slice(8,10);
+  el.value = res;
+  var taxPhoneVal = el.value.replace(/\D/g,'').replace(/^7/,'');
+  var taxName2 = document.getElementById('tax-name');
+  var taxConsent2 = document.getElementById('tax-consent');
+  var taxSubmit2 = document.getElementById('tax-submit');
+  var filled2 = taxPhoneVal.length >= 10 || (taxName2 && taxName2.value.trim() !== '');
+  var ok2 = filled2 && taxConsent2 && taxConsent2.checked;
+  if (taxSubmit2) {
+    taxSubmit2.disabled = !ok2;
+    taxSubmit2.style.background = ok2 ? '#2B2418' : 'rgba(176,155,58,0.25)';
+    taxSubmit2.style.color = ok2 ? '#fff' : 'rgba(255,255,255,0.7)';
+    taxSubmit2.style.cursor = ok2 ? 'pointer' : 'not-allowed';
+  }
+}
+function taxPhoneMaskFocus(el) {
+  if (!el.value) el.value = '+7 (';
+}
+function taxPhoneMaskBlur(el) {
+  if (el.value === '+7 (') el.value = '';
+}
+
 (function(){
   var taxName = document.getElementById('tax-name');
   var taxPhone = document.getElementById('tax-phone');
