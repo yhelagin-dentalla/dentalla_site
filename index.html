@@ -332,6 +332,10 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
   .doc-role{font-size:11px;line-height:1.35;margin-bottom:4px;}
   .doc-exp{font-size:11px;}
 
+  /* Glass-модалы (запись, справка) — мобильный */
+  .glass-modal{padding:10px;align-items:flex-start;overflow-y:auto;}
+  .glass-panel{max-height:none !important;overflow-y:visible !important;}
+
   /* Модал врача — мобильный */
   .doc-modal{padding:10px;align-items:flex-start;overflow-y:auto;}
   .doc-modal-box{border-radius:16px;max-height:none;overflow-y:visible;}
@@ -1211,7 +1215,7 @@ window.addEventListener('load', function() {
 
 <!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
 <div id="appt-modal" class="glass-modal" onclick="if(event.target===this)closeApptModal()">
-  <div class="glass-panel" style="max-width:480px;width:100%;position:relative;overflow:hidden;">
+  <div class="glass-panel" style="max-width:480px;width:100%;position:relative;overflow:hidden;max-height:92vh;overflow-y:auto;">
     <!-- Шапка -->
     <div class="glass-head">
       <button class="glass-close" onclick="closeApptModal()">×</button>
@@ -1258,7 +1262,7 @@ window.addEventListener('load', function() {
 
 <!-- МОДАЛЬНОЕ ОКНО СПРАВКИ ДЛЯ НАЛОГОВОГО ВЫЧЕТА -->
 <div id="tax-modal" class="glass-modal" onclick="if(event.target===this)closeTaxModal()">
-  <div class="glass-panel" style="max-width:480px;width:100%;position:relative;overflow:hidden;">
+  <div class="glass-panel" style="max-width:480px;width:100%;position:relative;overflow:hidden;max-height:92vh;overflow-y:auto;">
     <div class="glass-head">
       <button class="glass-close" onclick="closeTaxModal()">×</button>
       <h2 style="font-size:26px;">Справка для налогового вычета</h2>
