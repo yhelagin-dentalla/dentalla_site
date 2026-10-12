@@ -334,7 +334,7 @@ footer{background:#2B2418;color:#A09080;padding:40px 40px 24px;}
 
   /* Glass-модалы (запись, справка) — мобильный */
   .glass-modal{padding:10px;align-items:flex-start;overflow-y:auto;}
-  .glass-panel{max-height:none !important;overflow-y:visible !important;}
+  .glass-panel{max-height:none !important;overflow-y:auto !important;}
 
   /* Модал врача — мобильный */
   .doc-modal{padding:10px;align-items:flex-start;overflow-y:auto;}
@@ -821,7 +821,8 @@ function closeSupervisoryModal(){closeGlassModal('supervisory-modal');}
 }
 /* Панель модалки */
 .glass-panel{
-  position:relative;overflow:hidden;
+  position:relative;
+  background-color:rgba(250,252,248,0.92);
   border:1px solid rgba(255,255,255,0.6);
   box-shadow:0 32px 80px rgba(20,14,6,0.22), 0 1px 0 rgba(255,255,255,0.7) inset;
   border-radius:22px;
