@@ -1,12 +1,25 @@
 <?php
-// Собственный обработчик формы записи на приём.
-// Заменяет formsubmit.co (сторонний сервис, оказавшийся ненадёжным/недоступным)
-// на прямую отправку письма с сервера — так же, как это устроено на dentalla.ru.
+// Обработчик формы записи на приём.
+// Защита от спама: honeypot-поле (website) + временная метка (_ts).
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.html');
     exit;
 }
+
+// --- Антиспам ---
+// 1. Honeypot: поле "website" должно быть пустым (боты его заполняют)
+if (!empty($_POST['website'])) {
+    header('Location: index.html');
+    exit;
+}
+// 2. Временная метка: между загрузкой формы и отправкой должно пройти не менее 3 секунд
+$ts = isset($_POST['_ts']) ? intval($_POST['_ts']) : 0;
+if ($ts > 0 && (time() - $ts) < 3) {
+    header('Location: index.html');
+    exit;
+}
+// --- /Антиспам ---
 
 $to = 'dentalla@inbox.ru';
 
@@ -20,7 +33,6 @@ $phone   = dentalla_field('Телефон');
 $doctor  = dentalla_field('Врач');
 $comment = dentalla_field('Комментарий');
 
-// Простая защита от пустой отправки и от ботов (honeypot-поле, если добавим позже)
 if ($name === '' && $phone === '' && $comment === '') {
     header('Location: index.html');
     exit;
@@ -48,7 +60,6 @@ if ($phone !== '') {
 
 @mail($to, $encodedSubject, $body, $headers);
 
-// Возвращаем пользователя на ту же страницу, откуда была отправка формы
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
 if ($referer !== '') {
     $refererPath = preg_replace('/[?#].*$/', '', $referer);
