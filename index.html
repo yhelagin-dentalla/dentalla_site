@@ -1226,6 +1226,8 @@ window.addEventListener('load', function() {
     <!-- Форма -->
     <div style="padding:24px 30px 28px;">
       <form id="appt-form" action="send-form.php" method="POST">
+        <input type="text" name="website" id="appt-hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+        <input type="hidden" name="_ts" id="appt-ts">
         <input type="hidden" name="_subject" value="Обращение с сайта">
         <input type="hidden" name="_next" value="http://kvrachu.info/contacts.html?sent=1">
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
@@ -1271,6 +1273,8 @@ window.addEventListener('load', function() {
     </div>
     <div style="padding:24px 30px 28px;">
       <form id="tax-form" action="send-tax-form.php" method="POST">
+        <input type="text" name="website" id="tax-hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+        <input type="hidden" name="_ts" id="tax-ts">
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
 
           <!-- Имя получателя вычета -->
@@ -1613,6 +1617,17 @@ if (window.location.search.indexOf('sent=1') !== -1) {
     window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
   }
 }
+</script>
+
+<script>
+// Anti-spam: set load timestamps for forms
+document.addEventListener('DOMContentLoaded', function() {
+  var now = Math.floor(Date.now() / 1000);
+  var aTs = document.getElementById('appt-ts');
+  var tTs = document.getElementById('tax-ts');
+  if (aTs) aTs.value = now;
+  if (tTs) tTs.value = now;
+});
 </script>
 </body>
 </html>
