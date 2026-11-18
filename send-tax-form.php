@@ -1,10 +1,23 @@
 <?php
 // Обработчик формы заявки на справку для налогового вычета.
+// Защита от спама: honeypot-поле (website) + временная метка (_ts).
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.html');
     exit;
 }
+
+// --- Антиспам ---
+if (!empty($_POST['website'])) {
+    header('Location: index.html');
+    exit;
+}
+$ts = isset($_POST['_ts']) ? intval($_POST['_ts']) : 0;
+if ($ts > 0 && (time() - $ts) < 3) {
+    header('Location: index.html');
+    exit;
+}
+// --- /Антиспам ---
 
 $to = 'dentalla@inbox.ru';
 
@@ -25,7 +38,6 @@ if ($name === '' && $phone === '') {
     exit;
 }
 
-// Пациенты (если вычет за другого)
 $patientFios = isset($_POST['ПациентФИО']) && is_array($_POST['ПациентФИО'])
     ? $_POST['ПациентФИО'] : array();
 $patientInns = isset($_POST['ПациентИНН']) && is_array($_POST['ПациентИНН'])
@@ -47,7 +59,6 @@ if ($year !== '') {
     $body .= "Год(ы) лечения: " . $year . "\r\n";
 }
 
-// Блок пациентов (если вычет за другого)
 if ($forWho === 'за другого' && count($patientFios) > 0) {
     $body .= "\r\n--- Пациенты, за которых получается вычет ---\r\n";
     foreach ($patientFios as $i => $fio) {
