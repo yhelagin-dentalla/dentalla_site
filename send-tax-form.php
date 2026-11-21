@@ -25,56 +25,61 @@ function tax_field($key, $default = '') {
     return isset($_POST[$key]) ? trim($_POST[$key]) : $default;
 }
 
-$name    = tax_field('Имя');
-$inn     = tax_field('ИНН');
-$phone   = tax_field('Телефон');
-$year    = tax_field('Год');
-$email   = tax_field('Email');
-$forWho  = tax_field('ВычетЗа', 'за себя');
-$comment = tax_field('Комментарий');
+$fio            = tax_field('ФИО');
+$inn            = tax_field('ИНН');
+$phone          = tax_field('Телефон');
+$year           = tax_field('Год');
+$email          = tax_field('Email');
+$comment        = tax_field('Комментарий');
+$patientType    = tax_field('ТипПациента', 'взрослый');
 
-if ($name === '' && $phone === '') {
+// Паспорт (взрослый)
+$passportSeries  = tax_field('ПаспортСерия');
+$passportNumber  = tax_field('ПаспортНомер');
+$passportIssued  = tax_field('ПаспортВыдан');
+$passportDate    = tax_field('ПаспортДатаВыдачи');
+
+// Свидетельство о рождении (ребёнок)
+$birthSeries     = tax_field('СвидетельствоСерия');
+$birthNumber     = tax_field('СвидетельствоНомер');
+$birthDate       = tax_field('СвидетельствоДатаВыдачи');
+
+if ($fio === '' && $phone === '') {
     header('Location: index.html');
     exit;
 }
-
-$patientFios = isset($_POST['ПациентФИО']) && is_array($_POST['ПациентФИО'])
-    ? $_POST['ПациентФИО'] : array();
-$patientInns = isset($_POST['ПациентИНН']) && is_array($_POST['ПациентИНН'])
-    ? $_POST['ПациентИНН'] : array();
 
 $subject = 'Заявка на справку для налогового вычета';
 
 $body  = "Новая заявка с сайта dentalla.ru\r\n";
 $body .= "Тема: Справка для налогового вычета\r\n\r\n";
-$body .= "--- Получатель вычета ---\r\n";
-$body .= "Имя: " . ($name !== '' ? $name : '(не указано)') . "\r\n";
-$body .= "ИНН: " . ($inn !== '' ? $inn : '(не указан)') . "\r\n";
+
+$body .= "--- Пациент ---\r\n";
+$body .= "ФИО: " . ($fio !== '' ? $fio : '(не указано)') . "\r\n";
+$body .= "Тип: " . $patientType . "\r\n";
+
+if ($patientType === 'взрослый') {
+    $body .= "ИНН: " . ($inn !== '' ? $inn : '(не указан)') . "\r\n";
+    $body .= "\r\n--- Паспорт ---\r\n";
+    $body .= "Серия: " . ($passportSeries !== '' ? $passportSeries : '(не указана)') . "\r\n";
+    $body .= "Номер: " . ($passportNumber !== '' ? $passportNumber : '(не указан)') . "\r\n";
+    $body .= "Кем выдан: " . ($passportIssued !== '' ? $passportIssued : '(не указано)') . "\r\n";
+    $body .= "Дата выдачи: " . ($passportDate !== '' ? $passportDate : '(не указана)') . "\r\n";
+} else {
+    $body .= "\r\n--- Свидетельство о рождении ---\r\n";
+    $body .= "Серия: " . ($birthSeries !== '' ? $birthSeries : '(не указана)') . "\r\n";
+    $body .= "Номер: " . ($birthNumber !== '' ? $birthNumber : '(не указан)') . "\r\n";
+    $body .= "Дата выдачи: " . ($birthDate !== '' ? $birthDate : '(не указана)') . "\r\n";
+}
+
+$body .= "\r\n--- Контакты ---\r\n";
 $body .= "Телефон: " . ($phone !== '' ? $phone : '(не указан)') . "\r\n";
 if ($email !== '') {
     $body .= "Email: " . $email . "\r\n";
 }
-$body .= "Вычет оформляется: " . $forWho . "\r\n";
 if ($year !== '') {
     $body .= "Год(ы) лечения: " . $year . "\r\n";
 }
-
-if ($forWho === 'за другого' && count($patientFios) > 0) {
-    $body .= "\r\n--- Пациенты, за которых получается вычет ---\r\n";
-    foreach ($patientFios as $i => $fio) {
-        $fio = trim($fio);
-        $pInn = isset($patientInns[$i]) ? trim($patientInns[$i]) : '';
-        if ($fio !== '' || $pInn !== '') {
-            $num = $i + 1;
-            $body .= "Пациент " . $num . ": " . ($fio !== '' ? $fio : '(ФИО не указано)');
-            if ($pInn !== '') {
-                $body .= ", ИНН: " . $pInn;
-            }
-            $body .= "\r\n";
-        }
-    }
-}
-
 if ($comment !== '') {
     $body .= "\r\nКомментарий: " . $comment . "\r\n";
 }
