@@ -1529,7 +1529,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('tax-adult-label').style.borderColor = '#B09B3A';
 });
 
-
+function openTaxModal() { openGlassModal('tax-modal'); }
+function closeTaxModal() { closeGlassModal('tax-modal'); }
 
 // Активация кнопки при заполнении хотя бы одного поля и согласии на обработку данных
 var fields = ['appt-name','appt-phone','appt-comment'];
