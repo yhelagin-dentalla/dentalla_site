@@ -1265,89 +1265,112 @@ window.addEventListener('load', function() {
 
 <!-- МОДАЛЬНОЕ ОКНО СПРАВКИ ДЛЯ НАЛОГОВОГО ВЫЧЕТА -->
 <div id="tax-modal" class="glass-modal" onclick="if(event.target===this)closeTaxModal()">
-  <div class="glass-panel" style="max-width:480px;width:100%;position:relative;overflow:hidden;max-height:92vh;overflow-y:auto;">
+  <div class="glass-panel" style="max-width:520px;width:100%;position:relative;overflow:hidden;max-height:92vh;overflow-y:auto;">
     <div class="glass-head">
       <button class="glass-close" onclick="closeTaxModal()">×</button>
       <h2 style="font-size:26px;">Справка для налогового вычета</h2>
-      <p>Заполните заявку — мы подготовим документы и свяжемся с вами</p>
+      <p>Заявка оформляется на одного пациента. Заполните данные — мы подготовим документы и свяжемся с вами.</p>
     </div>
     <div style="padding:24px 30px 28px;">
-      <form id="tax-form" action="send-tax-form.php" method="POST">
+      <form id="tax-form" action="send-tax-form.php" method="POST" onsubmit="return taxValidate(event)">
         <input type="text" name="website" id="tax-hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
         <input type="hidden" name="_ts" id="tax-ts">
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:18px;">
 
-          <!-- Имя получателя вычета -->
+          <!-- Переключатель: ребёнок / взрослый -->
           <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Ваше имя (получатель вычета)</label>
-            <input id="tax-name" name="Имя" type="text" placeholder="Как вас зовут?" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:8px;">Пациент</label>
+            <div style="display:flex;gap:8px;">
+              <label style="flex:1;display:flex;align-items:center;gap:8px;border:1px solid #EDE7DC;border-radius:10px;padding:11px 14px;cursor:pointer;font-size:13px;color:#4A3E30;transition:border-color .2s;" id="tax-adult-label">
+                <input type="radio" name="ТипПациента" value="взрослый" id="tax-adult" checked style="accent-color:#B09B3A;width:15px;height:15px;" onchange="taxPatientTypeToggle()"> Взрослый (от 14 лет)
+              </label>
+              <label style="flex:1;display:flex;align-items:center;gap:8px;border:1px solid #EDE7DC;border-radius:10px;padding:11px 14px;cursor:pointer;font-size:13px;color:#4A3E30;transition:border-color .2s;" id="tax-child-label">
+                <input type="radio" name="ТипПациента" value="ребёнок" id="tax-child" style="accent-color:#B09B3A;width:15px;height:15px;" onchange="taxPatientTypeToggle()"> Ребёнок (до 14 лет)
+              </label>
+            </div>
           </div>
 
-          <!-- ИНН получателя вычета -->
+          <!-- ФИО пациента -->
           <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">ИНН получателя вычета</label>
-            <input id="tax-inn" name="ИНН" type="text" inputmode="numeric" maxlength="12" placeholder="12 цифр" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" oninput="this.value=this.value.replace(/\D/g,'')" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">ФИО пациента <span style="color:#C0392B;">*</span></label>
+            <input id="tax-fio" name="ФИО" type="text" placeholder="Фамилия Имя Отчество" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <div id="tax-fio-err" style="display:none;font-size:12px;color:#C0392B;margin-top:4px;">Введите ФИО полностью</div>
+          </div>
+
+          <!-- ИНН пациента (только для взрослых) -->
+          <div id="tax-inn-block">
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">ИНН пациента <span style="color:#C0392B;">*</span></label>
+            <input id="tax-inn" name="ИНН" type="text" inputmode="numeric" maxlength="12" placeholder="12 цифр" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" oninput="this.value=this.value.replace(/\D/g,'')" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <div id="tax-inn-err" style="display:none;font-size:12px;color:#C0392B;margin-top:4px;">ИНН должен состоять из 12 цифр</div>
+          </div>
+
+          <!-- Паспортные данные (взрослый) -->
+          <div id="tax-passport-block">
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:8px;">Паспортные данные <span style="color:#C0392B;">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;gap:8px;">
+                <div style="flex:1;">
+                  <input id="tax-passport-series" name="ПаспортСерия" type="text" inputmode="numeric" maxlength="4" placeholder="Серия (4 цифры)" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" oninput="this.value=this.value.replace(/\D/g,'')" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+                </div>
+                <div style="flex:1;">
+                  <input id="tax-passport-number" name="ПаспортНомер" type="text" inputmode="numeric" maxlength="6" placeholder="Номер (6 цифр)" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" oninput="this.value=this.value.replace(/\D/g,'')" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+                </div>
+              </div>
+              <input id="tax-passport-issued" name="ПаспортВыдан" type="text" placeholder="Кем выдан (напр.: Отделом МВД...)" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+              <input id="tax-passport-date" name="ПаспортДатаВыдачи" type="text" placeholder="Дата выдачи (ДД.ММ.ГГГГ)" maxlength="10" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" oninput="taxDateMask(this)" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+              <div id="tax-passport-err" style="display:none;font-size:12px;color:#C0392B;margin-top:2px;">Заполните все поля паспорта</div>
+            </div>
+          </div>
+
+          <!-- Свидетельство о рождении (ребёнок) -->
+          <div id="tax-birth-block" style="display:none;">
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:8px;">Свидетельство о рождении <span style="color:#C0392B;">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;gap:8px;">
+                <div style="flex:1;">
+                  <input id="tax-birth-series" name="СвидетельствоСерия" type="text" placeholder="Серия (напр.: I-ЛН)" maxlength="10" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+                </div>
+                <div style="flex:1;">
+                  <input id="tax-birth-number" name="СвидетельствоНомер" type="text" inputmode="numeric" maxlength="6" placeholder="Номер (6 цифр)" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" oninput="this.value=this.value.replace(/\D/g,'')" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+                </div>
+              </div>
+              <input id="tax-birth-date" name="СвидетельствоДатаВыдачи" type="text" placeholder="Дата выдачи (ДД.ММ.ГГГГ)" maxlength="10" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" oninput="taxDateMask(this)" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+              <div id="tax-birth-err" style="display:none;font-size:12px;color:#C0392B;margin-top:2px;">Заполните все поля свидетельства</div>
+            </div>
           </div>
 
           <!-- Телефон -->
           <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
-            <input id="tax-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" oninput="taxPhoneMask(event)" onfocus="this.style.borderColor='#B09B3A';taxPhoneMaskFocus(this)" onblur="this.style.borderColor='#EDE7DC';taxPhoneMaskBlur(this)">
+            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон <span style="color:#C0392B;">*</span></label>
+            <input id="tax-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" oninput="taxPhoneMask(event)" onfocus="this.style.borderColor='#B09B3A';taxPhoneMaskFocus(this)" onblur="this.style.borderColor='#EDE7DC';taxPhoneMaskBlur(this)">
+            <div id="tax-phone-err" style="display:none;font-size:12px;color:#C0392B;margin-top:4px;">Введите номер телефона</div>
           </div>
 
           <!-- Год(ы) лечения -->
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Год(ы) лечения</label>
-            <input id="tax-year" name="Год" type="text" placeholder="Например: 2024 или 2023–2024" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <input id="tax-year" name="Год" type="text" placeholder="Например: 2024 или 2023–2024" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
 
           <!-- Email -->
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Email (для получения справки)</label>
-            <input id="tax-email" name="Email" type="email" placeholder="your@email.ru" autocomplete="email" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
-          </div>
-
-          <!-- За кого оформляется вычет -->
-          <div>
-            <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Вычет оформляется</label>
-            <div style="display:flex;gap:8px;">
-              <label style="flex:1;display:flex;align-items:center;gap:8px;border:1px solid #EDE7DC;border-radius:10px;padding:11px 14px;cursor:pointer;font-size:13px;color:#4A3E30;transition:border-color .2s;" id="tax-for-self-label">
-                <input type="radio" name="ВычетЗа" value="за себя" id="tax-for-self" checked style="accent-color:#B09B3A;width:15px;height:15px;" onchange="taxForToggle()"> За себя
-              </label>
-              <label style="flex:1;display:flex;align-items:center;gap:8px;border:1px solid #EDE7DC;border-radius:10px;padding:11px 14px;cursor:pointer;font-size:13px;color:#4A3E30;transition:border-color .2s;" id="tax-for-other-label">
-                <input type="radio" name="ВычетЗа" value="за другого" id="tax-for-other" style="accent-color:#B09B3A;width:15px;height:15px;" onchange="taxForToggle()"> За члена семьи
-              </label>
-            </div>
-          </div>
-
-          <!-- Пациенты (показываются только при выборе "За другого") -->
-          <div id="tax-patients-block" style="display:none;flex-direction:column;gap:10px;">
-            <div style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px;">Пациенты, за которых получается вычет</div>
-            <div id="tax-patients-list">
-              <!-- первый пациент -->
-              <div class="tax-patient-row" style="display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;">
-                <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
-                  <input name="ПациентФИО[]" type="text" placeholder="ФИО пациента" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
-                  <input name="ПациентИНН[]" type="text" inputmode="numeric" maxlength="12" placeholder="ИНН пациента (12 цифр)" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" oninput="this.value=this.value.replace(/\D/g,'')" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
-                </div>
-              </div>
-            </div>
-            <button type="button" onclick="taxAddPatient()" style="align-self:flex-start;background:none;border:1px dashed #B09B3A;color:#B09B3A;border-radius:8px;padding:7px 14px;font-size:13px;font-family:'Manrope',sans-serif;cursor:pointer;">+ Добавить пациента</button>
+            <input id="tax-email" name="Email" type="email" placeholder="your@email.ru" autocomplete="email" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;box-sizing:border-box;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
 
           <!-- Комментарий -->
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Комментарий</label>
-            <textarea id="tax-comment" name="Комментарий" placeholder="Дополнительные пожелания" rows="2" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;resize:none;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
+            <textarea id="tax-comment" name="Комментарий" placeholder="Дополнительные пожелания" rows="2" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;resize:none;box-sizing:border-box;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'"></textarea>
           </div>
 
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;">
           <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#5A5248;line-height:1.5;cursor:pointer;">
-            <input type="checkbox" id="tax-consent" required style="margin-top:2px;flex-shrink:0;width:15px;height:15px;accent-color:#B09B3A;cursor:pointer;">
+            <input type="checkbox" id="tax-consent" style="margin-top:2px;flex-shrink:0;width:15px;height:15px;accent-color:#B09B3A;cursor:pointer;" onchange="taxCheckConsent()">
             <span>Я даю согласие на обработку персональных данных в соответствии с <a href="consent.html" target="_blank" style="color:#B09B3A;text-decoration:underline;">Согласием на обработку персональных данных</a>.</span>
           </label>
-          <button type="submit" id="tax-submit" disabled style="background:rgba(176,155,58,0.25);color:rgba(255,255,255,0.7);border:none;border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:not-allowed;transition:all .25s;font-family:'Manrope',sans-serif;width:100%;">Отправить заявку</button>
+          <button type="submit" id="tax-submit" style="background:#2B2418;color:#fff;border:none;border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Manrope',sans-serif;width:100%;">Отправить заявку</button>
         </div>
       </form>
     </div>
@@ -1355,41 +1378,7 @@ window.addEventListener('load', function() {
 </div>
 
 <script>
-// Печатная машинка над карточками услуг
-function startTypewriter() {
-  var el = document.getElementById('typewriter-text');
-  var heading = el ? el.closest('.scenarios-heading') : null;
-  if (!el || !heading) return;
-  var text = 'Уточните: что вас беспокоит';
-  var i = 0;
-  heading.classList.add('visible');
-  function type() {
-    if (i <= text.length) {
-      el.textContent = text.slice(0, i);
-      i++;
-      setTimeout(type, i === text.length ? 0 : 55);
-    }
-  }
-  type();
-}
-
-// Модальное окно записи
-function openApptModal() {
-  openGlassModal('appt-modal');
-}
-function closeApptModal() {
-  closeGlassModal('appt-modal');
-}
-
-// Модальное окно заявки на справку для налогового вычета
-function openTaxModal() {
-  openGlassModal('tax-modal');
-}
-function closeTaxModal() {
-  closeGlassModal('tax-modal');
-}
-
-// Маска телефона для формы налогового вычета
+// Маска телефона (форма справки)
 function taxPhoneMask(e) {
   var el = e.target;
   var v = el.value.replace(/\D/g, '');
@@ -1402,75 +1391,144 @@ function taxPhoneMask(e) {
   if (v.length >= 6) res += '-' + v.slice(6,8);
   if (v.length >= 8) res += '-' + v.slice(8,10);
   el.value = res;
-  var taxPhoneVal = el.value.replace(/\D/g,'').replace(/^7/,'');
-  var taxName2 = document.getElementById('tax-name');
-  var taxConsent2 = document.getElementById('tax-consent');
-  var taxSubmit2 = document.getElementById('tax-submit');
-  var filled2 = taxPhoneVal.length >= 10 || (taxName2 && taxName2.value.trim() !== '');
-  var ok2 = filled2 && taxConsent2 && taxConsent2.checked;
-  if (taxSubmit2) {
-    taxSubmit2.disabled = !ok2;
-    taxSubmit2.style.background = ok2 ? '#2B2418' : 'rgba(176,155,58,0.25)';
-    taxSubmit2.style.color = ok2 ? '#fff' : 'rgba(255,255,255,0.7)';
-    taxSubmit2.style.cursor = ok2 ? 'pointer' : 'not-allowed';
-  }
 }
-function taxPhoneMaskFocus(el) {
-  if (!el.value) el.value = '+7 (';
-}
-function taxPhoneMaskBlur(el) {
-  if (el.value === '+7 (') el.value = '';
+function taxPhoneMaskFocus(el) { if (!el.value) el.value = '+7 ('; }
+function taxPhoneMaskBlur(el) { if (el.value === '+7 (') el.value = ''; }
+
+// Маска даты ДД.ММ.ГГГГ
+function taxDateMask(el) {
+  var v = el.value.replace(/\D/g, '');
+  var res = '';
+  if (v.length > 0) res = v.slice(0,2);
+  if (v.length >= 3) res += '.' + v.slice(2,4);
+  if (v.length >= 5) res += '.' + v.slice(4,8);
+  el.value = res;
 }
 
-(function(){
-  var taxName    = document.getElementById('tax-name');
-  var taxPhone   = document.getElementById('tax-phone');
-  var taxConsent = document.getElementById('tax-consent');
-  var taxSubmit  = document.getElementById('tax-submit');
-  function checkTax() {
-    var filled = (taxName && taxName.value.trim() !== '') || (taxPhone && taxPhone.value.trim() !== '');
-    var ok = filled && taxConsent && taxConsent.checked;
-    if (taxSubmit) {
-      taxSubmit.disabled = !ok;
-      taxSubmit.style.background = ok ? '#2B2418' : 'rgba(176,155,58,0.25)';
-      taxSubmit.style.color = ok ? '#fff' : 'rgba(255,255,255,0.7)';
-      taxSubmit.style.cursor = ok ? 'pointer' : 'not-allowed';
+// Переключатель взрослый / ребёнок
+function taxPatientTypeToggle() {
+  var isChild = document.getElementById('tax-child').checked;
+  document.getElementById('tax-inn-block').style.display      = isChild ? 'none' : '';
+  document.getElementById('tax-passport-block').style.display = isChild ? 'none' : '';
+  document.getElementById('tax-birth-block').style.display    = isChild ? '' : 'none';
+  document.getElementById('tax-adult-label').style.borderColor = isChild ? '#EDE7DC' : '#B09B3A';
+  document.getElementById('tax-child-label').style.borderColor = isChild ? '#B09B3A' : '#EDE7DC';
+  // clear errors
+  ['tax-inn-err','tax-passport-err','tax-birth-err'].forEach(function(id){
+    var el = document.getElementById(id); if(el) el.style.display='none';
+  });
+}
+
+// Согласие
+function taxCheckConsent() {}
+
+// Валидация при сабмите
+function taxValidate(e) {
+  var ok = true;
+
+  // ФИО
+  var fio = document.getElementById('tax-fio');
+  var fioErr = document.getElementById('tax-fio-err');
+  var fioVal = fio ? fio.value.trim() : '';
+  if (!fioVal || fioVal.split(/\s+/).filter(Boolean).length < 2) {
+    if (fio) fio.style.borderColor = '#C0392B';
+    if (fioErr) fioErr.style.display = 'block';
+    ok = false;
+  } else {
+    if (fio) fio.style.borderColor = '#EDE7DC';
+    if (fioErr) fioErr.style.display = 'none';
+  }
+
+  var isChild = document.getElementById('tax-child').checked;
+
+  if (!isChild) {
+    // ИНН
+    var inn = document.getElementById('tax-inn');
+    var innErr = document.getElementById('tax-inn-err');
+    var innVal = inn ? inn.value.replace(/\D/g,'') : '';
+    if (innVal.length !== 12) {
+      if (inn) inn.style.borderColor = '#C0392B';
+      if (innErr) innErr.style.display = 'block';
+      ok = false;
+    } else {
+      if (inn) inn.style.borderColor = '#EDE7DC';
+      if (innErr) innErr.style.display = 'none';
+    }
+
+    // Паспорт
+    var ps = document.getElementById('tax-passport-series');
+    var pn = document.getElementById('tax-passport-number');
+    var pi = document.getElementById('tax-passport-issued');
+    var pd = document.getElementById('tax-passport-date');
+    var pErr = document.getElementById('tax-passport-err');
+    var passportOk = ps && ps.value.trim().length === 4 &&
+                     pn && pn.value.trim().length === 6 &&
+                     pi && pi.value.trim().length > 3 &&
+                     pd && /^\d{2}\.\d{2}\.\d{4}$/.test(pd.value.trim());
+    if (!passportOk) {
+      [ps,pn,pi,pd].forEach(function(f){ if(f && !f.value.trim()) f.style.borderColor='#C0392B'; });
+      if (pErr) pErr.style.display = 'block';
+      ok = false;
+    } else {
+      [ps,pn,pi,pd].forEach(function(f){ if(f) f.style.borderColor='#EDE7DC'; });
+      if (pErr) pErr.style.display = 'none';
+    }
+  } else {
+    // Свидетельство о рождении
+    var bs = document.getElementById('tax-birth-series');
+    var bn = document.getElementById('tax-birth-number');
+    var bd = document.getElementById('tax-birth-date');
+    var bErr = document.getElementById('tax-birth-err');
+    var birthOk = bs && bs.value.trim().length > 1 &&
+                  bn && bn.value.trim().length === 6 &&
+                  bd && /^\d{2}\.\d{2}\.\d{4}$/.test(bd.value.trim());
+    if (!birthOk) {
+      [bs,bn,bd].forEach(function(f){ if(f && !f.value.trim()) f.style.borderColor='#C0392B'; });
+      if (bErr) bErr.style.display = 'block';
+      ok = false;
+    } else {
+      [bs,bn,bd].forEach(function(f){ if(f) f.style.borderColor='#EDE7DC'; });
+      if (bErr) bErr.style.display = 'none';
     }
   }
-  if (taxName)    taxName.addEventListener('input', checkTax);
-  if (taxPhone)   taxPhone.addEventListener('input', checkTax);
-  if (taxConsent) taxConsent.addEventListener('change', checkTax);
-})();
 
-/* Переключатель «За себя / За члена семьи» */
-function taxForToggle() {
-  var forOther = document.getElementById('tax-for-other');
-  var block    = document.getElementById('tax-patients-block');
-  var selfLbl  = document.getElementById('tax-for-self-label');
-  var otherLbl = document.getElementById('tax-for-other-label');
-  if (!forOther || !block) return;
-  var isOther = forOther.checked;
-  block.style.display = isOther ? 'flex' : 'none';
-  selfLbl.style.borderColor  = isOther ? '#EDE7DC' : '#B09B3A';
-  otherLbl.style.borderColor = isOther ? '#B09B3A' : '#EDE7DC';
+  // Телефон
+  var ph = document.getElementById('tax-phone');
+  var phErr = document.getElementById('tax-phone-err');
+  var phDigits = ph ? ph.value.replace(/\D/g,'').replace(/^7/,'') : '';
+  if (phDigits.length < 10) {
+    if (ph) ph.style.borderColor = '#C0392B';
+    if (phErr) phErr.style.display = 'block';
+    ok = false;
+  } else {
+    if (ph) ph.style.borderColor = '#EDE7DC';
+    if (phErr) phErr.style.display = 'none';
+  }
+
+  // Согласие
+  var consent = document.getElementById('tax-consent');
+  if (!consent || !consent.checked) {
+    if (consent) consent.style.outline = '2px solid #C0392B';
+    ok = false;
+  } else {
+    if (consent) consent.style.outline = '';
+  }
+
+  if (!ok) {
+    // Скроллим к первому незаполненному полю
+    var firstErr = document.querySelector('#tax-form [style*="border-color: rgb(192, 57, 43)"], #tax-form [style*="border-color:#C0392B"]');
+    if (firstErr) firstErr.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  if (!ok) e.preventDefault();
+  return ok;
 }
 
-/* Добавить ещё одного пациента */
-function taxAddPatient() {
-  var list = document.getElementById('tax-patients-list');
-  if (!list) return;
-  var FIELD = "width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:\'Manrope\',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;";
-  var row = document.createElement('div');
-  row.className = 'tax-patient-row';
-  row.style.cssText = 'display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;';
-  row.innerHTML =
-    '<div style="flex:1;display:flex;flex-direction:column;gap:6px;">' +
-      '<input name="ПациентФИО[]" type="text" placeholder="ФИО пациента" style="' + FIELD + '" onfocus="this.style.borderColor=\'#B09B3A\'" onblur="this.style.borderColor=\'#EDE7DC\'">' +
-      '<input name="ПациентИНН[]" type="text" inputmode="numeric" maxlength="12" placeholder="ИНН пациента (12 цифр)" style="' + FIELD + '" oninput="this.value=this.value.replace(/\\D/g,\'\')" onfocus="this.style.borderColor=\'#B09B3A\'" onblur="this.style.borderColor=\'#EDE7DC\'">' +
-    '</div>' +
-    '<button type="button" onclick="this.closest(\'.tax-patient-row\').remove()" style="flex-shrink:0;margin-top:12px;background:none;border:none;color:#C0A878;font-size:20px;cursor:pointer;line-height:1;padding:0 4px;" title="Удалить">×</button>';
-  list.appendChild(row);
-}
+// Инициализация переключателя
+document.addEventListener('DOMContentLoaded', function() {
+  taxPatientTypeToggle();
+  document.getElementById('tax-adult-label').style.borderColor = '#B09B3A';
+});
+
 
 
 // Активация кнопки при заполнении хотя бы одного поля и согласии на обработку данных
