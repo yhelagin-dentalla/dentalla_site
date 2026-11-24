@@ -30,11 +30,12 @@
       if (!sitekey) throw Error('key');
       await new Promise((resolve, reject) => {
         const script = document.createElement('script');
-        script.src = 'https://smartcaptcha.cloud.yandex.ru/captcha.js?render=explicit';
+        script.src = 'https://smartcaptcha.cloud.yandex.ru/captcha.js?render=onload&onload=dentallaCaptchaLoaded';
         script.async = true;
-        const timeout = setTimeout(() => {script.remove(); reject(Error('timeout'));}, 12000);
-        script.onload = () => {clearTimeout(timeout); resolve();};
-        script.onerror = () => {clearTimeout(timeout); script.remove(); reject(Error('load'));};
+        const cleanup = () => {clearTimeout(timeout); delete window.dentallaCaptchaLoaded;};
+        const timeout = setTimeout(() => {cleanup(); script.remove(); reject(Error('timeout'));}, 12000);
+        window.dentallaCaptchaLoaded = () => {cleanup(); resolve();};
+        script.onerror = () => {cleanup(); script.remove(); reject(Error('load'));};
         document.head.append(script);
       });
       if (!window.smartCaptcha) throw Error('widget');
