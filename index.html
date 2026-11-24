@@ -1237,7 +1237,7 @@ window.addEventListener('load', function() {
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
-            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <input id="appt-phone" name="Телефон" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
@@ -1529,6 +1529,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('tax-adult-label').style.borderColor = '#B09B3A';
 });
 
+function openApptModal() { openGlassModal('appt-modal'); }
+function closeApptModal() { closeGlassModal('appt-modal'); }
 function openTaxModal() { openGlassModal('tax-modal'); }
 function closeTaxModal() { closeGlassModal('tax-modal'); }
 
@@ -1542,7 +1544,8 @@ function checkFields() {
     var val = el.value.trim();
     if (id === 'appt-phone') {
       // считаем заполненным только если введены все 10 цифр
-      return val.replace(/\D/g,'').replace(/^[78]/,'').length === 10;
+      var digits = val.replace(/\D/g,'');
+      return digits.length === 11 && digits.charAt(0) === '7';
     }
     return val.length > 0;
   });
@@ -1557,89 +1560,32 @@ fields.forEach(function(id) {
 });
 consent.addEventListener('change', checkFields);
 
-// Жёсткая маска для поля телефона: +7 (___) ___-__-__
+// Маска записи: поддерживает клавиатуру, мобильный ввод, вставку и автозаполнение.
 (function(){
   var ph = document.getElementById('appt-phone');
-  var MASK = '+7 (___) ___-__-__';
-  var DIGIT_POS = [4,5,6,9,10,11,13,14,16,17]; // индексы цифр в маске
-
-  function applyMask(digits) {
-    // digits — массив введённых цифр (без ведущей 7 из +7)
-    var result = MASK.split('');
-    for (var i = 0; i < DIGIT_POS.length; i++) {
-      result[DIGIT_POS[i]] = digits[i] !== undefined ? digits[i] : '_';
+  function nationalDigits(value) {
+    var raw = value.replace(/\D/g, '');
+    if (/^\s*\+7/.test(value) || (raw.length >= 11 && /^[78]/.test(raw))) {
+      raw = raw.slice(1);
     }
-    return result.join('');
+    return raw.slice(0, 10);
   }
-
-  function getDigits(val) {
-    // берём только цифры, убираем ведущую 7 если есть
-    var raw = val.replace(/\D/g, '');
-    if (raw.charAt(0) === '7') raw = raw.slice(1);
-    if (raw.charAt(0) === '8') raw = raw.slice(1);
-    return raw.slice(0, 10).split('');
+  function format(digits) {
+    if (!digits) return '';
+    var out = '+7 (' + digits.slice(0, 3);
+    if (digits.length > 3) out += ') ' + digits.slice(3, 6);
+    if (digits.length > 6) out += '-' + digits.slice(6, 8);
+    if (digits.length > 8) out += '-' + digits.slice(8, 10);
+    return out;
   }
-
-  function getCursorPos(digits) {
-    // позиция курсора — сразу после последней введённой цифры
-    var filled = digits.length;
-    if (filled === 0) return 4; // после +7 (
-    return DIGIT_POS[Math.min(filled, DIGIT_POS.length) - 1] + 1;
-  }
-
-  ph.addEventListener('focus', function() {
-    if (this.value === '' || this.value === '+7 ') {
-      this.value = MASK;
-      var pos = 4;
-      this.setSelectionRange(pos, pos);
-    }
+  ph.addEventListener('input', function(){
+    if (!this.value) { checkFields(); return; }
+    var digits = nationalDigits(this.value);
+    this.value = format(digits);
+    checkFields();
   });
-
-  ph.addEventListener('blur', function() {
-    var digits = getDigits(this.value);
-    if (digits.length === 0) {
-      this.value = '';
-    }
-  });
-
-  ph.addEventListener('keydown', function(e) {
-    var digits = getDigits(this.value);
-    if (e.key === 'Backspace') {
-      e.preventDefault();
-      if (digits.length > 0) {
-        digits.pop();
-        this.value = applyMask(digits);
-        var pos = getCursorPos(digits);
-        this.setSelectionRange(pos, pos);
-      }
-      checkFields();
-    } else if (e.key === 'Delete') {
-      e.preventDefault();
-    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Tab') {
-      // разрешаем навигацию
-    } else if (/^\d$/.test(e.key)) {
-      e.preventDefault();
-      if (digits.length < 10) {
-        digits.push(e.key);
-        this.value = applyMask(digits);
-        var pos2 = getCursorPos(digits);
-        this.setSelectionRange(pos2, pos2);
-      }
-      checkFields();
-    } else if (!e.ctrlKey && !e.metaKey) {
-      e.preventDefault();
-    }
-  });
-
-  ph.addEventListener('paste', function(e) {
-    e.preventDefault();
-    var text = (e.clipboardData || window.clipboardData).getData('text');
-    var raw = text.replace(/\D/g, '');
-    if (raw.charAt(0) === '7' || raw.charAt(0) === '8') raw = raw.slice(1);
-    var digits = raw.slice(0, 10).split('');
-    this.value = applyMask(digits);
-    var pos = getCursorPos(digits);
-    this.setSelectionRange(pos, pos);
+  ph.addEventListener('blur', function(){
+    this.value = format(nationalDigits(this.value));
     checkFields();
   });
 })();
