@@ -427,7 +427,7 @@ window.addEventListener('scroll', function() {
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
-            <input id="appt-phone" name="Телефон" type="tel" placeholder="+7 (___) ___-__-__" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <input id="appt-phone" name="Телефон" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7(___)___-__-__" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
@@ -468,7 +468,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeApptMod
 var apptFields=['appt-name','appt-phone','appt-comment'];
 var apptBtn=document.getElementById('appt-submit');
 var apptConsent=document.getElementById('appt-consent');
-function checkApptFields(){var filled=apptFields.some(function(id){return document.getElementById(id).value.trim().length>0;});var ok=filled&&apptConsent.checked;apptBtn.disabled=!ok;apptBtn.style.background=ok?'#B09B3A':'#C8C0A8';apptBtn.style.cursor=ok?'pointer':'not-allowed';}
+function checkApptFields(){var filled=apptFields.some(function(id){var v=document.getElementById(id).value.trim();return id==='appt-phone'?v.replace(/\D/g,'').length===11:v.length>0;});var ok=filled&&apptConsent.checked;apptBtn.disabled=!ok;apptBtn.style.background=ok?'#B09B3A':'#C8C0A8';apptBtn.style.cursor=ok?'pointer':'not-allowed';}
 apptFields.forEach(function(id){document.getElementById(id).addEventListener('input',checkApptFields);});
 apptConsent.addEventListener('change',checkApptFields);
 </script>
@@ -501,5 +501,6 @@ if (window.location.search.indexOf('sent=1') !== -1) {
   }
 }
 </script>
+<script src="appointment-phone-mask.js?v=1" defer></script>
 </body>
 </html>

@@ -1237,7 +1237,7 @@ window.addEventListener('load', function() {
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Телефон</label>
-            <input id="appt-phone" name="Телефон" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
+            <input id="appt-phone" name="Телефон" type="tel" inputmode="tel" placeholder="+7(___)___-__-__" autocomplete="tel" style="width:100%;border:1px solid #EDE7DC;border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Manrope',sans-serif;color:#2B2418;background:#FDFCF9;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='#B09B3A'" onblur="this.style.borderColor='#EDE7DC'">
           </div>
           <div>
             <label style="font-size:11px;color:#9B9080;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:5px;">Выбрать врача</label>
@@ -1560,36 +1560,6 @@ fields.forEach(function(id) {
 });
 consent.addEventListener('change', checkFields);
 
-// Маска записи: поддерживает клавиатуру, мобильный ввод, вставку и автозаполнение.
-(function(){
-  var ph = document.getElementById('appt-phone');
-  function nationalDigits(value) {
-    var raw = value.replace(/\D/g, '');
-    if (/^\s*\+7/.test(value) || (raw.length >= 11 && /^[78]/.test(raw))) {
-      raw = raw.slice(1);
-    }
-    return raw.slice(0, 10);
-  }
-  function format(digits) {
-    if (!digits) return '';
-    var out = '+7 (' + digits.slice(0, 3);
-    if (digits.length > 3) out += ') ' + digits.slice(3, 6);
-    if (digits.length > 6) out += '-' + digits.slice(6, 8);
-    if (digits.length > 8) out += '-' + digits.slice(8, 10);
-    return out;
-  }
-  ph.addEventListener('input', function(){
-    if (!this.value) { checkFields(); return; }
-    var digits = nationalDigits(this.value);
-    this.value = format(digits);
-    checkFields();
-  });
-  ph.addEventListener('blur', function(){
-    this.value = format(nationalDigits(this.value));
-    checkFields();
-  });
-})();
-
 // Вешаем openApptModal на все кнопки "Записаться"
 document.querySelectorAll('.btn-primary,.btn-header,.btn-cta,.btn-cta-white,.doc-modal-btn').forEach(function(b){
   if(b.form) return;
@@ -1634,5 +1604,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (tTs) tTs.value = now;
 });
 </script>
+<script src="appointment-phone-mask.js?v=1" defer></script>
 </body>
 </html>
