@@ -20,22 +20,14 @@ if ($ts > 0 && (time() - $ts) < 3) {
     exit;
 }
 // --- /Антиспам ---
-require_once __DIR__ . '/smartcaptcha-server.php';
-if (!dentalla_captcha_valid($_POST['appointment-captcha-token'] ?? null)) {
-    http_response_code(403);
-    header('Content-Type: text/html; charset=UTF-8');
-    echo '<!doctype html><html lang="ru"><meta charset="utf-8"><title>Проверка безопасности</title><p>Заявка не отправлена: проверка безопасности не пройдена. Вернитесь к форме и попробуйте снова или позвоните в клинику.</p><a href="index.html">На сайт</a></html>';
-    exit;
-}
-
 
 $to = 'dentalla@inbox.ru';
 
 function dentalla_field($key, $default = '') {
-    return isset($_POST[$key]) && is_string($_POST[$key]) ? trim($_POST[$key]) : $default;
+    return isset($_POST[$key]) ? trim($_POST[$key]) : $default;
 }
 
-$subject = dentalla_field('_subject', 'Заявка с сайта kvrachu.info');
+$subject = dentalla_field('_subject', 'Заявка с сайта dentalla.ru');
 $name    = dentalla_field('Имя');
 $phone   = dentalla_field('Телефон');
 $doctor  = dentalla_field('Врач');
@@ -46,7 +38,7 @@ if ($name === '' && $phone === '' && $comment === '') {
     exit;
 }
 
-$body  = "Новая заявка с сайта kvrachu.info\r\n\r\n";
+$body  = "Новая заявка с сайта dentalla.ru\r\n\r\n";
 $body .= "Имя: " . ($name !== '' ? $name : '(не указано)') . "\r\n";
 $body .= "Телефон: " . ($phone !== '' ? $phone : '(не указан)') . "\r\n";
 if ($doctor !== '') {
@@ -62,12 +54,18 @@ $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "From: Сайт Денталла <no-reply@kvrachu.info>\r\n";
-
-if (!mail($to, $encodedSubject, $body, $headers)) {
-    http_response_code(503);
-    header('Content-Type: text/plain; charset=UTF-8');
-    echo 'Не удалось отправить заявку. Попробуйте позже или позвоните в клинику.';
-    exit;
+if ($phone !== '') {
+    $headers .= "Reply-To: " . $phone . "\r\n";
 }
-header('Location: /contacts.html?sent=1', true, 303);
+
+@mail($to, $encodedSubject, $body, $headers);
+
+$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+if ($referer !== '') {
+    $refererPath = preg_replace('/[?#].*$/', '', $referer);
+    $next = $refererPath . '?sent=1';
+} else {
+    $next = dentalla_field('_next', 'index.html?sent=1');
+}
+header('Location: ' . $next);
 exit;
